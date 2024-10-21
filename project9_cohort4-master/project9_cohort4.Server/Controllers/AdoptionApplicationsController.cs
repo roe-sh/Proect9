@@ -49,8 +49,6 @@ namespace project9_cohort4.Server.Controllers
             {
                 return NotFound();
             }
-
-           
             existingApplication.UserMedicalStatus = adoptionApplicationDto.UserMedicalStatus;
             existingApplication.UserFlatType = adoptionApplicationDto.UserFlatType;
             existingApplication.UserFinaincalStatus = adoptionApplicationDto.UserFinancialStatus;

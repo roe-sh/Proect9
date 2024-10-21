@@ -28,7 +28,7 @@ import { FooterComponent } from './batool/footer/footer.component';
     AddAnimalComponent,
     UpdateInfoComponent,
     AnimalsComponent,
-    AnimalsDetailsComponent,  // Added missing declaration
+    AnimalsDetailsComponent,  
     AnimalFormComponent,
     TypeComponent,
     FooterComponent

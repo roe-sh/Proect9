@@ -23,6 +23,9 @@ export class AnimalsComponent implements OnInit {
   totalItems: number = 0;
   totalPages: number = 0;
 
+  // Add Math as a class property so it can be used in the template
+  Math = Math;
+
   constructor(private animalService: AnimalService, private shelterService: ShelterService) { }
 
   ngOnInit(): void {
@@ -78,7 +81,6 @@ export class AnimalsComponent implements OnInit {
       this.updateDisplayedAnimals();
     }
   }
-
 
   paginationRange(): number[] {
     const range: number[] = [];
