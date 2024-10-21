@@ -7,21 +7,27 @@ public partial class User
 {
     public int UserId { get; set; }
 
-    public string Username { get; set; } = null!;
+    public string FullName { get; set; } = null!;
 
     public string PasswordHash { get; set; } = null!;
 
+    public string PasswordSalt { get; set; } = null!;
+
     public string Email { get; set; } = null!;
 
-    public string? FullName { get; set; }
+    public string? Phone { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
-
-    public DateTime? UpdatedAt { get; set; }
+    public string? Address { get; set; }
 
     public bool? IsAdmin { get; set; }
 
     public virtual ICollection<AdoptionApplication> AdoptionApplications { get; set; } = new List<AdoptionApplication>();
 
-    public virtual ICollection<SuccessStory> SuccessStories { get; set; } = new List<SuccessStory>();
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
+    public virtual ICollection<Like> Likes { get; set; } = new List<Like>();
+
+    public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+
+    public virtual ICollection<Reply> Replies { get; set; } = new List<Reply>();
 }

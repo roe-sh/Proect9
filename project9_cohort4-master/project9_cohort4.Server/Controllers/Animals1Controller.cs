@@ -46,7 +46,7 @@ namespace project9_cohort4.Server.Controllers
         // PUT: api/Animals1/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public IActionResult PutAnimal(int id,[FromForm] updateAnimalDTO animal)
+        public IActionResult PutAnimal(int id, [FromForm] updateAnimalDTO animal)
         {
             var existAnimal = _context.Animals.Find(id);
 
@@ -90,9 +90,9 @@ namespace project9_cohort4.Server.Controllers
                 PhotoUrl = animal.PhotoUrl,
             };
             _context.Animals.Add(newAnimal);
-             _context.SaveChanges();
+            _context.SaveChanges();
 
-            return Ok( newAnimal);
+            return Ok(newAnimal);
         }
 
         // DELETE: api/Animals1/5

@@ -25,14 +25,14 @@ namespace project9_cohort4.Server.Controllers
         [HttpGet]
         public IActionResult GetUsers()
         {
-            return  Ok(_context.Users.ToList());
+            return Ok(_context.Users.ToList());
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)
         {
-            var user =  _context.Users.Find(id);
+            var user = _context.Users.Find(id);
 
             if (user == null)
             {
@@ -58,7 +58,7 @@ namespace project9_cohort4.Server.Controllers
             existUser.IsAdmin = user.IsAdmin;
             existUser.Username = user.Username;
             existUser.PasswordHash = user.PasswordHash;
-           
+
 
             _context.Users.Update(existUser);
             _context.SaveChanges();
@@ -73,7 +73,7 @@ namespace project9_cohort4.Server.Controllers
             var newUser = new User
             {
                 Username = user.Username,
-                Email  = user.Email,
+                Email = user.Email,
                 IsAdmin = user.IsAdmin,
                 PasswordHash = user.PasswordHash,
                 FullName = user.FullName,

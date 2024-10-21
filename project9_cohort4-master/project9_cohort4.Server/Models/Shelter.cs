@@ -13,13 +13,15 @@ public partial class Shelter
 
     public string? ContactEmail { get; set; }
 
-    public string? Phone { get; set; }
+    public string? ContactPhone { get; set; }
+
+    public string? OpenTime { get; set; }
+
+    public string? CloseTime { get; set; }
+
+    public string? OpenDay { get; set; }
 
     public string? Address { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
-
-    public DateTime? UpdatedAt { get; set; }
-
-    public virtual ICollection<ShelterAnimal> ShelterAnimals { get; set; } = new List<ShelterAnimal>();
+    public virtual ICollection<Animal> Animals { get; set; } = new List<Animal>();
 }

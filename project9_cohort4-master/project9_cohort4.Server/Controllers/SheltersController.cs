@@ -20,14 +20,14 @@ namespace project9_cohort4.Server.Controllers
         [HttpGet]
         public IActionResult GetShelters()
         {
-            return  Ok( _context.Shelters.ToList());
+            return Ok(_context.Shelters.ToList());
         }
 
         // GET: api/Shelters/5
         [HttpGet("{id}")]
         public IActionResult GetShelter(int id)
         {
-            var shelter =  _context.Shelters.Find(id);
+            var shelter = _context.Shelters.Find(id);
 
             if (shelter == null)
             {
@@ -53,7 +53,7 @@ namespace project9_cohort4.Server.Controllers
             existShelder.ContactEmail = shelter.ContactEmail;
             existShelder.Phone = shelter.Phone;
             existShelder.Address = shelter.Address;
-           
+
             _context.Shelters.Update(existShelder);
             _context.SaveChanges();
             return Ok(existShelder);
@@ -73,7 +73,7 @@ namespace project9_cohort4.Server.Controllers
                 ContactEmail = shelter.ContactEmail,
                 Phone = shelter.Phone,
                 Address = shelter.Address
-               
+
             };
             _context.Shelters.Add(newShelter);
             _context.SaveChanges();

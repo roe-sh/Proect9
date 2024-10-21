@@ -9,7 +9,7 @@ public partial class Animal
 
     public string Name { get; set; } = null!;
 
-    public string Species { get; set; } = null!;
+    public string? Species { get; set; }
 
     public string? Breed { get; set; }
 
@@ -25,15 +25,21 @@ public partial class Animal
 
     public string? AdoptionStatus { get; set; }
 
-    public string? PhotoUrl { get; set; }
+    public string? Image1 { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
+    public string? Image2 { get; set; }
 
-    public DateTime? UpdatedAt { get; set; }
+    public string? Image3 { get; set; }
+
+    public DateTime? AddedAt { get; set; }
+
+    public int CategoryId { get; set; }
+
+    public int ShelterId { get; set; }
 
     public virtual ICollection<AdoptionApplication> AdoptionApplications { get; set; } = new List<AdoptionApplication>();
 
-    public virtual ICollection<ShelterAnimal> ShelterAnimals { get; set; } = new List<ShelterAnimal>();
+    public virtual Category Category { get; set; } = null!;
 
-    public virtual ICollection<SuccessStory> SuccessStories { get; set; } = new List<SuccessStory>();
+    public virtual Shelter Shelter { get; set; } = null!;
 }
