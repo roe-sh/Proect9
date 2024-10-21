@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class AnimalService {
 
-  private apiUrl = 'https://localhost:5001/api/Animals1';  // Update with your API base URL
+  private apiUrl = 'https://localhost:7001/api/Animals1'; 
 
   constructor(private http: HttpClient) { }
 
-  // Method to fetch animals with optional filters
+ 
   getAnimals(filters?: { shelterId?: number; breed?: string; age?: number; species?: string }): Observable<any[]> {
     let params = new HttpParams();
 
@@ -33,8 +33,16 @@ export class AnimalService {
     return this.http.get<any[]>(`${this.apiUrl}`, { params });
   }
 
-  // Method to fetch a specific animal by its ID
+
   getAnimalById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  getRelatedAnimals(shelterId: number, species: string): Observable<any[]> {
+    let params = new HttpParams()
+      .set('shelterId', shelterId.toString())
+      .set('species', species);
+
+    return this.http.get<any[]>(`${this.apiUrl}/related`, { params });
   }
 }

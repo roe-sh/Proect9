@@ -1,49 +1,39 @@
-//import { Injectable } from '@angular/core';
-//import { HttpClient, HttpParams } from '@angular/common/http';
-//import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AnimalService } from '../../Adoptioh/animals.service';
 
-//@Injectable({
-//  providedIn: 'root'
-//})
-//export class AnimalService {
+@Component({
+  selector: 'app-animals-details',
+  templateUrl: './animals-details.component.html',
+  styleUrls: ['./animals-details.component.css']
+})
+export class AnimalsDetailsComponent implements OnInit {
 
-//  private apiUrl = 'https://localhost:5001/api/Animals1';  
+  animal: any;
+  relatedAnimals: any[] = [];
 
-//  constructor(private http: HttpClient) { }
+  constructor(
+    private animalService: AnimalService,
+    private route: ActivatedRoute
+  ) { }
 
-//  // Fetch animals with optional filters
-//  getAnimals(filters?: { shelterId?: number; breed?: string; age?: number; species?: string }): Observable<any[]> {
-//    let params = new HttpParams();
+  ngOnInit(): void {
+    this.fetchAnimalDetails();
+  }
 
-//    if (filters) {
-//      if (filters.shelterId !== undefined && filters.shelterId !== null) {
-//        params = params.append('shelterId', filters.shelterId.toString());
-//      }
-//      if (filters.breed) {
-//        params = params.append('breed', filters.breed);
-//      }
-//      if (filters.age !== undefined && filters.age > 0) {
-//        params = params.append('age', filters.age.toString());
-//      }
-//      if (filters.species) {
-//        params = params.append('species', filters.species);
-//      }
-//    }
+  fetchAnimalDetails(): void {
+    const animalId = Number(this.route.snapshot.paramMap.get('id'));
+    if (!isNaN(animalId)) {
+      this.animalService.getAnimalById(animalId).subscribe((data: any) => {
+        this.animal = data;
+        this.fetchRelatedAnimals(this.animal.shelterId, this.animal.species);
+      });
+    }
+  }
 
-//    return this.http.get<any[]>(`${this.apiUrl}`, { params });
-//  }
-
-//  // Fetch a specific animal by its ID
-//  getAnimalById(id: number): Observable<any> {
-//    return this.http.get<any>(`${this.apiUrl}/${id}`);
-//  }
-
-//  // Fetch related animals (e.g., by species or shelterId)
-//  getRelatedAnimals(shelterId: number, species: string): Observable<any[]> {
-//    let params = new HttpParams()
-//      .set('shelterId', shelterId.toString())
-//      .set('species', species);
-
-//    return this.http.get<any[]>(`${this.apiUrl}/related`, { params });
-//  }
-//}
+  fetchRelatedAnimals(shelterId: number, species: string): void {
+    this.animalService.getRelatedAnimals(shelterId, species).subscribe((data: any[]) => {
+      this.relatedAnimals = data;
+    });
+  }
+}

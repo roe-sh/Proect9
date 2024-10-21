@@ -7,15 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class ShelterService {
 
-  private apiUrl = 'https://localhost:5001/api/Shelters';  
+  private apiUrl = 'https://localhost:7001/api/Shelters';  
   constructor(private http: HttpClient) { }
 
-  // Fetch all shelters
+ 
   getShelters(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}`);
   }
 
-  // Fetch a specific shelter by ID
+ 
   getShelterById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }

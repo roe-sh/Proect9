@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +12,9 @@ import { RouterModule } from '@angular/router';
 import { GetByIdComponent } from './batool/get-by-id/get-by-id.component';
 import { AddAnimalComponent } from './batool/add-animal/add-animal.component';
 import { UpdateInfoComponent } from './batool/update-info/update-info.component';
-/*import { AnimalsComponent } from './Adoptioh/animals/animals.component';*/
-/*import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';*/
+
+import { AnimalsComponent } from './Adoptioh/animals/animals.component';
+import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
 import { TypeComponent } from './Adoptioh/type/type.component';
 import { FooterComponent } from './batool/footer/footer.component';
@@ -27,25 +28,22 @@ import { FooterComponent } from './batool/footer/footer.component';
     GetByIdComponent,
     AddAnimalComponent,
     UpdateInfoComponent,
-/*    AnimalsComponent,*/
-/*    AnimalsDetailsComponent,*/
+    AnimalsComponent,  
     AnimalFormComponent,
-    TypeComponent
-    UpdateInfoComponent,
+    TypeComponent,
     FooterComponent
   ],
   imports: [
     FormsModule,
-    BrowserModule, HttpClientModule,
+    BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-
       { path: "", component: HomeComponent, pathMatch: "full" },
-
-      { path : "getAllUsers" , component : GetAllComponent},
-      { path : "getbyId/:id11" , component : GetByIdComponent},
-      { path : "addAnimal" , component : AddAnimalComponent},
-      { path : "UpdateAnimal/:id", component : UpdateInfoComponent}
+      { path: "getAllUsers", component: GetAllComponent },
+      { path: "getbyId/:id11", component: GetByIdComponent },
+      { path: "addAnimal", component: AddAnimalComponent },
+      { path: "UpdateAnimal/:id", component: UpdateInfoComponent }
     ])
   ],
   providers: [],

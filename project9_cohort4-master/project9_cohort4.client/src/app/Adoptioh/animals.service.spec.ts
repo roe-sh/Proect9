@@ -1,16 +1,16 @@
-//import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-//import { AnimalsService } from './animals.service';
+import { AnimalService } from './animals.service';
 
-//describe('AnimalsService', () => {
-//  let service: AnimalsService;
+describe('AnimalsService', () => {
+  let service: AnimalService;
 
-//  beforeEach(() => {
-//    TestBed.configureTestingModule({});
-//    service = TestBed.inject(AnimalsService);
-//  });
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(AnimalService);
+  });
 
-//  it('should be created', () => {
-//    expect(service).toBeTruthy();
-//  });
-//});
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
