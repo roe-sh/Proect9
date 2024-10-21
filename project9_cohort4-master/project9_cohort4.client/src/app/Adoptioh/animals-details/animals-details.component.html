@@ -2,19 +2,38 @@
   <div class="container">
     <div class="row g-6 justify-content-between mb-lg-15 mb-md-10 mb-8">
       <div class="col-lg-6">
+        <!-- Swiper for displaying the three images -->
         <div class="swiper product-swiper mb-6">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" *ngFor="let image of animal.images">
+            <!-- Displaying image1, image2, image3 -->
+            <div class="swiper-slide" *ngIf="animal.image1">
               <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
-                <img class="w-100 radius-16" [src]="image" alt="{{ animal.name }}">
+                <img class="w-100 radius-16" [src]="animal.image1" alt="{{ animal.name }}">
+              </div>
+            </div>
+            <div class="swiper-slide" *ngIf="animal.image2">
+              <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
+                <img class="w-100 radius-16" [src]="animal.image2" alt="{{ animal.name }}">
+              </div>
+            </div>
+            <div class="swiper-slide" *ngIf="animal.image3">
+              <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
+                <img class="w-100 radius-16" [src]="animal.image3" alt="{{ animal.name }}">
               </div>
             </div>
           </div>
         </div>
         <div class="swiper swiper-thumb">
           <div class="swiper-wrapper">
-            <div class="swiper-slide radius-8" *ngFor="let image of animal.images">
-              <img class="w-100 radius-8" [src]="image" alt="{{ animal.name }}">
+           
+            <div class="swiper-slide radius-8" *ngIf="animal.image1">
+              <img class="w-100 radius-8" [src]="animal.image1" alt="{{ animal.name }}">
+            </div>
+            <div class="swiper-slide radius-8" *ngIf="animal.image2">
+              <img class="w-100 radius-8" [src]="animal.image2" alt="{{ animal.name }}">
+            </div>
+            <div class="swiper-slide radius-8" *ngIf="animal.image3">
+              <img class="w-100 radius-8" [src]="animal.image3" alt="{{ animal.name }}">
             </div>
           </div>
         </div>
@@ -41,7 +60,6 @@
           <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
             <i class="ph-fill ph-heart"></i>
           </button>
-
         </div>
         <ul class="d-grid gap-lg-4 gap-2">
           <li class="d-flex align-items-center gap-1">
@@ -83,7 +101,7 @@
               <div class="product-thumb scale-animation position-relative">
                 <img class="w-100" [src]="relatedAnimal.imageUrl" alt="{{ relatedAnimal.name }}">
                 <div class="product-info p-lg-6 p-4 text-center">
-                  <a [routerLink]="['/animal-details', relatedAnimal.id]"
+                  <a [routerLink]="['/animals', relatedAnimal.id]"
                      class="text-h6 text-n20 font-otomanopee fw-normal hover-text-primary hover-underline mb-2">
                     {{ relatedAnimal.name }}
                   </a>

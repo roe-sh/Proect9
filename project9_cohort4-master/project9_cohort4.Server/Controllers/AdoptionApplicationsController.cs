@@ -50,10 +50,10 @@ namespace project9_cohort4.Server.Controllers
                 return NotFound();
             }
 
-            // Updating properties from DTO
+           
             existingApplication.UserMedicalStatus = adoptionApplicationDto.UserMedicalStatus;
             existingApplication.UserFlatType = adoptionApplicationDto.UserFlatType;
-            //existingApplication.UserFinancialStatus = adoptionApplicationDto.UserFinancialStatus;
+            existingApplication.UserFinaincalStatus = adoptionApplicationDto.UserFinancialStatus;
             existingApplication.UserLivingStatus = adoptionApplicationDto.UserLivingStatus;
             existingApplication.UserMoreDetails = adoptionApplicationDto.UserMoreDetails;
             existingApplication.Status = adoptionApplicationDto.Status;
@@ -74,7 +74,7 @@ namespace project9_cohort4.Server.Controllers
                 AnimalId = adoptionApplicationDto.AnimalId,
                 UserMedicalStatus = adoptionApplicationDto.UserMedicalStatus,
                 UserFlatType = adoptionApplicationDto.UserFlatType,
-                //UserFinancialStatus = adoptionApplicationDto.UserFinancialStatus,
+                UserFinaincalStatus = adoptionApplicationDto.UserFinancialStatus,
                 UserLivingStatus = adoptionApplicationDto.UserLivingStatus,
                 UserMoreDetails = adoptionApplicationDto.UserMoreDetails,
                 ApplicationDate = adoptionApplicationDto.ApplicationDate ?? System.DateTime.Now,
