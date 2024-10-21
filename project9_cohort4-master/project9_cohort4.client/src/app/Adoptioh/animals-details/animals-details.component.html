@@ -1,0 +1,98 @@
+<section class="shop-details-section pt-120">
+  <div class="container">
+    <div class="row g-6 justify-content-between mb-lg-15 mb-md-10 mb-8">
+      <div class="col-lg-6">
+        <div class="swiper product-swiper mb-6">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let image of animal.images">
+              <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
+                <img class="w-100 radius-16" [src]="image" alt="{{ animal.name }}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper swiper-thumb">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide radius-8" *ngFor="let image of animal.images">
+              <img class="w-100 radius-8" [src]="image" alt="{{ animal.name }}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="d-grid gap-lg-6 gap-4">
+          <div>
+            <h1 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal mb-lg-4 mb-2">
+              {{ animal.name }}
+            </h1>
+            <span class="text-primary text-xl fw-semibold font-instrument">
+              Age: {{ animal.age }} years
+            </span>
+          </div>
+          <p class="text-n10 fw-normal">{{ animal.description }}</p>
+        </div>
+        <div class="d-flex align-items-center gap-lg-3 gap-2 flex-wrap flex-xs-nowrap mt-lg-8 mt-6 mb-lg-10 mb-8">
+          <div class="quantity d-flex align-items-center justify-content-center gap-2 py-lg-3 py-2 px-xl-8 px-lg-6 px-4 border n20-1-border radius-pill">
+            <button class="quantityDecrement text-primary"><i class="ph-fill ph-minus"></i></button>
+            <input type="text" value="1" class="quantityValue border-0 p-0 outline-0">
+            <button class="quantityIncrement text-primary"><i class="ph-fill ph-plus"></i></button>
+          </div>
+          <button class="btn-primary">Adopt Now</button>
+          <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
+            <i class="ph-fill ph-heart"></i>
+          </button>
+        </div>
+        <ul class="d-grid gap-lg-4 gap-2">
+          <li class="d-flex align-items-center gap-1">
+            <span class="text-base fw-medium font-instrument text-n20">Shelter: </span>
+            <span class="text-base fw-normal font-instrument text-n10">{{ animal.shelterName }}</span>
+          </li>
+          <li class="d-flex align-items-center gap-1">
+            <span class="text-base fw-medium font-instrument text-n20">Species: </span>
+            <span class="text-base fw-normal font-instrument text-n10">{{ animal.species }}</span>
+          </li>
+          <li class="d-flex align-items-center gap-1">
+            <span class="text-base fw-medium font-instrument text-n20">Breed: </span>
+            <span class="text-base fw-normal font-instrument text-n10">{{ animal.breed }}</span>
+          </li>
+          <li class="d-flex align-items-center gap-1">
+            <span class="text-base fw-medium font-instrument text-n20">Animal ID: </span>
+            <span class="text-base fw-normal font-instrument text-n10">{{ animal.id }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Related Animals Section -->
+    <section class="shop-section pt-120 pb-120">
+      <div class="container">
+        <div class="row g-6 align-items-end justify-content-between mb-lg-15 mb-md-10 mb-8">
+          <div class="col-lg-6">
+            <h2 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal">
+              Related Animals
+            </h2>
+          </div>
+          <div class="col-auto">
+            <a href="/adoption-list" class="btn-primary text-xl">More Animals</a>
+          </div>
+        </div>
+        <div class="row g-6 mb-lg-10 mb-md-8 mb-6">
+          <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let relatedAnimal of relatedAnimals">
+            <div class="product-card border n20-1-border radius-16 overflow-hidden hover-primary-border">
+              <div class="product-thumb scale-animation position-relative">
+                <img class="w-100" [src]="relatedAnimal.imageUrl" alt="{{ relatedAnimal.name }}">
+                <div class="product-info p-lg-6 p-4 text-center">
+                  <a [routerLink]="['/animal-details', relatedAnimal.id]"
+                     class="text-h6 text-n20 font-otomanopee fw-normal hover-text-primary hover-underline mb-2">
+                    {{ relatedAnimal.name }}
+                  </a>
+                  <span class="text-primary font-instrument fw-semibold">{{ relatedAnimal.age }} years old</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
