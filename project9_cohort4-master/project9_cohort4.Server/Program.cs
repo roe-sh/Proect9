@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using project9_cohort4.Server.Controllers;
+//using project9_cohort4.Server.Controllers;
 using project9_cohort4.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,9 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-// Add services to the container.
-builder.Services.AddDbContext<MyDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
+//// Add services to the container.
+//builder.Services.AddDbContext<MyDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
 
 builder.Services.AddCors( options=> options.AddPolicy("development",builder=>{
     builder.AllowAnyOrigin();
