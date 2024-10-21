@@ -17,41 +17,33 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" [(ngModel)]="adoptionDetails.email" name="email" required>
           </div>
+                      <label for="medicalStatus">Medical Status</label>
+                      <input type="text" id="medicalStatus" [(ngModel)]="adoptionApplication.userMedicalStatus" name="userMedicalStatus" class="form-control" required>
+                    </div>
 
-          <!-- Medical Status -->
-          <div class="form-group mb-4">
-            <label for="medicalStatus">Medical Status</label>
-            <input type="text" class="form-control" id="medicalStatus" [(ngModel)]="adoptionDetails.medicalStatus" name="medicalStatus" required>
-          </div>
+                    <div class="form-group mb-4">
+                      <label for="flatType">Flat Type</label>
+                      <input type="text" id="flatType" [(ngModel)]="adoptionApplication.userFlatType" name="userFlatType" class="form-control" required>
+                    </div>
 
-          <!-- Housing Type -->
-          <div class="form-group mb-4">
-            <label for="housingType">Housing Type</label>
-            <select class="form-control" id="housingType" [(ngModel)]="adoptionDetails.housingType" name="housingType">
-              <option value="Apartment">Apartment</option>
-              <option value="House">House</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+                    <div class="form-group mb-4">
+                      <label for="financialStatus">Financial Status</label>
+                      <input type="text" id="financialStatus" [(ngModel)]="adoptionApplication.userFinancialStatus" name="userFinancialStatus" class="form-control" required>
+                    </div>
 
-          <!-- Financial Status -->
-          <div class="form-group mb-4">
-            <label for="financialStatus">Financial Status</label>
-            <input type="text" class="form-control" id="financialStatus" [(ngModel)]="adoptionDetails.financialStatus" name="financialStatus" required>
-          </div>
+                    <div class="form-group mb-4">
+                      <label for="livingStatus">Living Status</label>
+                      <input type="text" id="livingStatus" [(ngModel)]="adoptionApplication.userLivingStatus" name="userLivingStatus" class="form-control" required>
+                    </div>
 
-          <!-- Additional Details -->
-          <div class="form-group mb-4">
-            <label for="additionalDetails">Additional Details</label>
-            <textarea class="form-control" id="additionalDetails" [(ngModel)]="adoptionDetails.additionalDetails" name="additionalDetails"></textarea>
-          </div>
+                    <div class="form-group mb-4">
+                      <label for="moreDetails">Additional Details</label>
+                      <textarea id="moreDetails" [(ngModel)]="adoptionApplication.userMoreDetails" name="userMoreDetails" class="form-control" rows="4"></textarea>
+                    </div>
 
-          <!-- Submit Button -->
-          <div class="text-center">
-            <button type="submit" class="btn-primary" [disabled]="adoptionForm.invalid">Submit Adoption Request</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+                    <button type="submit" class="btn btn-primary">Submit Adoption Request</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>

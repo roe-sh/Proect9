@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdoptionService } from '../../Adoptioh/adoption.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-animal-form',
@@ -37,5 +39,6 @@ export class AnimalFormComponent implements OnInit {
         }
       );
     }
+
   }
 }
