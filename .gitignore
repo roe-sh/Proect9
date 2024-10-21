@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/project9_cohort4-master/project9_cohort4.Server/appsettings.json
+/project9_cohort4-master/project9_cohort4.Server/Models/MyDbContext.cs
