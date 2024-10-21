@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AdoptionService {
 
-  private apiUrl = 'https://localhost:5001/api/adoption'; 
+  private apiUrl = 'https://localhost:7001/api/AdoptionApplications'; 
 
   constructor(private http: HttpClient) { }
 
