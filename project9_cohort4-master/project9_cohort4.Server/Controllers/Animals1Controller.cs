@@ -63,7 +63,7 @@ namespace project9_cohort4.Server.Controllers
             existAnimal.SpecialNeeds = animal.SpecialNeeds;
             existAnimal.Description = animal.Description;
             existAnimal.AdoptionStatus = animal.AdoptionStatus;
-            existAnimal.PhotoUrl = animal.PhotoUrl;
+            existAnimal.Image1 = animal.PhotoUrl;
 
             _context.Animals.Update(existAnimal);
             _context.SaveChanges();
@@ -87,7 +87,7 @@ namespace project9_cohort4.Server.Controllers
                 SpecialNeeds = animal.SpecialNeeds,
                 Description = animal.Description,
                 AdoptionStatus = animal.AdoptionStatus,
-                PhotoUrl = animal.PhotoUrl,
+                Image1 = animal.PhotoUrl,
             };
             _context.Animals.Add(newAnimal);
              _context.SaveChanges();

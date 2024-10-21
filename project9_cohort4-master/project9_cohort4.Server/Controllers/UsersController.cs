@@ -56,7 +56,6 @@ namespace project9_cohort4.Server.Controllers
             existUser.FullName = user.FullName;
             existUser.Email = user.Email;
             existUser.IsAdmin = user.IsAdmin;
-            existUser.Username = user.Username;
             existUser.PasswordHash = user.PasswordHash;
            
 
@@ -72,7 +71,6 @@ namespace project9_cohort4.Server.Controllers
         {
             var newUser = new User
             {
-                Username = user.Username,
                 Email  = user.Email,
                 IsAdmin = user.IsAdmin,
                 PasswordHash = user.PasswordHash,

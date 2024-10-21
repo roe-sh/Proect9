@@ -51,7 +51,7 @@ namespace project9_cohort4.Server.Controllers
             existShelder.ShelterName = shelter.ShelterName;
             existShelder.Description = shelter.Description;
             existShelder.ContactEmail = shelter.ContactEmail;
-            existShelder.Phone = shelter.Phone;
+            existShelder.ContactPhone = shelter.Phone;
             existShelder.Address = shelter.Address;
            
             _context.Shelters.Update(existShelder);
@@ -71,7 +71,7 @@ namespace project9_cohort4.Server.Controllers
 
                 Description = shelter.Description,
                 ContactEmail = shelter.ContactEmail,
-                Phone = shelter.Phone,
+                ContactPhone = shelter.Phone,
                 Address = shelter.Address
                
             };
