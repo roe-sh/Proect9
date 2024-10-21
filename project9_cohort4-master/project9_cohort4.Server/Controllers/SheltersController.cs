@@ -16,81 +16,66 @@ namespace project9_cohort4.Server.Controllers
             _context = context;
         }
 
-        // GET: api/Shelters
         [HttpGet]
         public IActionResult GetShelters()
         {
-            return Ok(_context.Shelters.ToList());
+            var shelters = _context.Shelters.ToList();
+            return Ok(shelters);
         }
 
-        // GET: api/Shelters/5
         [HttpGet("{id}")]
         public IActionResult GetShelter(int id)
         {
             var shelter = _context.Shelters.Find(id);
-
             if (shelter == null)
-            {
                 return NotFound();
-            }
 
             return Ok(shelter);
         }
 
-        // PUT: api/Shelters/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public IActionResult PutShelter(int id, updateShelderDTO shelter)
         {
-            var existShelder = _context.Shelters.Find(id);
-
-            if (existShelder == null)
-            {
+            var existShelter = _context.Shelters.Find(id);
+            if (existShelter == null)
                 return BadRequest();
-            }
-            existShelder.ShelterName = shelter.ShelterName;
-            existShelder.Description = shelter.Description;
-            existShelder.ContactEmail = shelter.ContactEmail;
-            existShelder.ContactPhone = shelter.Phone;
-            existShelder.Address = shelter.Address;
 
-            _context.Shelters.Update(existShelder);
+            existShelter.ShelterName = shelter.ShelterName;
+            existShelter.Description = shelter.Description;
+            existShelter.ContactEmail = shelter.ContactEmail;
+            existShelter.ContactPhone = shelter.Phone;
+            existShelter.Address = shelter.Address;
+
+            _context.Shelters.Update(existShelter);
             _context.SaveChanges();
-            return Ok(existShelder);
+
+            return Ok(existShelter);
         }
 
-        // POST: api/Shelters
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public IActionResult PostShelter(addShelderDTO shelter)
         {
-
             var newShelter = new Shelter
             {
                 ShelterName = shelter.ShelterName,
-
                 Description = shelter.Description,
                 ContactEmail = shelter.ContactEmail,
                 ContactPhone = shelter.Phone,
                 Address = shelter.Address
-
             };
+
             _context.Shelters.Add(newShelter);
             _context.SaveChanges();
 
             return Ok(newShelter);
-
         }
 
-        // DELETE: api/Shelters/5
         [HttpDelete("{id}")]
         public IActionResult DeleteShelter(int id)
         {
             var shelter = _context.Shelters.Find(id);
             if (shelter == null)
-            {
                 return NotFound();
-            }
 
             _context.Shelters.Remove(shelter);
             _context.SaveChanges();

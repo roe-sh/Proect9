@@ -37,10 +37,11 @@
             <input type="text" value="1" class="quantityValue border-0 p-0 outline-0">
             <button class="quantityIncrement text-primary"><i class="ph-fill ph-plus"></i></button>
           </div>
-          <button class="btn-primary">Adopt Now</button>
+          <button class="btn-primary" [routerLink]="['/animals-form', animal.animalId]">Adopt Now</button>
           <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
             <i class="ph-fill ph-heart"></i>
           </button>
+
         </div>
         <ul class="d-grid gap-lg-4 gap-2">
           <li class="d-flex align-items-center gap-1">
@@ -73,7 +74,7 @@
             </h2>
           </div>
           <div class="col-auto">
-            <a href="/adoption-list" class="btn-primary text-xl">More Animals</a>
+            <a [routerLink]="['/adoption-list']" class="btn-primary text-xl">More Animals</a>
           </div>
         </div>
         <div class="row g-6 mb-lg-10 mb-md-8 mb-6">
@@ -90,7 +91,6 @@
                 </div>
               </div>
             </div>
-            <a>animals-details</a>
           </div>
         </div>
       </div>

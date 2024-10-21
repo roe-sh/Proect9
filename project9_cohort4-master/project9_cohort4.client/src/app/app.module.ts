@@ -12,7 +12,6 @@ import { RouterModule } from '@angular/router';
 import { GetByIdComponent } from './batool/get-by-id/get-by-id.component';
 import { AddAnimalComponent } from './batool/add-animal/add-animal.component';
 import { UpdateInfoComponent } from './batool/update-info/update-info.component';
-
 import { AnimalsComponent } from './Adoptioh/animals/animals.component';
 import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
@@ -44,6 +43,7 @@ import { FooterComponent } from './batool/footer/footer.component';
       { path: "getbyId/:id11", component: GetByIdComponent },
       { path: "addAnimal", component: AddAnimalComponent },
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent }
+
     ])
   ],
   providers: [],
