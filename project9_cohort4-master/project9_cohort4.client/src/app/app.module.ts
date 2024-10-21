@@ -13,7 +13,7 @@ import { GetByIdComponent } from './batool/get-by-id/get-by-id.component';
 import { AddAnimalComponent } from './batool/add-animal/add-animal.component';
 import { UpdateInfoComponent } from './batool/update-info/update-info.component';
 import { AnimalsComponent } from './Adoptioh/animals/animals.component';
-import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
+import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component'; 
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
 import { TypeComponent } from './Adoptioh/type/type.component';
 import { FooterComponent } from './batool/footer/footer.component';
@@ -27,7 +27,8 @@ import { FooterComponent } from './batool/footer/footer.component';
     GetByIdComponent,
     AddAnimalComponent,
     UpdateInfoComponent,
-    AnimalsComponent,  
+    AnimalsComponent,
+    AnimalsDetailsComponent,  // Added missing declaration
     AnimalFormComponent,
     TypeComponent,
     FooterComponent
@@ -43,8 +44,10 @@ import { FooterComponent } from './batool/footer/footer.component';
       { path: "getbyId/:id11", component: GetByIdComponent },
       { path: "addAnimal", component: AddAnimalComponent },
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent },
-       { path: '', redirectTo: '/animals', pathMatch: 'full' },
-
+      { path: "animals", component: AnimalsComponent },  
+      { path: "animal-details/:id", component: AnimalsDetailsComponent },  
+      { path: "animals-form/:animalId", component: AnimalFormComponent }, 
+      { path: '', redirectTo: '/animals', pathMatch: 'full' },  
     ])
   ],
   providers: [],
