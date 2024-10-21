@@ -16,6 +16,7 @@ import { UpdateInfoComponent } from './batool/update-info/update-info.component'
 /*import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';*/
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
 import { TypeComponent } from './Adoptioh/type/type.component';
+import { FooterComponent } from './batool/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { TypeComponent } from './Adoptioh/type/type.component';
 /*    AnimalsDetailsComponent,*/
     AnimalFormComponent,
     TypeComponent
+    UpdateInfoComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,

@@ -10,5 +10,6 @@
   <ItemGroup>
     <Folder Include="src\app\Adoptioh\" />
     <Folder Include="src\app\batool\services\" />
+    <Folder Include="src\app\User_Interface\" />
   </ItemGroup>
 </Project>

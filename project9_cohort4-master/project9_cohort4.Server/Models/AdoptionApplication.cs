@@ -15,6 +15,18 @@ public partial class AdoptionApplication
 
     public string? Status { get; set; }
 
+    public bool? IsReceived { get; set; }
+
+    public string? UserMedicalStatus { get; set; }
+
+    public string? UserFlatType { get; set; }
+
+    public string? UserFinaincalStatus { get; set; }
+
+    public string? UserLivingStatus { get; set; }
+
+    public string? UserMoreDetails { get; set; }
+
     public virtual Animal Animal { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;
