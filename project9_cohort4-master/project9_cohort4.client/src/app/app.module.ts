@@ -33,7 +33,7 @@ import { RegisterComponent } from './Batoul/register/register.component';
     AnimalsDetailsComponent,  
     AnimalFormComponent,
     TypeComponent,
-    FooterComponent
+    FooterComponent,
     FooterComponent,
     LoginComponent,
     RegisterComponent
@@ -51,8 +51,10 @@ import { RegisterComponent } from './Batoul/register/register.component';
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent }, 
       { path: "animal-details/:id", component: AnimalsDetailsComponent },  
       { path: "animals-form/:animalId", component: AnimalFormComponent }, 
-      { path: 'animals', component: AnimalsComponent }, 
-      { path: '', redirectTo: '/animals', pathMatch: 'full' } 
+      { path: 'animals', component: AnimalsComponent },
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent },
+
     ])
   ],
   providers: [],

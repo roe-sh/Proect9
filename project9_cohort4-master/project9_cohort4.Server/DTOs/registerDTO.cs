@@ -7,7 +7,7 @@ namespace project9_cohort4.Server.DTOs
         [Required(ErrorMessage = "please enter your user name")]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "user name should be between 6 and 50 ")]
         [RegularExpression(@"^([A-Za-z][A-Za-z0-9\s-]*)$",
-            ErrorMessage = "Only alphabets, numbers, spaces, and hyphens are allowed. It must start with a letter.")]
+            ErrorMessage = "Only alphabets, numbers, spaces, and dash are allowed. It must start with a letter.")]
 
         public string FullName { get; set; } = null!;
 
