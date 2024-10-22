@@ -176,6 +176,23 @@ namespace project9_cohort4.Server.Controllers
             }
             return Ok(postdetails);
         }
-        ///////////////////////////Admin Show Posts and Accept Post ///////////////////////////////
+
+        /////////////////////////// Admin Accept Post ///////////////////////////////
+        
+        [HttpGet("AcceptPostById/{postid}")]
+        public async Task<IActionResult> AcceptPostById(int postid)
+        {
+            if (postid <= 0)
+            {
+                return BadRequest("The ID cannot be zero or negative.");
+            }
+            var post = await _db.Posts.FirstOrDefaultAsync(x => x.PostId == postid);
+            if (post == null)
+            {
+                return NotFound("No Post found with the specified ID.");
+            }
+            post.IsAccept = true;
+            return Ok(post);
+        }
     }
 }
