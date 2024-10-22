@@ -76,8 +76,19 @@ namespace project9_cohort4.Server.Controllers
 
 
 
+        [HttpGet("isAdmin/{userId}")]
+        public IActionResult isAdmin (int userId)
+        {
+            if (userId <= 0) return BadRequest("invalid id");
 
+            var user = _db.Users.FirstOrDefault(a => a.UserId == userId);
 
+            if (user == null) return NotFound("no user was found");
+
+            var check = user.IsAdmin;
+
+            return Ok(check);
+        }
 
 
 
