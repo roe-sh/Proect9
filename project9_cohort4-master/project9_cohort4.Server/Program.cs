@@ -13,8 +13,8 @@ builder.Services.AddSwaggerGen();
 
 
 //// Add services to the container.
-//builder.Services.AddDbContext<MyDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
+builder.Services.AddDbContext<MyDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
 
 builder.Services.AddCors( options=> options.AddPolicy("development",builder=>{
     builder.AllowAnyOrigin();

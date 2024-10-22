@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project9_cohort4.Server.DTOs;
 using project9_cohort4.Server.Models;
@@ -22,38 +16,30 @@ namespace project9_cohort4.Server.Controllers
             _context = context;
         }
 
-        // GET: api/Animals1
         [HttpGet]
         public IActionResult GetAnimals()
         {
-            return Ok(_context.Animals.ToList());
+            var animals = _context.Animals.ToList();
+            return Ok(animals);
         }
 
-        // GET: api/Animals1/5
         [HttpGet("{id}")]
         public IActionResult GetAnimal(int id)
         {
             var animal = _context.Animals.Find(id);
-
             if (animal == null)
-            {
                 return NotFound();
-            }
 
             return Ok(animal);
         }
 
-        // PUT: api/Animals1/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public IActionResult PutAnimal(int id, [FromForm] updateAnimalDTO animal)
         {
             var existAnimal = _context.Animals.Find(id);
-
             if (existAnimal == null)
-            {
                 return BadRequest();
-            }
+
             existAnimal.Name = animal.Name;
             existAnimal.Age = animal.Age;
             existAnimal.Species = animal.Species;
@@ -67,18 +53,16 @@ namespace project9_cohort4.Server.Controllers
 
             _context.Animals.Update(existAnimal);
             _context.SaveChanges();
+
             return Ok(existAnimal);
         }
 
-        // POST: api/Animals1
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Animal>> PostAnimal([FromForm] addAnimalDTO animal)
         {
             var newAnimal = new Animal
             {
                 Name = animal.Name,
-
                 Age = animal.Age,
                 Species = animal.Species,
                 Breed = animal.Breed,
@@ -89,21 +73,19 @@ namespace project9_cohort4.Server.Controllers
                 AdoptionStatus = animal.AdoptionStatus,
                 Image1 = animal.PhotoUrl,
             };
+
             _context.Animals.Add(newAnimal);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok(newAnimal);
         }
 
-        // DELETE: api/Animals1/5
         [HttpDelete("{id}")]
         public IActionResult DeleteAnimal(int id)
         {
             var animal = _context.Animals.Find(id);
             if (animal == null)
-            {
                 return NotFound();
-            }
 
             _context.Animals.Remove(animal);
             _context.SaveChanges();
