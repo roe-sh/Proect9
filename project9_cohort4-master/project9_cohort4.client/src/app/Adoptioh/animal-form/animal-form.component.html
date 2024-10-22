@@ -1,0 +1,62 @@
+<section class="shop-section pt-120 pb-120">
+  <div class="container">
+    <div class="row g-6 justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal text-center">
+          Adoption Form
+        </h2>
+
+        <!-- Start of Form -->
+        <form #adoptionForm="ngForm" (ngSubmit)="submitAdoptionForm(adoptionForm)">
+
+          <!-- Full Name -->
+          <div class="form-group mb-4">
+            <label for="fullName">Full Name</label>
+            <input type="text" class="form-control" id="fullName" [(ngModel)]="adoptionDetails.fullName" name="fullName" required>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group mb-4">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="adoptionDetails.email" name="email" required>
+          </div>
+
+          <!-- Medical Status -->
+          <div class="form-group mb-4">
+            <label for="medicalStatus">Medical Status</label>
+            <input type="text" class="form-control" id="medicalStatus" [(ngModel)]="adoptionDetails.medicalStatus" name="medicalStatus" required>
+          </div>
+
+          <!-- Housing Type -->
+          <div class="form-group mb-4">
+            <label for="housingType">Housing Type</label>
+            <select class="form-control" id="housingType" [(ngModel)]="adoptionDetails.housingType" name="housingType">
+              <option value="Apartment">Apartment</option>
+              <option value="House">House</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Financial Status -->
+          <div class="form-group mb-4">
+            <label for="financialStatus">Financial Status</label>
+            <input type="text" class="form-control" id="financialStatus" [(ngModel)]="adoptionDetails.financialStatus" name="financialStatus" required>
+          </div>
+
+          <!-- Additional Details -->
+          <div class="form-group mb-4">
+            <label for="additionalDetails">Additional Details</label>
+            <textarea class="form-control" id="additionalDetails" [(ngModel)]="adoptionDetails.additionalDetails" name="additionalDetails"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button type="submit" class="btn-primary" [disabled]="adoptionForm.invalid">Submit Adoption Request</button>
+          </div>
+
+        </form> <!-- End of Form -->
+
+      </div> <!-- End of col-lg-8 -->
+    </div> <!-- End of row -->
+  </div> <!-- End of container -->
+</section>
