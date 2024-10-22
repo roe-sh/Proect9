@@ -17,6 +17,8 @@ import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-deta
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
 import { TypeComponent } from './Adoptioh/type/type.component';
 import { FooterComponent } from './batool/footer/footer.component';
+import { DashboardComponent } from './Admin/dashboard/dashboard.component';
+import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
 import { LoginComponent } from './Batoul/login/login.component';
 import { RegisterComponent } from './Batoul/register/register.component';
 import { AddpostComponent } from './mustafa/addpost/addpost.component';
@@ -34,12 +36,12 @@ import { AddpostComponent } from './mustafa/addpost/addpost.component';
     AnimalsDetailsComponent,  
     AnimalFormComponent,
     TypeComponent,
-  
     FooterComponent,
     FooterComponent,
     LoginComponent,
     RegisterComponent,
     AddpostComponent
+    DashboardComponent
   ],
   imports: [
     FormsModule,
@@ -61,6 +63,19 @@ import { AddpostComponent } from './mustafa/addpost/addpost.component';
 
       { path: 'animals', component: AnimalsComponent },
       { path: 'addpost', component: AddpostComponent }, 
+      { path: 'animals', component: AnimalsComponent },
+      { path: 'dashboard', component: DashboardComponent },
+
+
+      { path: 'dashboard',
+      component: DashboardComponent,
+      children: [
+      
+        { path: 'AdminAdoption', component: AdminAdoptionComponent },
+        { path: '', redirectTo: 'user', pathMatch: 'full' } // Redirect to 'stats' as default child
+      ]
+  }
+      
     ])
   ],
   providers: [],

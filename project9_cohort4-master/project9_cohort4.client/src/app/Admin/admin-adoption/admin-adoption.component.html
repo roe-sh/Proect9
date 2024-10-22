@@ -1,0 +1,176 @@
+  <!-- checkout form -->
+<form action="#" class="d-grid gap-lg-8 gap-md-6 gap-4">
+  <div class="row g-6">
+    <div class="col-lg-6">
+      <span class="text-h1 text-n20 fw-normal mb-lg-10 mb-md-8 mb-6">Billing Details</span>
+      <div class="checkout-form d-grid gap-lg-6 gap-4 mb-lg-15 mb-md-10 mb-8">
+        <div class="d-flex align-items-center gap-lg-6 gap-4 flex-wrap flex-lg-nowrap">
+          <div class="d-grid gap-2 w-100">
+            <label class="text-n20 fw-normal font-instrument">
+              First
+              Name <span class="text-primary">*</span>
+            </label>
+            <input type="text" placeholder="David"
+                   class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
+                   required>
+          </div>
+          <div class="d-grid gap-2 w-100">
+            <label class="text-n20 fw-normal font-instrument">
+              Last
+              Name <span class="text-primary">*</span>
+            </label>
+            <input type="text" placeholder="Warner"
+                   class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
+                   required>
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <label class="text-n20 fw-normal font-instrument">
+            Company name
+            (optional)
+          </label>
+          <input type="text" placeholder="Warner"
+                 class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100">
+        </div>
+        <div class="d-grid gap-2">
+          <label class="text-n20 fw-normal font-instrument">
+            Country / Region <span class="text-primary">*</span>
+          </label>
+          <div class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
+               data-lenis-prevent>
+            <select name="country-name" id="country-name" class="w-100 bg-transparent p-0 ">
+              <option value="0">Afghanistan (AF) </option>
+              <option value="1">Albania (AL) </option>
+              <option value="2">Algeria (DZ) </option>
+              <option value="3">American Samoa (AS) </option>
+              <option value="4">Andorra (AD) </option>
+              <option value="5">Angola (AO) </option>
+              <option value="6">Anguilla (AI) </option>
+              <option value="7">Antarctica (AQ) </option>
+              <option value="8">Antigua and Barbuda (AG) </option>
+              <option value="9">Argentina (AR) </option>
+              <option value="10">Armenia (AM) </option>
+              <option value="11">Aruba (AW) </option>
+              <option value="12">Australia (AU) </option>
+              <option value="13">Austria (AT) </option>
+              <option value="14">Azerbaijan (AZ) </option>
+              <option value="15">Bahamas (BS) </option>
+              <option value="16">Bahrain (BH) </option>
+              <option value="17">Bangladesh (BD) </option>
+              <option value="18">Barbados (BB) </option>
+              <option value="19">Belarus (BY) </option>
+              <option value="20">Belgium (BE) </option>
+            </select>
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <label class="text-n20 fw-normal font-instrument">
+            Street address <span class="text-primary">*</span>
+          </label>
+          <input type="text" placeholder="House number and street name"
+                 class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100 mb-lg-4 mb-2"
+                 required>
+          <input type="text" placeholder="Apartment, suite, unit. (optional)"
+                 class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100">
+        </div>
+        <div class="d-grid gap-2">
+          <label class="text-n20 fw-normal font-instrument">
+            Town / City <span class="text-primary">*</span>
+          </label>
+          <input type="text" placeholder="House number and street name"
+                 class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
+                 required>
+        </div>
+        <div class="d-grid gap-2">
+          <label class="text-n20 fw-normal font-instrument">
+            State <span class="text-primary">*</span>
+          </label>
+          <div class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
+               data-lenis-prevent>
+            <select name="state-name" id="state-name" class="w-100 bg-transparent p-0">
+              <option value="0"> Select State </option>
+              <option value="1">item one</option>
+              <option value="2">item two</option>
+              <option value="3">item three</option>
+              <option value="4">item four</option>
+              <option value="5">item five</option>
+              <option value="6">item six</option>
+              <option value="7">item seven</option>
+            </select>
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <label class="text-n20 fw-normal font-instrument">
+            Postcode / Zip (optional)
+          </label>
+          <input type="text"
+                 class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100">
+        </div>
+        <div class="d-grid gap-2">
+          <label class="text-n20 fw-normal font-instrument">
+            Phone <span class="text-primary">*</span>
+          </label>
+          <input type="tel"
+                 class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
+                 required>
+        </div>
+        <div class="d-grid gap-2">
+          <label class="text-n20 fw-normal font-instrument">
+            Email address <span class="text-primary">*</span>
+          </label>
+          <input type="email"
+                 class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
+                 required>
+        </div>
+      </div>
+      <span class="text-h4 text-n20 fw-normal font-otomanopee mb-lg-8 mb-md-6 mb-4">
+        Additional
+        Information's
+      </span>
+      <div class="d-grid gap-2">
+        <label class="text-n20 fw-normal font-instrument">
+          Order notes (optional)
+        </label>
+        <textarea class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-8 focus-primary w-100"
+                  rows="3"
+                  placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="p-xxl-15 p-lg-10 p-md-8 p-6 bg-n0 radius-20 border n20-1-border">
+        <span class="text-h3 text-n20 fw-normal mb-lg-8 mb-md-6 mb-4">Your Order</span>
+        <ul class="cart-totals-list d-grid gap-lg-4 gap-2 mb-lg-8 mb-md-6 mb-4">
+          <li class="d-flex align-items-center justify-content-between text-n20 fw-semibold font-instrument border-bottom n20-1-border pb-lg-4 pb-2">
+            <span>Product</span> <span>Subtotal</span>
+          </li>
+          <li class="d-flex align-items-center justify-content-between text-n20 fw-normal font-instrument border-bottom n20-1-border pb-lg-4 pb-2">
+            <span>Pet Brushes</span> <span>$60.00</span>
+          </li>
+          <li class="d-flex align-items-center justify-content-between text-n20 fw-semibold font-instrument border-bottom n20-1-border pb-lg-4 pb-2">
+            <span>Subtotal</span> <span>$60.00</span>
+          </li>
+          <li class="d-flex align-items-center justify-content-between text-primary fw-semibold font-instrument border-bottom n20-1-border pb-lg-4 pb-2">
+            <span>Total</span> <span>$60.00</span>
+          </li>
+        </ul>
+        <div class="d-flex gap-1 text-n10 p-lg-6 p-4 radius-16 border n20-1-border bg-primary2 mb-lg-4 mb-2">
+          <span><i class="ph ph-puzzle-piece"></i></span>
+          <span>
+            Sorry, it seems that there are no available payment methods for your state.
+            Please contact us if you require assistance or wish to make alternate
+            arrangements.
+          </span>
+        </div>
+        <span class="d-block mb-lg-6 mb-4">
+          Your personal data will be used to process your order, support your experience
+          throughout this website, and for other purposes described in our <a href="#"
+                                                                              class="text-decoration-underline hover-text-primary">privacy policy</a>.
+        </span>
+        <button class="w-100 btn-primary">
+          Place
+          Order
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
