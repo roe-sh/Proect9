@@ -19,6 +19,7 @@ import { TypeComponent } from './Adoptioh/type/type.component';
 import { FooterComponent } from './batool/footer/footer.component';
 import { LoginComponent } from './Batoul/login/login.component';
 import { RegisterComponent } from './Batoul/register/register.component';
+import { AddpostComponent } from './mustafa/addpost/addpost.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RegisterComponent } from './Batoul/register/register.component';
     FooterComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddpostComponent
   ],
   imports: [
     FormsModule,
@@ -51,7 +53,8 @@ import { RegisterComponent } from './Batoul/register/register.component';
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent }, 
       { path: "animal-details/:id", component: AnimalsDetailsComponent },  
       { path: "animals-form/:animalId", component: AnimalFormComponent }, 
-      { path: 'animals', component: AnimalsComponent }, 
+      { path: 'animals', component: AnimalsComponent },
+      { path: 'addpost', component: AddpostComponent }, 
     ])
   ],
   providers: [],
