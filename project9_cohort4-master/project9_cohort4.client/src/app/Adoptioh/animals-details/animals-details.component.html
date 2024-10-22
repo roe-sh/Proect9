@@ -8,36 +8,38 @@
             <!-- Displaying image1, image2, image3 -->
             <div class="swiper-slide" *ngIf="animal.image1">
               <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
-                <img class="w-100 radius-16" [src]="animal.image1" alt="{{ animal.name }}">
+                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
               </div>
             </div>
             <div class="swiper-slide" *ngIf="animal.image2">
               <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
-                <img class="w-100 radius-16" [src]="animal.image2" alt="{{ animal.name }}">
+                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
               </div>
             </div>
             <div class="swiper-slide" *ngIf="animal.image3">
               <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
-                <img class="w-100 radius-16" [src]="animal.image3" alt="{{ animal.name }}">
+                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
               </div>
             </div>
           </div>
         </div>
+
         <div class="swiper swiper-thumb">
           <div class="swiper-wrapper">
-           
             <div class="swiper-slide radius-8" *ngIf="animal.image1">
-              <img class="w-100 radius-8" [src]="animal.image1" alt="{{ animal.name }}">
+              <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
             </div>
             <div class="swiper-slide radius-8" *ngIf="animal.image2">
-              <img class="w-100 radius-8" [src]="animal.image2" alt="{{ animal.name }}">
+              <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
             </div>
             <div class="swiper-slide radius-8" *ngIf="animal.image3">
-              <img class="w-100 radius-8" [src]="animal.image3" alt="{{ animal.name }}">
+              <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Animal Details Section -->
       <div class="col-lg-5">
         <div class="d-grid gap-lg-6 gap-4">
           <div>
@@ -50,17 +52,7 @@
           </div>
           <p class="text-n10 fw-normal">{{ animal.description }}</p>
         </div>
-        <div class="d-flex align-items-center gap-lg-3 gap-2 flex-wrap flex-xs-nowrap mt-lg-8 mt-6 mb-lg-10 mb-8">
-          <div class="quantity d-flex align-items-center justify-content-center gap-2 py-lg-3 py-2 px-xl-8 px-lg-6 px-4 border n20-1-border radius-pill">
-            <button class="quantityDecrement text-primary"><i class="ph-fill ph-minus"></i></button>
-            <input type="text" value="1" class="quantityValue border-0 p-0 outline-0">
-            <button class="quantityIncrement text-primary"><i class="ph-fill ph-plus"></i></button>
-          </div>
-          <button class="btn-primary" [routerLink]="['/animals-form', animal.animalId]">Adopt Now</button>
-          <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
-            <i class="ph-fill ph-heart"></i>
-          </button>
-        </div>
+     
         <ul class="d-grid gap-lg-4 gap-2">
           <li class="d-flex align-items-center gap-1">
             <span class="text-base fw-medium font-instrument text-n20">Shelter: </span>
@@ -79,8 +71,15 @@
             <span class="text-base fw-normal font-instrument text-n10">{{ animal.id }}</span>
           </li>
         </ul>
+        <div class="d-flex align-items-center gap-lg-3 gap-2 flex-wrap flex-xs-nowrap mt-lg-8 mt-6 mb-lg-10 mb-8">
+          <button class="btn-primary" [routerLink]="['/animals-form', animal.animalId]">Adopt Now</button>
+          <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
+            <i class="ph-fill ph-heart"></i>
+          </button>
+        </div>
       </div>
     </div>
+
 
     <!-- Related Animals Section -->
     <section class="shop-section pt-120 pb-120">
