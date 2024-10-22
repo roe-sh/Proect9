@@ -45,7 +45,8 @@ namespace project9_cohort4.Server.Controllers
                 CreateDate = System.DateTime.Now,
                 Content = addCommentDTO.Content
             };
-
+            _db.Comments.Add(comments);
+            _db.SaveChanges();
             return Ok(comments);
         }
         [HttpGet("GetAllReplyByCommentId/{commentId}")]
@@ -56,6 +57,11 @@ namespace project9_cohort4.Server.Controllers
                 return BadRequest("The ID cannot be zero or negative.");
             }
             var allreplay = _db.Replies.Where(x => x.CommentId == commentId).ToList();
+
+            if (allreplay == null)
+            { 
+                return NotFound("there is no replay");
+            }
 
             return Ok(allreplay);
         }
@@ -75,6 +81,9 @@ namespace project9_cohort4.Server.Controllers
                 Content = replayOnCommentDTO.Content,
 
             };
+
+            _db.Replies.Add(replay);
+            _db.SaveChanges();
             return Ok(replay);
         }
         [HttpGet("CountOfLikesAndComments/{postid}")]
