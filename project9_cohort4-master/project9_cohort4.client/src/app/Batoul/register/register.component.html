@@ -1,0 +1,31 @@
+		<div class="wrapper" style="background-image: url('../../../assets/images/Screenshot 2024-10-22 111047.png');">
+			<div class="inner">
+
+				<form #RegistrationForm="ngForm" (ngSubmit)="newUser(RegistrationForm.value)">
+					<h3>Become part of our family!</h3>
+
+					<div class="form-wrapper">
+						<label for="userName">Full Name</label>
+						<input type="text" name="fullName" id="userName" class="form-control" ngModel>
+					</div>
+
+					<div class="form-wrapper">
+						<label for="userEmail">Email</label>
+						<input type="email" name="email" id="userEmail" class="form-control" ngModel>
+					</div>
+
+					<div class="form-wrapper">
+						<label for="userPassword">Password</label>
+						<input type="password" id="userPassword" name="password" class="form-control" ngModel>
+					</div>
+
+					<div class="form-wrapper">
+						<label for="userConPassword">Confirm Password</label>
+						<input type="password" id="userConPassword" name="ConfirmPassword" class="form-control" ngModel>
+					</div>
+
+					<button type="submit" >Register Now</button>
+				</form>
+
+			</div>
+		</div>

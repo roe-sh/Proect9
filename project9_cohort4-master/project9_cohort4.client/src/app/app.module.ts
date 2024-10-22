@@ -19,6 +19,8 @@ import { TypeComponent } from './Adoptioh/type/type.component';
 import { FooterComponent } from './batool/footer/footer.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
+import { LoginComponent } from './Batoul/login/login.component';
+import { RegisterComponent } from './Batoul/register/register.component';
 
 @NgModule({
   declarations: [
