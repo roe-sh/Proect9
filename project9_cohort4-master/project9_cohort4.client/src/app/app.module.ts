@@ -34,6 +34,7 @@ import { AddpostComponent } from './mustafa/addpost/addpost.component';
     AnimalsDetailsComponent,  
     AnimalFormComponent,
     TypeComponent,
+  
     FooterComponent,
     FooterComponent,
     LoginComponent,
@@ -53,6 +54,11 @@ import { AddpostComponent } from './mustafa/addpost/addpost.component';
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent }, 
       { path: "animal-details/:id", component: AnimalsDetailsComponent },  
       { path: "animals-form/:animalId", component: AnimalFormComponent }, 
+      { path: 'animals', component: AnimalsComponent }, 
+      { path: 'animals', component: AnimalsComponent },
+      { path: "login", component: LoginComponent },
+      { path: "register", component: RegisterComponent },
+
       { path: 'animals', component: AnimalsComponent },
       { path: 'addpost', component: AddpostComponent }, 
     ])

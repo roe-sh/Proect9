@@ -8,7 +8,6 @@ namespace project9_cohort4.Server.DTOs
 
         public string? StoryContent { get; set; }
 
-        public DateTime? StoryDate { get; set; }
 
         public IFormFile? StoryPhoto { get; set; }
 

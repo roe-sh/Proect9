@@ -6,12 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdoptionService {
-
-  private apiUrl = 'https://localhost:7001/api/AdoptionApplications'; 
+  private baseUrl = 'https://localhost:7001/api/AdoptionApplications'; 
 
   constructor(private http: HttpClient) { }
 
   submitAdoptionRequest(adoptionDetails: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, adoptionDetails);
+    return this.http.post(`${this.baseUrl}`, adoptionDetails);
+  }
+
+  sendAdoptionEmail(userEmail: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/send-email`, { userEmail });
   }
 }
