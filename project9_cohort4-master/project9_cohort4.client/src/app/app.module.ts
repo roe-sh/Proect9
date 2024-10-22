@@ -17,6 +17,8 @@ import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-deta
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
 import { TypeComponent } from './Adoptioh/type/type.component';
 import { FooterComponent } from './batool/footer/footer.component';
+import { LoginComponent } from './Batoul/login/login.component';
+import { RegisterComponent } from './Batoul/register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,9 @@ import { FooterComponent } from './batool/footer/footer.component';
     AnimalFormComponent,
     TypeComponent,
     FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,
