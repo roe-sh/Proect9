@@ -72,7 +72,7 @@ import { AddpostComponent } from './mustafa/addpost/addpost.component';
       children: [
       
         { path: 'AdminAdoption', component: AdminAdoptionComponent },
-        { path: '', redirectTo: 'user', pathMatch: 'full' } // Redirect to 'stats' as default child
+        { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
       ]
   }
       
