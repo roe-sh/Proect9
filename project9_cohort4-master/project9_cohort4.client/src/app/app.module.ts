@@ -40,7 +40,7 @@ import { AddpostComponent } from './mustafa/addpost/addpost.component';
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    AddpostComponent
+    AddpostComponent,
     DashboardComponent
   ],
   imports: [
