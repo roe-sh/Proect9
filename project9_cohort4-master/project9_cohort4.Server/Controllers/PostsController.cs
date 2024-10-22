@@ -20,7 +20,23 @@ namespace project9_cohort4.Server.Controllers
         [HttpGet("GetAllPosts")]
         public IActionResult GetAllPosts()
         {
-            var posts = _db.Posts.ToList();
+            var posts = _db.Posts
+                .OrderByDescending(w => w.StoryDate)
+                .Select(s => new
+                {
+                    s.PostId,
+
+                    s.StoryTitle,
+                    s.StoryContent,
+                    s.StoryDate,
+                    s.StoryPhoto,
+                    User = new
+                    {
+                        s.User.UserId,
+                        s.User.FullName,
+                    }
+                }).ToList();
+
             return Ok(posts);
         }
 
@@ -85,7 +101,7 @@ namespace project9_cohort4.Server.Controllers
             var postupdate = await _db.Posts.FirstOrDefaultAsync(x => x.PostId == id);
             if (postupdate == null)
             {
-                return NotFound("No Gym found with the specified ID.");
+                return NotFound("No Post found with the specified ID.");
             }
 
             try
@@ -144,6 +160,53 @@ namespace project9_cohort4.Server.Controllers
             _db.Posts.Remove(postToDelete);
             await _db.SaveChangesAsync();
             return Ok();
+        }
+
+        [HttpGet("PostDetailsById/{postid}")]
+        public async Task<IActionResult> GetPostDetailsById(int postid)
+        {
+            if (postid <= 0)
+            {
+                return BadRequest("The ID cannot be zero or negative.");
+            }
+            var postdetails = await _db.Posts
+                .Where(x => x.PostId == postid)
+                .Select(s => new
+                {
+                    s.PostId,
+                    s.StoryTitle,
+                    s.StoryContent,
+                    s.StoryDate,
+                    s.StoryPhoto,
+                    User = new
+                    {
+                        s.User.UserId,
+                        s.User.FullName,
+                    }
+                }).ToListAsync();
+            if (postdetails == null)
+            {
+                return NotFound("No Post found with the specified ID.");
+            }
+            return Ok(postdetails);
+        }
+
+        /////////////////////////// Admin Accept Post ///////////////////////////////
+        
+        [HttpGet("AcceptPostById/{postid}")]
+        public async Task<IActionResult> AcceptPostById(int postid)
+        {
+            if (postid <= 0)
+            {
+                return BadRequest("The ID cannot be zero or negative.");
+            }
+            var post = await _db.Posts.FirstOrDefaultAsync(x => x.PostId == postid);
+            if (post == null)
+            {
+                return NotFound("No Post found with the specified ID.");
+            }
+            post.IsAccept = true;
+            return Ok(post);
         }
     }
 }

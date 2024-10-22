@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="wrapper" style="background-image: url('../../../assets/images/Screenshot 2024-10-22 111047.png');">
+  <div class="inner">
+
+    <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm.value)">
+      <h3>Happy to see you back!</h3>
+
+      <div class="form-wrapper">
+        <label for="userEmail">Email</label>
+        <input type="email" name="Email" id="userEmail" class="form-control" ngModel>
+      </div>
+
+      <div class="form-wrapper">
+        <label for="userPassword">Password</label>
+        <input type="password" id="userPassword" name="Password" class="form-control" ngModel>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+  </div>
+</div>
