@@ -57,28 +57,47 @@ namespace project9_cohort4.Server.Controllers
             return Ok(existAnimal);
         }
 
+
+
         [HttpPost]
-        public async Task<ActionResult<Animal>> PostAnimal([FromForm] addAnimalDTO animal)
+        public IActionResult PostAnimal([FromForm] AddAnimalDTO animalDto)
         {
+            // Check if the shelter exists
+            var shelterExists = _context.Shelters.Any(s => s.ShelterId == animalDto.ShelterId);
+            if (!shelterExists)
+            {
+                return BadRequest($"Shelter with ID {animalDto.ShelterId} does not exist.");
+            }
+
+            // Check if the category exists
+            var categoryExists = _context.Categories.Any(c => c.CategoryId == animalDto.CategoryId);
+            if (!categoryExists)
+            {
+                return BadRequest($"Category with ID {animalDto.CategoryId} does not exist.");
+            }
+
             var newAnimal = new Animal
             {
-                Name = animal.Name,
-                Age = animal.Age,
-                Species = animal.Species,
-                Breed = animal.Breed,
-                Size = animal.Size,
-                Temperament = animal.Temperament,
-                SpecialNeeds = animal.SpecialNeeds,
-                Description = animal.Description,
-                AdoptionStatus = animal.AdoptionStatus,
-                Image1 = animal.PhotoUrl,
+                Name = animalDto.Name,
+                Species = animalDto.Species,
+                Breed = animalDto.Breed,
+                Age = animalDto.Age,
+                Size = animalDto.Size,
+                Temperament = animalDto.Temperament,
+                SpecialNeeds = animalDto.SpecialNeeds,
+                Description = animalDto.Description,
+                AdoptionStatus = animalDto.AdoptionStatus,
+                ShelterId = animalDto.ShelterId, // Link the animal to the specified shelter
+                CategoryId = animalDto.CategoryId,
+                AddedAt = DateTime.UtcNow
             };
 
             _context.Animals.Add(newAnimal);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            return Ok(newAnimal);
+            return CreatedAtAction(nameof(GetAnimal), new { id = newAnimal.AnimalId }, newAnimal);
         }
+
 
         [HttpDelete("{id}")]
         public IActionResult DeleteAnimal(int id)
@@ -97,5 +116,22 @@ namespace project9_cohort4.Server.Controllers
         {
             return _context.Animals.Any(e => e.AnimalId == id);
         }
+
+
+
+
+
+
+        [HttpGet("getImages/{imageName}")]
+        public IActionResult getImage(string imageName)
+        {
+            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "Animal", imageName);
+            if (System.IO.File.Exists(pathImage))
+            {
+                return PhysicalFile(pathImage, "image/jpeg");
+            }
+            return NotFound();
+        }
+
     }
 }

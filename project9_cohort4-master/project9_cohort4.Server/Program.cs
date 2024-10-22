@@ -61,7 +61,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder
+            .AllowAnyOrigin() // Allow all origins
+            .AllowAnyMethod() // Allow all HTTP methods (GET, POST, etc.)
+            .AllowAnyHeader()); // Allow any headers
+});
 //builder.Services.AddAuthorization(options =>
 //{
 //    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
@@ -91,7 +98,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors("AllowAllOrigins");
 app.MapFallbackToFile("/index.html");
 
 app.UseCors("development");

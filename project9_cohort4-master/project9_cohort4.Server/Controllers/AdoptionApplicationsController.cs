@@ -61,6 +61,7 @@ namespace project9_cohort4.Server.Controllers
 
             return Ok(existingApplication);
         }
+      
 
         // POST: api/AdoptionApplications
         [HttpPost]
