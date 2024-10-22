@@ -56,7 +56,7 @@ namespace project9_cohort4.Server.Controllers
             existUser.FullName = user.FullName;
             existUser.Email = user.Email;
             existUser.IsAdmin = user.IsAdmin;
-            existUser.PasswordHash = user.PasswordHash;
+            //existUser.PasswordHash = user.PasswordHash;
 
 
             _context.Users.Update(existUser);
@@ -73,7 +73,7 @@ namespace project9_cohort4.Server.Controllers
             {
                 Email = user.Email,
                 IsAdmin = user.IsAdmin,
-                PasswordHash = user.PasswordHash,
+                //PasswordHash = user.PasswordHash,
                 FullName = user.FullName,
             };
             _context.Users.Add(newUser);
