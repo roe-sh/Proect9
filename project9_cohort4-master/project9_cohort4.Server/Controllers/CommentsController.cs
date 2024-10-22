@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using project9_cohort4.Server.DTOs;
 using project9_cohort4.Server.Models;
 
@@ -91,6 +92,29 @@ namespace project9_cohort4.Server.Controllers
                 opcommentsCounts = commentsCount
             };
             return Ok(commentandlikesCount);
+        }
+
+        [HttpPost("likePost")]
+        public async Task<IActionResult> LikePost(int postId, int userId)
+        {
+            var existingLike = await _db.Likes.FirstOrDefaultAsync(l => l.PostId == postId && l.UserId == userId);
+            if (existingLike != null)
+            {
+                _db.Likes.Remove(existingLike);
+                await _db.SaveChangesAsync();
+                return Ok(new { message = "Like removed" });
+            }
+
+            var like = new Like
+            {
+                PostId = postId,
+                UserId = userId
+            };
+
+            _db.Likes.Add(like);
+            await _db.SaveChangesAsync();
+
+            return Ok(new { message = "Post liked" });
         }
     }
 }
