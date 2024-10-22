@@ -70,7 +70,7 @@ namespace project9_cohort4.Server.Controllers
                         UserId = userID,
                         StoryPhoto = $"/images/{uniqueFileName}",
                         StoryContent = addpost.StoryContent,
-                        StoryDate = addpost.StoryDate,
+                        StoryDate = System.DateTime.Now,
                         StoryTitle = addpost.StoryTitle,
                     };
 
