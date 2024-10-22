@@ -17,6 +17,8 @@ import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-deta
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
 import { TypeComponent } from './Adoptioh/type/type.component';
 import { FooterComponent } from './batool/footer/footer.component';
+import { DashboardComponent } from './Admin/dashboard/dashboard.component';
+import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { FooterComponent } from './batool/footer/footer.component';
     AnimalsDetailsComponent,  
     AnimalFormComponent,
     TypeComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent
   ],
   imports: [
     FormsModule,
@@ -46,8 +49,19 @@ import { FooterComponent } from './batool/footer/footer.component';
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent }, 
       { path: "animal-details/:id", component: AnimalsDetailsComponent },  
       { path: "animals-form/:animalId", component: AnimalFormComponent }, 
-      { path: 'animals', component: AnimalsComponent }, 
-      { path: '', redirectTo: '/animals', pathMatch: 'full' } 
+      { path: 'animals', component: AnimalsComponent },
+      { path: 'dashboard', component: DashboardComponent },
+
+
+      { path: 'dashboard',
+      component: DashboardComponent,
+      children: [
+      
+        { path: 'AdminAdoption', component: AdminAdoptionComponent },
+        { path: '', redirectTo: 'user', pathMatch: 'full' } // Redirect to 'stats' as default child
+      ]
+  }
+      
     ])
   ],
   providers: [],

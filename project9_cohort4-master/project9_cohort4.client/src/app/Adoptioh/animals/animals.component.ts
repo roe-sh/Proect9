@@ -1,3 +1,4 @@
+// هنا تم تعريف الخصائص التي نستخدمها في التصفية والبحث، وهي:
 import { Component, OnInit } from '@angular/core';
 import { AnimalService } from '../../Adoptioh/animals.service';
 import { ShelterService } from '../../Adoptioh/shelter.service';
@@ -9,30 +10,32 @@ import { ShelterService } from '../../Adoptioh/shelter.service';
 })
 export class AnimalsComponent implements OnInit {
 
-  animals: any[] = [];
-  displayedAnimals: any[] = [];
-  shelters: any[] = [];
-  speciesList: string[] = ['Dog', 'Cat', 'Bird', 'Reptile'];
-  selectedShelter: number | null = null;
-  selectedSpecies: string = '';
-  selectedBreed: string = '';
-  selectedAge: number = 0;
-  selectedSort: string = 'default';
-  currentPage: number = 1;
-  pageSize: number = 12;
-  totalItems: number = 0;
-  totalPages: number = 0;
+  animals: any[] = []; // قائمة الحيوانات الكاملة
+  displayedAnimals: any[] = []; // الحيوانات التي سيتم عرضها بناءً على الصفحة والفلاتر
+  shelters: any[] = []; // قائمة الملاجئ
+  speciesList: string[] = ['Dog', 'Cat', 'Bird', 'Reptile']; // لائحة الأنواع
+  selectedShelter: number | null = null; // ملجأ محدد
+  selectedSpecies: string = ''; // النوع المحدد للتصفية
+  searchTerm: string = ''; // مصطلح البحث
+  selectedBreed: string = ''; // السلالة المحددة
+  selectedAge: number = 0; // العمر المحدد
+  selectedSort: string = 'default'; // الترتيب
+  currentPage: number = 1; // الصفحة الحالية
+  pageSize: number = 12; // عدد العناصر في كل صفحة
+  totalItems: number = 0; // العدد الإجمالي للعناصر بعد التصفية
+  totalPages: number = 0; // عدد الصفحات الكلي
 
-  // Add Math as a class property so it can be used in the template
-  Math = Math;
+  Math = Math; // للسماح باستخدام Math في HTML
 
   constructor(private animalService: AnimalService, private shelterService: ShelterService) { }
 
+  // عند التهيئة، يتم جلب البيانات المطلوبة
   ngOnInit(): void {
     this.fetchAnimals();
     this.fetchShelters();
   }
 
+  // جلب البيانات مع استخدام الفلاتر
   fetchAnimals(): void {
     const filters = {
       shelterId: this.selectedShelter !== null ? this.selectedShelter : undefined,
@@ -42,25 +45,46 @@ export class AnimalsComponent implements OnInit {
     };
 
     this.animalService.getAnimals(filters).subscribe((data: any[]) => {
-      this.animals = data;
-      this.totalItems = this.animals.length;
-      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-      this.updateDisplayedAnimals();
+      this.animals = data; // تخزين جميع الحيوانات
+      this.totalItems = this.animals.length; // تحديث العدد الإجمالي للعناصر
+      this.totalPages = Math.ceil(this.totalItems / this.pageSize); // حساب عدد الصفحات
+      this.updateDisplayedAnimals(); // تحديث الحيوانات المعروضة
     });
   }
 
+  // جلب بيانات الملاجئ
   fetchShelters(): void {
     this.shelterService.getShelters().subscribe((data: any[]) => {
       this.shelters = data;
     });
   }
 
+  // تحديث قائمة الحيوانات المعروضة بناءً على الفلاتر
   updateDisplayedAnimals(): void {
     const start = (this.currentPage - 1) * this.pageSize;
     const end = this.currentPage * this.pageSize;
-    this.displayedAnimals = this.animals.slice(start, end);
+
+    let filteredAnimals = [...this.animals];
+
+    // تصفية حسب النوع
+    if (this.selectedSpecies) {
+      filteredAnimals = filteredAnimals.filter(animal => animal.species === this.selectedSpecies);
+    }
+
+    // تصفية حسب البحث
+    if (this.searchTerm.trim()) {
+      filteredAnimals = filteredAnimals.filter(animal =>
+        animal.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+
+    this.totalItems = filteredAnimals.length; // تحديث العدد بعد الفلاتر
+    this.totalPages = Math.ceil(this.totalItems / this.pageSize); // إعادة حساب عدد الصفحات
+
+    this.displayedAnimals = filteredAnimals.slice(start, end); // تحديد الحيوانات التي سيتم عرضها في الصفحة الحالية
   }
 
+  // التنقل بين الصفحات
   setPage(page: number): void {
     if (page > 0 && page <= this.totalPages) {
       this.currentPage = page;
@@ -68,6 +92,7 @@ export class AnimalsComponent implements OnInit {
     }
   }
 
+  // الصفحة السابقة
   prevPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
@@ -75,6 +100,7 @@ export class AnimalsComponent implements OnInit {
     }
   }
 
+  // الصفحة التالية
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -82,14 +108,12 @@ export class AnimalsComponent implements OnInit {
     }
   }
 
+  // قائمة الصفحات
   paginationRange(): number[] {
-    const range: number[] = [];
-    for (let i = 1; i <= this.totalPages; i++) {
-      range.push(i);
-    }
-    return range;
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
 
+  // الترتيب
   sortAnimals(): void {
     switch (this.selectedSort) {
       case 'newest':
@@ -110,7 +134,31 @@ export class AnimalsComponent implements OnInit {
     this.updateDisplayedAnimals();
   }
 
+  // تطبيق الفلاتر
   applyFilters(): void {
+    this.currentPage = 1;
     this.fetchAnimals();
   }
+
+  // البحث
+  onSearchChange(searchTerm: string): void {
+    this.searchTerm = searchTerm.trim();
+    this.applyFilters();
+  }
+
+  // التصفية حسب النوع
+  onFilterChanged(species: string): void {
+    this.selectedSpecies = species;
+    this.applyFilters();
+  }
+  // داخل AnimalsComponent
+// ...
+
+// دالة جديدة للبحث عند إرسال النموذج
+onSearchSubmit(event: Event): void {
+  event.preventDefault(); // منع إعادة تحميل الصفحة
+  this.applyFilters(); // تطبيق الفلاتر باستخدام مصطلح البحث الحالي
+}
+
+
 }
