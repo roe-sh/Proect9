@@ -33,7 +33,7 @@ import { RegisterComponent } from './Batoul/register/register.component';
     AnimalsDetailsComponent,  
     AnimalFormComponent,
     TypeComponent,
-    FooterComponent
+    FooterComponent,
     FooterComponent,
     LoginComponent,
     RegisterComponent
