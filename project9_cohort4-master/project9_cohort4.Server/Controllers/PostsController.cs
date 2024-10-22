@@ -169,7 +169,21 @@ namespace project9_cohort4.Server.Controllers
             {
                 return BadRequest("The ID cannot be zero or negative.");
             }
-            var postdetails = await _db.Posts.FirstOrDefaultAsync(x => x.PostId == postid);
+            var postdetails = await _db.Posts
+                .Where(x => x.PostId == postid)
+                .Select(s => new
+                {
+                    s.PostId,
+                    s.StoryTitle,
+                    s.StoryContent,
+                    s.StoryDate,
+                    s.StoryPhoto,
+                    User = new
+                    {
+                        s.User.UserId,
+                        s.User.FullName,
+                    }
+                }).ToListAsync();
             if (postdetails == null)
             {
                 return NotFound("No Post found with the specified ID.");

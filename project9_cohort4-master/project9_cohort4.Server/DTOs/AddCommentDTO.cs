@@ -5,8 +5,7 @@ namespace project9_cohort4.Server.DTOs
     public class AddCommentDTO
     {
 
-        public int PostId { get; set; }
-
+        
         public int UserId { get; set; }
 
         public string? Content { get; set; }
