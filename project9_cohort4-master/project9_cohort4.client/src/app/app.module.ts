@@ -23,6 +23,8 @@ import { LoginComponent } from './Batoul/login/login.component';
 import { RegisterComponent } from './Batoul/register/register.component';
 import { AddpostComponent } from './mustafa/addpost/addpost.component';
 import { UserProfileComponent } from './Batoul/user-profile/user-profile.component';
+import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
+import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { UserProfileComponent } from './Batoul/user-profile/user-profile.compone
     RegisterComponent,
     AddpostComponent,
     DashboardComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AllPostsComponent,
+    PostCommentsComponent
   ],
   imports: [
     FormsModule,
@@ -67,7 +71,8 @@ import { UserProfileComponent } from './Batoul/user-profile/user-profile.compone
       { path: 'addpost', component: AddpostComponent }, 
       { path: 'animals', component: AnimalsComponent },
       { path: 'dashboard', component: DashboardComponent },
-
+      { path: 'allposts', component: AllPostsComponent },
+      { path: 'postcomments/:id', component: PostCommentsComponent },
 
       { path: 'dashboard',
       component: DashboardComponent,

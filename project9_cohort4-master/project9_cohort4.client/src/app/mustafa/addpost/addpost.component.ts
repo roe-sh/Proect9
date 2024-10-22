@@ -4,34 +4,53 @@ import { UrlService } from '../../Urlmustafa/url.service';
 @Component({
   selector: 'app-addpost',
   templateUrl: './addpost.component.html',
-  styleUrl: './addpost.component.css'
+  styleUrls: ['./addpost.component.css']
 })
 export class AddpostComponent {
+  userId: any;
+  image: any;
+
+  constructor(private _src: UrlService) { }
+
   ngOnInit() {
-    this.userId = localStorage.getItem("userId")
-
+    // الحصول على userId من localStorage
+    this.userId = localStorage.getItem("userId");
   }
 
-  constructor(private _src: UrlService) {
-
-  }
-  userId: any
-  image: any
+  // التعامل مع اختيار الصورة
   changeImage(event: any) {
-
-    this.image = event.target.files[0]
-
+    this.image = event.target.files[0]; // احصل على الصورة المرفوعة
   }
 
-  Addpost(data: any) {
-    debugger
-    var form = new FormData();
-    for (let key in data) {
-      form.append(key, data[key])
+  // إرسال النموذج
+  Addpost(formData: any) {
+    debugger;
+    const form = new FormData();
+
+    // إضافة الحقول من النموذج إلى formData
+    for (let key in formData) {
+      form.append(key, formData[key]);
     }
-    form.append("StoryPhoto", this.image)
-    this._src.Addnewpost(this.userId,form).subscribe(() => {
-      alert("Tips added successfully")
-    })
+
+    // إضافة userId إلى formData
+    form.append("userId", this.userId);
+
+    // إضافة الصورة إلى formData
+    if (this.image) {
+      form.append("StoryPhoto", this.image);
+    }
+
+    // استدعاء الخدمة لإرسال البيانات إلى API
+    this._src.Addnewpost(this.userId, form).subscribe(
+      () => {
+        alert("Post added successfully");
+        console.log("Response:", form);
+
+      },
+      (error) => {
+        alert("Failed to add post");
+        console.error("Error:", error);
+      }
+    );
   }
 }
