@@ -56,7 +56,16 @@ namespace project9_cohort4.Server.Controllers
             {
                 return BadRequest("The ID cannot be zero or negative.");
             }
-            var allreplay = _db.Replies.Where(x => x.CommentId == commentId).ToList();
+            var allreplay = _db.Replies
+                .Where(x => x.CommentId == commentId)
+                .Select(x => new 
+                {
+                    x.User.FullName,
+                    x.User.Image,
+                    x.CreateDate,
+                    x.Content,
+                }
+                ).ToList();
 
             if (allreplay == null)
             { 
