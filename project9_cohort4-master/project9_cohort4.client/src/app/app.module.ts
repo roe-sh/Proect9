@@ -47,7 +47,6 @@ import { FooterComponent } from './batool/footer/footer.component';
       { path: "animal-details/:id", component: AnimalsDetailsComponent },  
       { path: "animals-form/:animalId", component: AnimalFormComponent }, 
       { path: 'animals', component: AnimalsComponent }, 
-      { path: '', redirectTo: '/animals', pathMatch: 'full' } 
     ])
   ],
   providers: [],
