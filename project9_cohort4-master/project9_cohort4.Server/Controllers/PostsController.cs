@@ -192,8 +192,8 @@ namespace project9_cohort4.Server.Controllers
         }
 
         /////////////////////////// Admin Accept Post ///////////////////////////////
-        
-        [HttpGet("AcceptPostById/{postid}")]
+
+        [HttpPut("AcceptPostById/{postid}")]
         public async Task<IActionResult> AcceptPostById(int postid)
         {
             if (postid <= 0)
@@ -206,7 +206,31 @@ namespace project9_cohort4.Server.Controllers
                 return NotFound("No Post found with the specified ID.");
             }
             post.IsAccept = true;
+
+            _db.Posts.Update(post);
+            await _db.SaveChangesAsync();
             return Ok(post);
+        }
+        [HttpGet("GetAllAcceptedPost")]
+        public async Task<IActionResult> GetAllAcceptedPost()
+        {
+            var posts = await _db.Posts
+                            .Where(x => x.IsAccept == true)
+                            .OrderByDescending(w => w.StoryDate)
+                            .Select(s => new
+                            {
+                                s.PostId,
+                                s.StoryTitle,
+                                s.StoryContent,
+                                s.StoryDate,
+                                s.StoryPhoto,
+                                User = new
+                                {
+                                    s.User.FullName,
+                                }
+                            }).ToListAsync();
+            return Ok(posts);
+
         }
     }
 }
