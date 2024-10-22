@@ -15,7 +15,7 @@ export class AddpostComponent {
   constructor(private _src: UrlService) {
 
   }
-  userId: any 
+  userId: any
   image: any
   changeImage(event: any) {
 
@@ -24,12 +24,13 @@ export class AddpostComponent {
   }
 
   Addpost(data: any) {
+    debugger
     var form = new FormData();
     for (let key in data) {
       form.append(key, data[key])
     }
-    form.append("postImage", this.image)
-    this._src.Addnewpost(form, this.userId).subscribe(() => {
+    form.append("StoryPhoto", this.image)
+    this._src.Addnewpost(this.userId,form).subscribe(() => {
       alert("Tips added successfully")
     })
   }
