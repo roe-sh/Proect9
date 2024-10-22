@@ -74,7 +74,7 @@ import { UserProfileComponent } from './Batoul/user-profile/user-profile.compone
       children: [
       
         { path: 'AdminAdoption', component: AdminAdoptionComponent },
-        { path: '', redirectTo: 'user', pathMatch: 'full' } // Redirect to 'stats' as default child
+        { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
       ]
   }
       

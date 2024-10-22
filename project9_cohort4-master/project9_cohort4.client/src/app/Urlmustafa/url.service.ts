@@ -11,7 +11,7 @@ export class UrlService {
 
   staticData = "https://localhost:7072/api";
   
-  Addnewpost(data: any ,id:any): Observable<any> {
+  Addnewpost(id: any, data: any): Observable<any> {
     return this.http.post<any>(`${this.staticData}/Posts/AddPosts${id}`, data)
   }
 
