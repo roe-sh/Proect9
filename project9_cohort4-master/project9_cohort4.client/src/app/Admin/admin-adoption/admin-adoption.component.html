@@ -2,7 +2,8 @@
   <h2 class="text-center mb-4">Product List</h2>
 
   <!-- Display error message if exists -->
-  <div class="alert alert-danger">
+  <div class="alert alert-danger" style="display:none;">
+    Error: Could not load products!
   </div>
 
   <!-- Make the table responsive -->
@@ -19,21 +20,46 @@
         </tr>
       </thead>
       <tbody>
-        <tr >
+
+        <tr>
           <td>
-           
+            <img src="https://via.placeholder.com/50" alt="Product Image" class="img-fluid">
           </td>
-         
+          <td>Product 2</td>
+          <td>This is a description of Product 2</td>
+          <td>$20.99</td>
+          <td>Books</td>
           <td>
-            <button class="btn btn-primary btn-sm">Delete</button>
+            <button type="button" class="btn btn-outline-primary">Edit</button>
+            &nbsp;
+            <button type="button" class="btn btn-outline-danger">Delete</button>
+
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td>
+            <img src="https://via.placeholder.com/50" alt="Product Image" class="img-fluid">
+          </td>
+          <td>Product 2</td>
+          <td>This is a description of Product 2</td>
+          <td>$20.99</td>
+          <td>Books</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary">Edit</button>
+            &nbsp;
+            <button type="button" class="btn btn-outline-danger">Delete</button>
+
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="alert alert-info">
+  <!-- Info message for no products available -->
+  <div class="alert alert-info" style="display:none;">
+    No products available at the moment.
   </div>
-
 </div>
-
