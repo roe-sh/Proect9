@@ -13,6 +13,8 @@ import { GetByIdComponent } from './batool/get-by-id/get-by-id.component';
 import { AddAnimalComponent } from './batool/add-animal/add-animal.component';
 import { UpdateInfoComponent } from './batool/update-info/update-info.component';
 import { FooterComponent } from './batool/footer/footer.component';
+import { LoginComponent } from './Batoul/login/login.component';
+import { RegisterComponent } from './Batoul/register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FooterComponent } from './batool/footer/footer.component';
     GetByIdComponent,
     AddAnimalComponent,
     UpdateInfoComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,

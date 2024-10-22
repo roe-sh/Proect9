@@ -9,10 +9,6 @@ public partial class User
 
     public string FullName { get; set; } = null!;
 
-    public string PasswordHash { get; set; } = null!;
-
-    public string PasswordSalt { get; set; } = null!;
-
     public string Email { get; set; } = null!;
 
     public string? Phone { get; set; }
@@ -20,6 +16,12 @@ public partial class User
     public string? Address { get; set; }
 
     public bool? IsAdmin { get; set; }
+
+    public string? Image { get; set; }
+
+    public byte[]? PasswordHash { get; set; }
+
+    public byte[]? PasswordSalt { get; set; }
 
     public virtual ICollection<AdoptionApplication> AdoptionApplications { get; set; } = new List<AdoptionApplication>();
 
