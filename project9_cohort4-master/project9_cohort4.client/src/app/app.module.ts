@@ -22,6 +22,7 @@ import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.co
 import { LoginComponent } from './Batoul/login/login.component';
 import { RegisterComponent } from './Batoul/register/register.component';
 import { AddpostComponent } from './mustafa/addpost/addpost.component';
+import { UserProfileComponent } from './Batoul/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AddpostComponent } from './mustafa/addpost/addpost.component';
     LoginComponent,
     RegisterComponent,
     AddpostComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserProfileComponent
   ],
   imports: [
     FormsModule,
