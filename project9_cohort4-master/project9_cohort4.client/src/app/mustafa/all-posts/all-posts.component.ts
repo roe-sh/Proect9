@@ -41,4 +41,16 @@ export class AllPostsComponent {
 
       window.open(xShareUrl, '_blank');
   }
+  data = {
+    "postId": 0,
+    "userId": localStorage.getItem("userId")
+  }
+  addLike(postId: number) {
+    this.data.postId = postId
+    this._ser.addLike(this.data).subscribe(() => {
+      this.getAllPosts();
+
+    })
+  }
+
 }

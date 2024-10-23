@@ -35,7 +35,8 @@ namespace project9_cohort4.Server.Controllers
                     {
                         s.User.UserId,
                         s.User.FullName,
-                    }
+                    },
+                    likesCount = s.Likes.Where(l => l.Flag == true).Count(),
                 }).ToList();
 
             return Ok(posts);

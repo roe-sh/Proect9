@@ -34,4 +34,8 @@ export class UrlService {
   GetAllreplaybycommentid(commentid: any): Observable<any> {
     return this.http.get<any>(`${this.staticData}/Comments/GetAllReplyByCommentId/${commentid}`);
   }
+
+  addLike(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Comments/addLike`,data);
+  }
 }
