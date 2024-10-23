@@ -12,7 +12,9 @@ export class UserProfileComponent {
   userId: any
 
   ngOnInit() {
-    this.userId = localStorage.getItem("userId")
+    this._ser.userIdObs.subscribe((userId) => {
+      this.userId = userId
+    })
 
     this.getUserInfo(this.userId)
   }

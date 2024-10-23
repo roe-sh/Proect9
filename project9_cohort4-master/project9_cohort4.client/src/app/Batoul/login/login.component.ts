@@ -40,22 +40,22 @@ export class LoginComponent {
         this.check = checkData
         console.log(this.check)
 
-      if (this.check === true || this.check === 'true' || this.check === 1 || this.check === '1') {
+        if (this.check === true || this.check === 'true' || this.check === 1 || this.check === '1') {
 
-        console.log("yes")
+          console.log("yes")
 
-        this._route.navigate(["/dashboard/AdminAdoption"])
+          this._route.navigate(["/dashboard/AdminAdoption"])
 
-      }
-      else {
+        }
+        else {
 
-        console.log("no")
+          console.log("no")
 
-        this._route.navigate(['/'])
+          this._route.navigate(['/'])
 
-      }
+        }
       })
-      
+
     })
 
   }
