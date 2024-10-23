@@ -80,4 +80,43 @@ export class BUrlServicesService {
   editPassword(userId: number, data: any): Observable<any> {
     return this.http.post<any>(`${this.BaseUrl}Profile/editPassword/${userId}`, data);
   }
+
+
+
+  //////////////////////////////////////// contacts
+  sendMessage(data: any): Observable<any> {
+    return this.http.post<any>(`${ this.BaseUrl }Contacts / sendContactMessage`, data)
+  }
+
+  replyToMessage(adminId: any, contactId: any, data: any): Observable<any> {
+    return this.http.post<any>(`${this.BaseUrl}Contacts/replyToContacts/${adminId}/${contactId}`, data)
+  }
+
+  getAllMessages(): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}Contacts/getAllContactMessages`)
+  }
+
+  getMessageDetails(contactId: any): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}Contacts/getContactMessageById/${contactId}`)
+  }
+
+
+
+
+  //////////////////////////////////// admin users
+  assignAdmin(userId: any): Observable<any> {
+    return this.http.put<any>(`${this.BaseUrl}AdminUsers/assignUserAsAdmin/${userId}`, {})
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -74,6 +74,35 @@ namespace project9_cohort4.Server.Controllers
 
 
 
+        [HttpGet("getAllContactMessages")]
+        public IActionResult getAllContactMessages()
+        {
+            var messages = _db.Contacts.ToArray();
+
+            if (messages.Length == 0 || messages == null) return NotFound("there's no contact");
+
+            return Ok(messages);
+        }
+
+
+        [HttpGet("getContactMessageById/{contactId}")]
+        public IActionResult getContactMessageById(int contactId)
+        {
+            if (contactId <= 0) return BadRequest("invalid id");
+
+            var contact = _db.Contacts.FirstOrDefault(x => x.ContactId == contactId);
+
+            if (contact == null) return NotFound("the message wasn't found");
+
+            return Ok(contact);
+        }
+
+
+
+
+
+
+
 
 
 
