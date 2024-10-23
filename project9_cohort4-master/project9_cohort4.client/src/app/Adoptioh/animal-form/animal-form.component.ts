@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AdoptionService } from '../../Adoptioh/adoption.service';
+import { BUrlServicesService } from '../../Batoul/burl-services.service'; // Add this import
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,23 +10,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./animal-form.component.css']
 })
 export class AnimalFormComponent implements OnInit {
-
-  // Define the properties to match your backend DTO structure
   adoptionDetails = {
-    userId: null as number | null,  // or you can initialize with a logged-in user's ID
+    userId: null as number | null,  // Initialize with the logged-in user's ID later
     animalId: null as number | null,
-    userMedicalStatus: '',           // Change here
+    userMedicalStatus: '',
     housingType: 'Apartment',
-    userFinancialStatus: '',         // Change here
-    userFlatType: '',                // Change here
-    userLivingStatus: '',            // Change here
-    userMoreDetails: ''              // Change here
+    userFinancialStatus: '',
+    userFlatType: '',
+    userLivingStatus: '',
+    userMoreDetails: ''
   };
 
-  constructor(private adoptionService: AdoptionService) { }
+  constructor(private adoptionService: AdoptionService, private authService: BUrlServicesService) { }
 
   ngOnInit(): void {
-    // Any necessary initialization can go here
+    // Assuming you set the userId from the logged-in user data
+    this.adoptionDetails.userId = this.authService.userId.value; // Fetch logged-in user ID from service
   }
 
   submitAdoptionForm(form: NgForm): void {

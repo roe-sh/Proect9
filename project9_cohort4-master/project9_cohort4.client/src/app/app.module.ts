@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { AuthGuard } from './Adoptioh/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './batool/home/home.component';
@@ -102,9 +102,12 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
       
         { path: 'allpostadmin', component: PostsAdminComponent },
         { path: 'notacceptpostadmin', component: NotAcceptpostsComponent },
-        
-         { path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
-        {  path: 'AdminAdoption', component: AdminAdoptionComponent },
+        { path: 'animals/:id', component: AnimalsDetailsComponent },
+        { path: 'animals-form', component: AnimalFormComponent, canActivate: [AuthGuard] },
+
+
+        {
+          path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
         { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
       ]
   },
