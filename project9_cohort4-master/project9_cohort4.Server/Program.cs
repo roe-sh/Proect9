@@ -74,7 +74,8 @@ builder.Services.AddCors(options =>
 //    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
 //});
 
-
+// Register the ContactsEmailService
+builder.Services.AddScoped<ContactsEmailService>();
 
 
 

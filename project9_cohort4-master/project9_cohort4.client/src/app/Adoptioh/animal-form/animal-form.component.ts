@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AdoptionService } from '../../Adoptioh/adoption.service';
 import Swal from 'sweetalert2';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-animal-form',
@@ -10,15 +10,16 @@ import { NgForm } from '@angular/forms';
 })
 export class AnimalFormComponent implements OnInit {
 
+  // Define the properties to match your backend DTO structure
   adoptionDetails = {
-    userId: 1, // This will depend on the logged-in user
+    userId: null as number | null,  // or you can initialize with a logged-in user's ID
     animalId: null as number | null,
-    userMedicalStatus: '', // Make sure this property exists in your DTO
+    userMedicalStatus: '',           // Change here
     housingType: 'Apartment',
-    userFinancialStatus: '', // Update according to your DTO
-    userFlatType: '', // Update according to your DTO
-    userLivingStatus: '', // Update according to your DTO
-    userMoreDetails: '' // Update according to your DTO
+    userFinancialStatus: '',         // Change here
+    userFlatType: '',                // Change here
+    userLivingStatus: '',            // Change here
+    userMoreDetails: ''              // Change here
   };
 
   constructor(private adoptionService: AdoptionService) { }
@@ -33,7 +34,7 @@ export class AnimalFormComponent implements OnInit {
         response => {
           console.log('Adoption request submitted successfully:', response);
           Swal.fire({
-            title: 'Thank U For Choosing Me:3',
+            title: 'Thank You for Choosing Me!',
             text: 'Your adoption request has been submitted successfully!',
             icon: 'success',
             confirmButtonText: 'Okay'

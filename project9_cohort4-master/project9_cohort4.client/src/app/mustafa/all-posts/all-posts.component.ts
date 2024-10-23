@@ -31,4 +31,26 @@ export class AllPostsComponent {
       // منطق لحفظ إزالة اللايك في الـ Backend
     }
   }
+
+
+
+  shareOnX(post: any) {
+    const postUrl = `https://www.islambook.com/azkar/16/%D8%AF%D8%B9%D8%A7%D8%A1-%D8%AE%D8%AA%D9%85-%D8%A7%D9%84%D9%82%D8%B1%D8%A2%D9%86-%D8%A7%D9%84%D9%83%D8%B1%D9%8A%D9%85#google_vignette`; // استبدل هذا بالرابط الفعلي للبوست
+    const tweetText = encodeURIComponent(post.storyContent);
+    const xShareUrl = `https://twitter.com/intent/tweet?text=${tweetText}&url=${encodeURIComponent(postUrl)}`;
+
+      window.open(xShareUrl, '_blank');
+  }
+  data = {
+    "postId": 0,
+    "userId": localStorage.getItem("userId")
+  }
+  addLike(postId: number) {
+    this.data.postId = postId
+    this._ser.addLike(this.data).subscribe(() => {
+      this.getAllPosts();
+
+    })
+  }
+
 }

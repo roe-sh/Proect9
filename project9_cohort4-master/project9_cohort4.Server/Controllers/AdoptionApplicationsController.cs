@@ -61,29 +61,38 @@ namespace project9_cohort4.Server.Controllers
 
             return Ok(existingApplication);
         }
-      
 
-        // POST: api/AdoptionApplications
+
         [HttpPost]
         public IActionResult PostAdoptionApplication([FromBody] AddAdoptionApplicationDTO adoptionApplicationDto)
         {
-            var newApplication = new AdoptionApplication
+            try
             {
-               
-                UserMedicalStatus = adoptionApplicationDto.UserMedicalStatus,
-                UserFlatType = adoptionApplicationDto.UserFlatType,
-                UserFinaincalStatus = adoptionApplicationDto.UserFinancialStatus,
-                UserLivingStatus = adoptionApplicationDto.UserLivingStatus,
-                UserMoreDetails = adoptionApplicationDto.UserMoreDetails,
-                ApplicationDate = adoptionApplicationDto.ApplicationDate ?? System.DateTime.Now,
-                Status = "Pending"
-            };
+                var newApplication = new AdoptionApplication
+                {
+                    UserId = adoptionApplicationDto.UserId,
+                  
+                    UserMedicalStatus = adoptionApplicationDto.UserMedicalStatus,
+                    UserFlatType = adoptionApplicationDto.UserFlatType,
+                    UserFinaincalStatus = adoptionApplicationDto.UserFinaincalStatus,
+                    UserLivingStatus = adoptionApplicationDto.UserLivingStatus,
+                    UserMoreDetails = adoptionApplicationDto.UserMoreDetails,
+                    ApplicationDate = adoptionApplicationDto.ApplicationDate ?? DateTime.Now,
+                    Status = "Pending"
+                };
 
-            _context.AdoptionApplications.Add(newApplication);
-            _context.SaveChanges();
+                _context.AdoptionApplications.Add(newApplication);
+                _context.SaveChanges();
 
-            return CreatedAtAction(nameof(GetAdoptionApplication), new { id = newApplication.ApplicationId }, newApplication);
+                return CreatedAtAction(nameof(GetAdoptionApplication), new { id = newApplication.ApplicationId }, newApplication);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}"); // Log and return error
+            }
         }
+
+
 
         // DELETE: api/AdoptionApplications/5
         [HttpDelete("{id}")]

@@ -15,7 +15,7 @@ import { UpdateInfoComponent } from './batool/update-info/update-info.component'
 import { AnimalsComponent } from './Adoptioh/animals/animals.component';
 import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
-import { TypeComponent } from './Adoptioh/type/type.component';
+
 import { FooterComponent } from './batool/footer/footer.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
@@ -28,6 +28,10 @@ import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
 import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
 import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-adoption.component';
 import { EditAnimalComponent } from './Admin/edit-animal/edit-animal.component';
+import { PostsAdminComponent } from './Admin/posts-admin/posts-admin.component';
+import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts.component';
+import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
+import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,7 @@ import { EditAnimalComponent } from './Admin/edit-animal/edit-animal.component';
     AnimalsComponent,
     AnimalsDetailsComponent,
     AnimalFormComponent,
-    TypeComponent,
+
     FooterComponent,
     FooterComponent,
     LoginComponent,
@@ -56,6 +60,10 @@ import { EditAnimalComponent } from './Admin/edit-animal/edit-animal.component';
     AddAdminAdoptionComponent,
     PostCommentsComponent,
     EditAnimalComponent,
+    PostsAdminComponent,
+    NotAcceptpostsComponent,
+    ContactUsComponent,
+    SheltersComponent,
   ],
   imports: [
     FormsModule,
@@ -76,6 +84,7 @@ import { EditAnimalComponent } from './Admin/edit-animal/edit-animal.component';
       { path: "register", component: RegisterComponent },
       { path: "userprofile", component: UserProfileComponent },
       { path: "userpassword", component: UserResetPasswordComponent },
+      { path: "contactus", component: ContactUsComponent },
 
 
       { path: 'animals', component: AnimalsComponent },
@@ -92,6 +101,8 @@ import { EditAnimalComponent } from './Admin/edit-animal/edit-animal.component';
       children: [
       
         { path: 'AdminAdoption', component: AdminAdoptionComponent },
+        { path: 'allpostadmin', component: PostsAdminComponent },
+        { path: 'notacceptpostadmin', component: NotAcceptpostsComponent },
         {
           path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
         { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
@@ -99,6 +110,14 @@ import { EditAnimalComponent } from './Admin/edit-animal/edit-animal.component';
   },
       
       
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'Shelters', component: SheltersComponent, children: [
+
+          { path: 'AdminAdoption', component: AdminAdoptionComponent },
+          { path: '', redirectTo: 'user', pathMatch: 'full' },
+        ]
+      }
 
     ])
   ],

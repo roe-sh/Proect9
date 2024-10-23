@@ -1,15 +1,9 @@
-
 <!-- back to top -->
 <button class="back-to-top position-fixed end-0 bottom-0 d-center me-5">
   <span class="text-h4">
     <i class="ph ph-arrow-up"></i>
   </span>
 </button>
-
-
-
-
-
 
 <!-- header -->
 <!-- header section start -->
@@ -32,60 +26,23 @@
             <a href="about-us.html" class="slide-vertical" data-splitting>About</a>
           </li>
           <li class="menu-link">
+            <a routerLink="/addpost" class="slide-vertical" data-splitting>Add Post</a>
+          </li>
+          <li class="menu-link">
+            <a routerLink="/Shelters" class="slide-horizontal" data-splitting>Shelters</a>
+          </li>
+          <li class="menu-link">
             <a routerLink="/allposts" class="slide-vertical" data-splitting>Our Community</a>
           </li>
-          <li class="menu-item">
-            <button class="slide-vertical" data-splitting>
-              Pages
-              <span class="lh-0"><i class="ph ph-plus"></i></span>
-            </button>
-            <ul class="sub-menu">
-              <li class="menu-item">
-                <button class="slide-vertical" data-splitting>
-                  Services
-                  <span class="lh-0"><i class="ph ph-plus"></i></span>
-                </button>
-                <ul class="sub-menu">
-                  <li class="menu-link">
-                    <a href="services.html" class="slide-horizontal" data-splitting>Services</a>
-                  </li>
-                  <li class="menu-link">
-                    <a href="service-details.html" class="slide-horizontal" data-splitting>
-                      Service
-                      Details
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="menu-item">
-                <button class="slide-vertical" data-splitting>
-                  Blogs
-                  <span class="lh-0"><i class="ph ph-plus"></i></span>
-                </button>
-                <ul class="sub-menu">
-                  <li class="menu-link">
-                    <a href="blogs.html" class="slide-horizontal" data-splitting>Blogs</a>
-                  </li>
-                  <li class="menu-link">
-                    <a href="blog-details.html" class="slide-horizontal" data-splitting>
-                      Blogs
-                      Details
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <li class="menu-link">
+            <a routerLink="/animals" class="slide-horizontal">Adoption</a>
           </li>
           <li class="menu-link">
-            <a routerLink="/animals" class="slide-horizontal">Adoption </a>
-          </li>
-          <li class="menu-link">
-            <a href="contact-us.html" class="slide-vertical" data-splitting>Contact</a>
+            <a routerLink="contactus" class="slide-vertical" data-splitting>Contact</a>
           </li>
         </ul>
       </nav>
       <div class="nav-btns d-flex align-items-center gap-lg-5 gap-3">
-
         <!-- search icon -->
         <button class="search-btn text-2xl font-semibold text-n20">
           <i class="ph ph-magnifying-glass"></i>
@@ -93,9 +50,7 @@
 
         <a routerLink="/userprofile" class="btn-primary text-nowrap" *ngIf="userId != ''">Profile</a>
         <a (click)="logout()" id="NavBarProfile" *ngIf="userId != ''">Logout</a>
-
         <a routerLink="/login" class="btn-primary text-nowrap" *ngIf="userId == ''">Login</a>
-
         <button class="menu-toggle-btn text-2xl">
           <i class="ph ph-list"></i>
         </button>
@@ -105,7 +60,6 @@
 </header>
 <!-- header section end -->
 <!-- search form -->
-
 <div class="search-form-wrapper position-fixed top-0 start-0 w-100 vh-100 d-flex align-items-center justify-content-center bg-n10">
   <button class="search-close-btn position-absolute top-0 end-0 text-2xl text-n0 mt-5 me-5">
     <i class="ph ph-x"></i>
