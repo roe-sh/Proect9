@@ -106,8 +106,8 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
         { path: 'animals-form', component: AnimalFormComponent, canActivate: [AuthGuard] },
 
 
-        {
-          path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
+        {path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
+        {path: 'AdminAdoption', component: AdminAdoptionComponent },
         { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
       ]
   },
@@ -116,7 +116,6 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
       {
         path: 'Shelters', component: SheltersComponent, children: [
 
-          { path: 'AdminAdoption', component: AdminAdoptionComponent },
           { path: '', redirectTo: 'user', pathMatch: 'full' },
         ]
       }
