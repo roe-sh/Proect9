@@ -54,7 +54,7 @@ namespace project9_cohort4.Server.Controllers
 
             if (user == null) return NotFound("no user was found for this id");
 
-            if (info.Image != null || info.Image.Length> 0)
+            if (Request.Form.Files.Count > 0 && info.Image != null && info.Image.Length > 0)
             {
                 var folder = Path.Combine(Directory.GetCurrentDirectory(), "images");
 

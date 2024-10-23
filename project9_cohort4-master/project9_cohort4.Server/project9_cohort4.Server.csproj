@@ -35,4 +35,14 @@
     </ProjectReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Animal_Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Animal_Images\buddy1.jpg" />
+    <None Include="wwwroot\Animal_Images\buddy2.jpg" />
+    <None Include="wwwroot\Animal_Images\buddy3.jpg" />
+  </ItemGroup>
+
 </Project>

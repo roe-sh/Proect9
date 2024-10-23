@@ -1,4 +1,3 @@
-// هنا تم تعريف الخصائص التي نستخدمها في التصفية والبحث، وهي:
 import { Component, OnInit } from '@angular/core';
 import { AnimalService } from '../../Adoptioh/animals.service';
 import { ShelterService } from '../../Adoptioh/shelter.service';
