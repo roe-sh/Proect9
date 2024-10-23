@@ -52,7 +52,7 @@ import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-
     UserProfileComponent,
     AllPostsComponent,
     PostCommentsComponent,
-    AddAdminAdoptionComponent
+    AddAdminAdoptionComponent,
     PostCommentsComponent,
   ],
   imports: [
@@ -94,7 +94,7 @@ import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-
           path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
         { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
       ]
-  }
+  },
       
       {
         path: 'dashboard', component: DashboardComponent, children: [
