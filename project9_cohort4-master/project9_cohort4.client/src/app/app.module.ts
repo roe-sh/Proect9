@@ -29,6 +29,7 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
 import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-adoption.component';
 import { PostsAdminComponent } from './Admin/posts-admin/posts-admin.component';
 import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts.component';
+import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts
     PostCommentsComponent,
     PostsAdminComponent,
     NotAcceptpostsComponent,
+    ContactUsComponent,
   ],
   imports: [
     FormsModule,
@@ -78,6 +80,7 @@ import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts
       { path: "register", component: RegisterComponent },
       { path: "userprofile", component: UserProfileComponent },
       { path: "userpassword", component: UserResetPasswordComponent },
+      { path: "contactus", component: ContactUsComponent },
 
 
       { path: 'animals', component: AnimalsComponent },
