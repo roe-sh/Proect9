@@ -5,7 +5,6 @@
         <!-- Swiper for displaying the three images -->
         <div class="swiper product-swiper mb-6">
           <div class="swiper-wrapper">
-            <!-- Displaying image1, image2, image3 -->
             <div class="swiper-slide" *ngIf="animal.image1">
               <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
                 <img class="w-100 radius-16" [src]="animal.image1" alt="{{ animal.name }}">
@@ -23,9 +22,9 @@
             </div>
           </div>
         </div>
+        <!-- Swiper for thumbnails -->
         <div class="swiper swiper-thumb">
           <div class="swiper-wrapper">
-           
             <div class="swiper-slide radius-8" *ngIf="animal.image1">
               <img class="w-100 radius-8" [src]="animal.image1" alt="{{ animal.name }}">
             </div>
@@ -56,7 +55,8 @@
             <input type="text" value="1" class="quantityValue border-0 p-0 outline-0">
             <button class="quantityIncrement text-primary"><i class="ph-fill ph-plus"></i></button>
           </div>
-          <button class="btn-primary" [routerLink]="['/animals-form', animal.animalId]">Adopt Now</button>
+          <button class="btn-primary" (click)="adoptNow()">Adopt Now</button>
+          <!-- Update this line -->
           <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
             <i class="ph-fill ph-heart"></i>
           </button>
