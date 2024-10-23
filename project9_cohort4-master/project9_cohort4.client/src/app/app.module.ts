@@ -13,12 +13,19 @@ import { GetByIdComponent } from './batool/get-by-id/get-by-id.component';
 import { AddAnimalComponent } from './batool/add-animal/add-animal.component';
 import { UpdateInfoComponent } from './batool/update-info/update-info.component';
 import { AnimalsComponent } from './Adoptioh/animals/animals.component';
-import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component'; 
+import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
 import { TypeComponent } from './Adoptioh/type/type.component';
 import { FooterComponent } from './batool/footer/footer.component';
+import { DashboardComponent } from './Admin/dashboard/dashboard.component';
+import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
 import { LoginComponent } from './Batoul/login/login.component';
 import { RegisterComponent } from './Batoul/register/register.component';
+import { AddpostComponent } from './mustafa/addpost/addpost.component';
+import { UserProfileComponent } from './Batoul/user-profile/user-profile.component';
+import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-reset-password.component';
+import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
+import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +37,20 @@ import { RegisterComponent } from './Batoul/register/register.component';
     AddAnimalComponent,
     UpdateInfoComponent,
     AnimalsComponent,
-    AnimalsDetailsComponent,  
+    AnimalsDetailsComponent,
     AnimalFormComponent,
     TypeComponent,
-  
     FooterComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddpostComponent,
+    DashboardComponent,
+    UserProfileComponent,
+    UserResetPasswordComponent,
+    UserProfileComponent,
+    AllPostsComponent,
+    PostCommentsComponent,
   ],
   imports: [
     FormsModule,
@@ -49,13 +62,33 @@ import { RegisterComponent } from './Batoul/register/register.component';
       { path: "getAllUsers", component: GetAllComponent },
       { path: "getbyId/:id11", component: GetByIdComponent },
       { path: "addAnimal", component: AddAnimalComponent },
-      { path: "UpdateAnimal/:id", component: UpdateInfoComponent }, 
-      { path: "animal-details/:id", component: AnimalsDetailsComponent },  
-      { path: "animals-form/:animalId", component: AnimalFormComponent }, 
-      { path: 'animals', component: AnimalsComponent }, 
+      { path: "UpdateAnimal/:id", component: UpdateInfoComponent },
+      { path: "animal-details/:id", component: AnimalsDetailsComponent },
+      { path: "animals-form/:animalId", component: AnimalFormComponent },
+      { path: 'animals', component: AnimalsComponent },
       { path: 'animals', component: AnimalsComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+      { path: "userprofile", component: UserProfileComponent },
+      { path: "userpassword", component: UserResetPasswordComponent },
+
+
+      { path: 'animals', component: AnimalsComponent },
+      { path: 'addpost', component: AddpostComponent },
+      { path: 'animals', component: AnimalsComponent },
+
+      
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'allposts', component: AllPostsComponent },
+      { path: 'postcomments/:id', component: PostCommentsComponent },
+
+      {
+        path: 'dashboard', component: DashboardComponent, children: [
+
+          { path: 'AdminAdoption', component: AdminAdoptionComponent },
+          { path: '', redirectTo: 'user', pathMatch: 'full' },// Redirect to 'stats' as default child
+        ]
+      }
 
     ])
   ],

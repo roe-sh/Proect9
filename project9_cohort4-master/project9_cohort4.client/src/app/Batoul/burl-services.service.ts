@@ -26,6 +26,8 @@ export class BUrlServicesService {
 
   BaseUrl = "https://localhost:7001/api/";
 
+
+  //////////////////////////// login , register , check admin , logout
   register(data: any): Observable<any> {
     return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/register`, data);
   }
@@ -34,11 +36,46 @@ export class BUrlServicesService {
     return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/login`, data);
   }
 
-  checkAdmin(userId: number): Observable<any> {
-    return this.http.get<any>(`${this.BaseUrl}LoginAndRegister/isAdmin/${userId}`);
+  checkAdmin(userId: any): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}LoginAndRegister/isAdmin/${userId}`)
   }
 
-  setLoggedIn(status: boolean): void {
-    this.isLoggedInSubject.next(status);
+  logout() {
+
+    this.userId.next("");
+    this.isAdmin.next("false");
+
+    localStorage.clear();
   }
+
+
+
+  ////////////////////////// profile and users
+  getAllUsers(): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}Profile/getAllUsers`)
+  }
+
+  getUserInfo(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}Profile/getUserById/${userId}`)
+  }
+
+  editUserInfo(userId: number, data: any): Observable<any> {
+    return this.http.put<any>(`${this.BaseUrl}Profile/editProfileInfo/${userId}`, data)
+  }
+
+  editPassword(userId: number, data: any): Observable<any> {
+    return this.http.post<any>(`${this.BaseUrl}Profile/editPassword/${userId}`, data)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 }
