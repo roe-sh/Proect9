@@ -80,7 +80,7 @@ export class PostCommentsComponent {
   }
 
   addreplay(formdata: any, commentId : any) {
-
+    if (this.userId != undefined || this.userId != null) {
     const form = new FormData();
     for (let key in formdata) {
       form.append(key, formdata[key]);
@@ -98,7 +98,10 @@ export class PostCommentsComponent {
         alert("Failed to add replay");
         console.error("Error:", error);
       }
-    );
+      );
+    } else {
+      alert("you have to logged in to add replay")
+    }
   }
   
 }
