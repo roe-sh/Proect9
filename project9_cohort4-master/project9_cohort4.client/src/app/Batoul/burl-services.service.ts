@@ -70,7 +70,7 @@ export class BUrlServicesService {
 
   //////////////////////////////////////// contacts
   sendMessage(data: any): Observable<any> {
-    return this.http.post<any>(`${ this.BaseUrl }Contacts / sendContactMessage`, data)
+    return this.http.post<any>(`${this.BaseUrl}Contacts/sendContactMessage`, data)
   }
 
   replyToMessage(adminId: any, contactId: any, data: any): Observable<any> {
