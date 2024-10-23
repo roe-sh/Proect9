@@ -50,7 +50,7 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
     UserResetPasswordComponent,
     UserProfileComponent,
     AllPostsComponent,
-    PostCommentsComponent
+    PostCommentsComponent,
   ],
   imports: [
     FormsModule,
