@@ -25,6 +25,7 @@ import { AddpostComponent } from './mustafa/addpost/addpost.component';
 import { UserProfileComponent } from './Batoul/user-profile/user-profile.component';
 import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
 import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
+import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-adoption.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
     DashboardComponent,
     UserProfileComponent,
     AllPostsComponent,
-    PostCommentsComponent
+    PostCommentsComponent,
+    AddAdminAdoptionComponent
   ],
   imports: [
     FormsModule,
@@ -79,6 +81,8 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
       children: [
       
         { path: 'AdminAdoption', component: AdminAdoptionComponent },
+        {
+          path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
         { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
       ]
   }
