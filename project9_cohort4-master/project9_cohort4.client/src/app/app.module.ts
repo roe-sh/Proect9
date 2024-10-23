@@ -96,13 +96,7 @@ import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-
       ]
   },
       
-      {
-        path: 'dashboard', component: DashboardComponent, children: [
-
-          { path: 'AdminAdoption', component: AdminAdoptionComponent },
-          { path: '', redirectTo: 'user', pathMatch: 'full' },// Redirect to 'stats' as default child
-        ]
-      }
+      
 
     ])
   ],
