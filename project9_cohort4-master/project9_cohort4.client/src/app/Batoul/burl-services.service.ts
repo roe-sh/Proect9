@@ -6,29 +6,34 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BUrlServicesService {
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.checkLoggedIn());
 
   constructor(private http: HttpClient) { }
 
   
-  userId: BehaviorSubject<any> = new BehaviorSubject<any>('')
+  isLoggedInObs = this.isLoggedInSubject.asObservable();
+
+  userId: BehaviorSubject<any> = new BehaviorSubject<any>('');
   userIdObs = this.userId.asObservable();
 
-  isAdmin: BehaviorSubject<any> = new BehaviorSubject<any>("false")
+  isAdmin: BehaviorSubject<any> = new BehaviorSubject<any>("false");
   isAdminObs = this.isAdmin.asObservable();
 
+  
+  private checkLoggedIn(): boolean {
+    return !!localStorage.getItem('authToken');
+  }
 
-
-  BaseUrl = "https://localhost:7001/api/"
+  BaseUrl = "https://localhost:7001/api/";
 
 
   //////////////////////////// login , register , check admin , logout
   register(data: any): Observable<any> {
-    return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/register`, data)
+    return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/register`, data);
   }
 
-
   login(data: any): Observable<any> {
-    return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/login`, data)
+    return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/login`, data);
   }
 
   checkAdmin(userId: any): Observable<any> {

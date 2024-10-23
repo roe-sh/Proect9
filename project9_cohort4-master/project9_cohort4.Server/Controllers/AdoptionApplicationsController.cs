@@ -69,8 +69,7 @@ namespace project9_cohort4.Server.Controllers
         {
             var newApplication = new AdoptionApplication
             {
-                UserId = adoptionApplicationDto.UserId,
-                AnimalId = adoptionApplicationDto.AnimalId,
+               
                 UserMedicalStatus = adoptionApplicationDto.UserMedicalStatus,
                 UserFlatType = adoptionApplicationDto.UserFlatType,
                 UserFinaincalStatus = adoptionApplicationDto.UserFinancialStatus,
