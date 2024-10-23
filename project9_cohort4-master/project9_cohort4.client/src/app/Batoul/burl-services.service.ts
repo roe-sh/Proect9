@@ -9,59 +9,74 @@ import { tap } from 'rxjs/operators';
 export class BUrlServicesService {
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.checkLoggedIn());
 
-  constructor(private http: HttpClient) { }
+  userId: BehaviorSubject<any> = new BehaviorSubject<any>('');
+  isAdmin: BehaviorSubject<any> = new BehaviorSubject<any>('false');
 
   isLoggedInObs = this.isLoggedInSubject.asObservable();
-
-  userId: BehaviorSubject<any> = new BehaviorSubject<any>('');
   userIdObs = this.userId.asObservable();
-
-  isAdmin: BehaviorSubject<any> = new BehaviorSubject<any>("false");
   isAdminObs = this.isAdmin.asObservable();
 
+  private BaseUrl = 'https://localhost:7001/api/';
+
+  constructor(private http: HttpClient) { }
+
+  // Check if the user is logged in
   private checkLoggedIn(): boolean {
     return !!localStorage.getItem('authToken');
   }
 
-  BaseUrl = "https://localhost:7001/api/";
+  // Public method to check login status
+  public isLoggedIn(): boolean {
+    return this.isLoggedInSubject.value; // Get the current login status
+  }
 
+  // Register a new user
   register(data: any): Observable<any> {
     return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/register`, data);
   }
 
+  // Log in a user
   login(data: any): Observable<any> {
-    return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/login`, data).pipe(tap(response => {
-      if (response && response.token) {
-        localStorage.setItem('authToken', response.token);
-        this.isLoggedInSubject.next(true);
-        this.userId.next(response.userId);
-      }
-    }));
+    return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/login`, data).pipe(
+      tap(response => {
+        if (response && response.token) {
+          localStorage.setItem('authToken', response.token);
+          this.isLoggedInSubject.next(true);
+          this.userId.next(response.userId);
+        }
+      })
+    );
   }
 
+  // Check if a user is an admin
   checkAdmin(userId: any): Observable<any> {
     return this.http.get<any>(`${this.BaseUrl}LoginAndRegister/isAdmin/${userId}`);
   }
 
-  logout() {
-    this.userId.next("");
-    this.isAdmin.next("false");
+  // Log out the user
+  logout(): void {
+    this.userId.next('');
+    this.isAdmin.next('false');
     this.isLoggedInSubject.next(false);
     localStorage.clear();
   }
 
+  // Get all users
   getAllUsers(): Observable<any> {
     return this.http.get<any>(`${this.BaseUrl}Profile/getAllUsers`);
   }
 
+  // Get user information by ID
   getUserInfo(userId: number): Observable<any> {
     return this.http.get<any>(`${this.BaseUrl}Profile/getUserById/${userId}`);
   }
 
+  // Edit user information by ID
   editUserInfo(userId: number, data: any): Observable<any> {
     return this.http.put<any>(`${this.BaseUrl}Profile/editProfileInfo/${userId}`, data);
   }
 
+  // Edit user password by ID
   editPassword(userId: number, data: any): Observable<any> {
     return this.http.post<any>(`${this.BaseUrl}Profile/editPassword/${userId}`, data);
   }
