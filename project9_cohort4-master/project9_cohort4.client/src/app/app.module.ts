@@ -26,6 +26,7 @@ import { UserProfileComponent } from './Batoul/user-profile/user-profile.compone
 import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-reset-password.component';
 import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
 import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
+import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-adoption.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,8 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
     UserResetPasswordComponent,
     UserProfileComponent,
     AllPostsComponent,
+    PostCommentsComponent,
+    AddAdminAdoptionComponent,
     PostCommentsComponent,
   ],
   imports: [
@@ -82,13 +85,18 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
       { path: 'allposts', component: AllPostsComponent },
       { path: 'postcomments/:id', component: PostCommentsComponent },
 
-      {
-        path: 'dashboard', component: DashboardComponent, children: [
-
-          { path: 'AdminAdoption', component: AdminAdoptionComponent },
-          { path: '', redirectTo: 'user', pathMatch: 'full' },// Redirect to 'stats' as default child
-        ]
-      }
+      { path: 'dashboard',
+      component: DashboardComponent,
+      children: [
+      
+        { path: 'AdminAdoption', component: AdminAdoptionComponent },
+        {
+          path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
+        { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
+      ]
+  }
+      
+      
 
     ])
   ],
