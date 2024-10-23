@@ -38,22 +38,23 @@
               </p>
               
               <div class="d-flex justify-content-around align-items-center mt-3" style="border:1px solid gray;padding:2%;border-radius:10px">
-                <span  class="like-icon" (click)="toggleLike(post)" [ngClass]="{'text-danger': post.userHasLiked}">
+                <span class="like-icon" (click)="toggleLike(post)" [ngClass]="{'text-danger': post.userHasLiked}">
                   <i class="ph ph-heart"></i>
                   <span class="">21</span>
                 </span>
-               
+
                 <span>
                   <a routerLink="/postcomments/{{post.postId}}">
-                    
+
                     <i class="ph ph-chat"></i>
                   </a>
                   <span class="">31</span>
                 </span>
-                
-                <span >
-                  <i class="ph ph-share"></i>
+
+                <span (click)="shareOnX(post)">
+                  <i  class="ph ph-share"></i>
                 </span>
+               
               </div>
             </div>
           </div>
