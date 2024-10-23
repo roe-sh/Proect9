@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./animals-details.component.css']
 })
 export class AnimalsDetailsComponent implements OnInit {
-
   animal: any;
   relatedAnimals: any[] = [];
 
@@ -50,7 +49,7 @@ export class AnimalsDetailsComponent implements OnInit {
         // User is not logged in, redirect to login page with alert
         Swal.fire({
           title: 'Login Required',
-          text: 'You have to log in first to sign in',
+          text: 'You have to log in first to adopt an animal.',
           icon: 'warning',
           confirmButtonText: 'Okay'
         }).then(() => {

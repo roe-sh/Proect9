@@ -15,7 +15,7 @@ import { UpdateInfoComponent } from './batool/update-info/update-info.component'
 import { AnimalsComponent } from './Adoptioh/animals/animals.component';
 import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
-import { TypeComponent } from './Adoptioh/type/type.component';
+
 import { FooterComponent } from './batool/footer/footer.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
@@ -30,6 +30,7 @@ import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-
 import { PostsAdminComponent } from './Admin/posts-admin/posts-admin.component';
 import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts.component';
 import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
+import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
     AnimalsComponent,
     AnimalsDetailsComponent,
     AnimalFormComponent,
-    TypeComponent,
+
     FooterComponent,
     FooterComponent,
     LoginComponent,
@@ -60,6 +61,7 @@ import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
     PostsAdminComponent,
     NotAcceptpostsComponent,
     ContactUsComponent,
+    SheltersComponent,
   ],
   imports: [
     FormsModule,
@@ -106,6 +108,14 @@ import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
   },
       
       
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'Shelters', component: SheltersComponent, children: [
+
+          { path: 'AdminAdoption', component: AdminAdoptionComponent },
+          { path: '', redirectTo: 'user', pathMatch: 'full' },
+        ]
+      }
 
     ])
   ],
