@@ -47,7 +47,7 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
     AddpostComponent,
     DashboardComponent,
     UserProfileComponent,
-    UserResetPasswordComponent
+    UserResetPasswordComponent,
     UserProfileComponent,
     AllPostsComponent,
     PostCommentsComponent
