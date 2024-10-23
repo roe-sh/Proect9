@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TypeComponent } from './type.component';
+import { SheltersComponent } from './shelters.component';
 
-describe('TypeComponent', () => {
-  let component: TypeComponent;
-  let fixture: ComponentFixture<TypeComponent>;
+describe('SheltersComponent', () => {
+  let component: SheltersComponent;
+  let fixture: ComponentFixture<SheltersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TypeComponent]
+      declarations: [SheltersComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TypeComponent);
+    fixture = TestBed.createComponent(SheltersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

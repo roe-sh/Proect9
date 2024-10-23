@@ -15,7 +15,7 @@ import { UpdateInfoComponent } from './batool/update-info/update-info.component'
 import { AnimalsComponent } from './Adoptioh/animals/animals.component';
 import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
-import { TypeComponent } from './Adoptioh/type/type.component';
+
 import { FooterComponent } from './batool/footer/footer.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
@@ -26,6 +26,7 @@ import { UserProfileComponent } from './Batoul/user-profile/user-profile.compone
 import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-reset-password.component';
 import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
 import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
+import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
     AnimalsComponent,
     AnimalsDetailsComponent,
     AnimalFormComponent,
-    TypeComponent,
+
     FooterComponent,
     FooterComponent,
     LoginComponent,
@@ -51,6 +52,7 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
     UserProfileComponent,
     AllPostsComponent,
     PostCommentsComponent,
+    SheltersComponent,
   ],
   imports: [
     FormsModule,
@@ -81,12 +83,12 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
       { path: 'dashboard', component: DashboardComponent },
       { path: 'allposts', component: AllPostsComponent },
       { path: 'postcomments/:id', component: PostCommentsComponent },
-
+      { path: 'dashboard', component: DashboardComponent },
       {
-        path: 'dashboard', component: DashboardComponent, children: [
+        path: 'Shelters', component: SheltersComponent, children: [
 
           { path: 'AdminAdoption', component: AdminAdoptionComponent },
-          { path: '', redirectTo: 'user', pathMatch: 'full' },// Redirect to 'stats' as default child
+          { path: '', redirectTo: 'user', pathMatch: 'full' },
         ]
       }
 
