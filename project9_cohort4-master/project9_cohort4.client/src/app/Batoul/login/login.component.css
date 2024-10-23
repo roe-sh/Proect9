@@ -240,3 +240,22 @@ button {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+span {
+  color: #ae3c33
+}
+
+
+span:hover {
+  color: #FB7B53;
+  text-decoration-style: dotted 
+}
+
+
+
+
+
+
+
+

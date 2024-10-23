@@ -11,7 +11,7 @@ namespace project9_cohort4.Server.Controllers
         [HttpGet("getImages/{imageName}")]
         public IActionResult getImage(string imageName)
         {
-            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "Upload", imageName);
+            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "images", imageName);
 
             if (System.IO.File.Exists(pathImage))
             {

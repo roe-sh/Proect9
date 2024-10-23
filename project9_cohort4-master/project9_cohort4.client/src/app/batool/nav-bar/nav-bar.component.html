@@ -93,10 +93,10 @@
           <i class="ph ph-magnifying-glass"></i>
         </button>
 
-        <a routerLink="/register" class="btn-secondary text-nowrap" style="color:black">Register</a>
+        <a routerLink="/userprofile" class="btn-primary text-nowrap" *ngIf="userId != ''">Profile</a>
+        <a (click)="logout()" id="NavBarProfile" *ngIf="userId != ''">Logout</a>
 
-
-        <a routerLink="/login" class="btn-primary text-nowrap">Login</a>
+        <a routerLink="/login" class="btn-primary text-nowrap" *ngIf="userId == ''">Login</a>
 
         <button class="menu-toggle-btn text-2xl">
           <i class="ph ph-list"></i>
