@@ -9,12 +9,21 @@ export class UrlService {
 
   constructor(private http: HttpClient) { }
 
-  staticData = "https://localhost:7072/api";
-  
+  staticData = "https://localhost:7001/api";
+
   Addnewpost(id: any, data: any): Observable<any> {
-    return this.http.post<any>(`${this.staticData}/Posts/AddPosts${id}`, data)
+    return this.http.post<any>(`${this.staticData}/Posts/AddPosts/${id}`, data);
   }
 
+  GetAllPosts(): Observable<any> {
 
+    return this.http.get<any>(`${this.staticData}/Posts/GetAllPosts`);
+  }
+  GetPostDetails(postId: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Posts/PostDetailsById/${postId}`);
+  }
+  GetCommentByPostId(postId: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Comments/GetAllComment/${postId}`);
+  }
 
 }

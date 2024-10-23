@@ -23,7 +23,19 @@ namespace project9_cohort4.Server.Controllers
             var comments = _db.Comments
                 .Where(w => w.PostId == postid)
                 .OrderByDescending(g => g.CreateDate)
-                .ToList();
+                .Select(s => new 
+                {
+                    s.CommentId,
+                    s.UserId,
+                    s.Content,
+                    s.CreateDate,
+                    User = new
+                    {
+                        s.User.FullName,
+                        s.User.Image
+                    }
+                }
+                ).ToList();
             return Ok(comments);
         }
         [HttpPost("AddComment/{postid}")]

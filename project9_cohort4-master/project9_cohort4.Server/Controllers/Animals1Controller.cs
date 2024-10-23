@@ -125,7 +125,7 @@ namespace project9_cohort4.Server.Controllers
         [HttpGet("getImages/{imageName}")]
         public IActionResult getImage(string imageName)
         {
-            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "Animal", imageName);
+            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Animal_Images", imageName);
             if (System.IO.File.Exists(pathImage))
             {
                 return PhysicalFile(pathImage, "image/jpeg");

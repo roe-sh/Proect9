@@ -24,6 +24,8 @@ import { RegisterComponent } from './Batoul/register/register.component';
 import { AddpostComponent } from './mustafa/addpost/addpost.component';
 import { UserProfileComponent } from './Batoul/user-profile/user-profile.component';
 import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-reset-password.component';
+import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
+import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,9 @@ import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-re
     DashboardComponent,
     UserProfileComponent,
     UserResetPasswordComponent
+    UserProfileComponent,
+    AllPostsComponent,
+    PostCommentsComponent
   ],
   imports: [
     FormsModule,
@@ -73,6 +78,9 @@ import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-re
       { path: 'animals', component: AnimalsComponent },
 
       
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'allposts', component: AllPostsComponent },
+      { path: 'postcomments/:id', component: PostCommentsComponent },
 
       {
         path: 'dashboard', component: DashboardComponent, children: [

@@ -21,11 +21,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
 
-builder.Services.AddCors( options=> options.AddPolicy("development",builder=>{
+builder.Services.AddCors(options => options.AddPolicy("development", builder => {
     builder.AllowAnyOrigin();
     builder.AllowAnyMethod();
     builder.AllowAnyHeader();
-}) );
+}));
 
 
 // Register TokenGenerator as a singleton or transient service

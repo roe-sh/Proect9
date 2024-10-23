@@ -479,7 +479,7 @@
             <div class="col-md-4 col-xs-6" *ngFor="let animal of displayedAnimals">
               <div class="product-card border n20-1-border radius-16 overflow-hidden hover-primary-border">
                 <div class="product-thumb scale-animation position-relative">
-                  <img class="w-100" [src]="animal.photoUrl" [alt]="animal.name">
+                  <img src="https://localhost:7001/api/Animals1/getImages/{{animal.image1}}" [alt]="animal.name" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px; overflow: hidden;">
                   <div class="product-info p-lg-6 p-4 text-center">
                     <a [routerLink]="['/animal-details', animal.animalId]" class="text-h6 text-n20 font-otomanopee fw-normal hover-text-primary hover-underline mb-2">
                       {{ animal.name }}

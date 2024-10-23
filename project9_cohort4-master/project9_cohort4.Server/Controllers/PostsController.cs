@@ -21,6 +21,7 @@ namespace project9_cohort4.Server.Controllers
         public IActionResult GetAllPosts()
         {
             var posts = _db.Posts
+                .Where( w => w.IsAccept == true)
                 .OrderByDescending(w => w.StoryDate)
                 .Select(s => new
                 {
