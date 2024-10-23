@@ -11,6 +11,8 @@ public partial class Like
 
     public int? PostId { get; set; }
 
+    public bool? Flag { get; set; }
+
     public virtual Post? Post { get; set; }
 
     public virtual User User { get; set; } = null!;

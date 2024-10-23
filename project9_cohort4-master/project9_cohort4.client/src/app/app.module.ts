@@ -27,6 +27,7 @@ import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-re
 import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
 import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
 import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-adoption.component';
+import { EditAnimalComponent } from './Admin/edit-animal/edit-animal.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-
     PostCommentsComponent,
     AddAdminAdoptionComponent,
     PostCommentsComponent,
+    EditAnimalComponent,
   ],
   imports: [
     FormsModule,
