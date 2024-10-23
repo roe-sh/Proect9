@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BUrlServicesService } from '../burl-services.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-reset-password',
@@ -13,7 +14,9 @@ export class UserResetPasswordComponent {
 
   ngOnInit() {
 
-    this.userId = localStorage.getItem("userId")
+    this._ser.userIdObs.subscribe((userId) => {
+      this.userId = userId
+    })
 
   }
 
@@ -25,7 +28,14 @@ export class UserResetPasswordComponent {
     debugger
 
     if (data.ConNewPassword !== data.NewPassword) {
-      alert("password do not mathch");
+      //alert("password do not mathch");
+
+      Swal.fire({
+        icon: "error",
+        title: "Passwords do not match",
+        text: "Please retype your password",
+      });
+
       return
     }
 
