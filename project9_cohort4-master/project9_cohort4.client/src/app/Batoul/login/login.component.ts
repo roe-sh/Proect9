@@ -37,21 +37,24 @@ export class LoginComponent {
         this._ser["isAdmin"].next(checkData)
         localStorage.setItem("isAdmin", checkData)
 
+        this.check = checkData
+        console.log(this.check)
+
+        if (this.check === true || this.check === 'true' || this.check === 1 || this.check === '1') {
+
+          console.log("yes")
+
+          this._route.navigate(["/dashboard/AdminAdoption"])
+
+        }
+        else {
+
+          console.log("no")
+
+          this._route.navigate(['/'])
+
+        }
       })
-
-      this.check = localStorage.getItem("isAdmin")
-
-      if (this.check === true) {
-
-        this._route.navigate(["/dashboard"])
-
-      }
-      else {
-
-        this._route.navigate(['/'])
-
-      }
-
 
     })
 

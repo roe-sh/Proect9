@@ -26,6 +26,10 @@ import { UserProfileComponent } from './Batoul/user-profile/user-profile.compone
 import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-reset-password.component';
 import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
 import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
+import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-adoption.component';
+import { PostsAdminComponent } from './Admin/posts-admin/posts-admin.component';
+import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts.component';
+import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
 import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
 
 @NgModule({
@@ -52,6 +56,11 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
     UserProfileComponent,
     AllPostsComponent,
     PostCommentsComponent,
+    AddAdminAdoptionComponent,
+    PostCommentsComponent,
+    PostsAdminComponent,
+    NotAcceptpostsComponent,
+    ContactUsComponent,
     SheltersComponent,
   ],
   imports: [
@@ -73,6 +82,7 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
       { path: "register", component: RegisterComponent },
       { path: "userprofile", component: UserProfileComponent },
       { path: "userpassword", component: UserResetPasswordComponent },
+      { path: "contactus", component: ContactUsComponent },
 
 
       { path: 'animals', component: AnimalsComponent },
@@ -83,6 +93,21 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
       { path: 'dashboard', component: DashboardComponent },
       { path: 'allposts', component: AllPostsComponent },
       { path: 'postcomments/:id', component: PostCommentsComponent },
+
+      { path: 'dashboard',
+      component: DashboardComponent,
+      children: [
+      
+        { path: 'AdminAdoption', component: AdminAdoptionComponent },
+        { path: 'allpostadmin', component: PostsAdminComponent },
+        { path: 'notacceptpostadmin', component: NotAcceptpostsComponent },
+        {
+          path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
+        { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
+      ]
+  },
+      
+      
       { path: 'dashboard', component: DashboardComponent },
       {
         path: 'Shelters', component: SheltersComponent, children: [

@@ -25,5 +25,17 @@ export class UrlService {
   GetCommentByPostId(postId: any): Observable<any> {
     return this.http.get<any>(`${this.staticData}/Comments/GetAllComment/${postId}`);
   }
+  AddnewComment(postid :any ,data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Comments/AddComment/${postid}`, data);
+  }
+  AddreplayoneComment(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Comments/ReplayOnComment`, data);
+  }
+  GetAllreplaybycommentid(commentid: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Comments/GetAllReplyByCommentId/${commentid}`);
+  }
 
+  addLike(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Comments/addLike`,data);
+  }
 }
