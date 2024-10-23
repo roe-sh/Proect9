@@ -26,7 +26,10 @@
         <tr *ngFor="let animal of allAnimalsArray">
           <!-- Loop through allAnimalsArray -->
           <td>
-            <img src="https://localhost:7001/api/Animals1/getImages/{{ animal.image1 }}" alt="{{ animal.name }}" class="img-fluid"> <!-- Dynamically bind the image URL -->
+            <img [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1"
+                 [alt]="animal.name"
+                 class="img-fluid"
+                 style="width: 70px; height: 70px; object-fit: cover;">
           </td>
           <td>{{ animal.name }}</td>  <!-- Bind the animal's name -->
           <td>{{ animal.species }}</td>  <!-- Bind the animal's species -->
@@ -38,7 +41,7 @@
           <td>
             <button type="button" class="btn btn-outline-primary" (click)="editAnimal(animal.animalId)">Edit</button>  <!-- Bind the edit button to the editAnimal method -->
             &nbsp;
-            <!--<button type="button" class="btn btn-outline-danger" (click)="deleteAnimal(animal.animalId)">Delete</button>-->  <!-- Bind the delete button to the deleteAnimal method -->
+            <button type="button" class="btn btn-outline-danger" (click)="deleteAnimal(animal.animalId)">Delete</button><!--   Bind the delete button to the deleteAnimal method-->
           </td>
         </tr>
       </tbody>
