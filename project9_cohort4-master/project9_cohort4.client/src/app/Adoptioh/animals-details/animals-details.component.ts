@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalService } from '../../Adoptioh/animals.service';
+import { BUrlServicesService } from '../../Batoul/burl-services.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-animals-details',
@@ -14,7 +16,9 @@ export class AnimalsDetailsComponent implements OnInit {
 
   constructor(
     private animalService: AnimalService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: BUrlServicesService,
+    private router: Router // Inject Router to navigate users
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +38,25 @@ export class AnimalsDetailsComponent implements OnInit {
   fetchRelatedAnimals(shelterId: number, species: string): void {
     this.animalService.getRelatedAnimals(shelterId, species).subscribe((data: any[]) => {
       this.relatedAnimals = data;
+    });
+  }
+
+  adoptNow(): void {
+    this.authService.isLoggedInObs.subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        // User is logged in, navigate to the adoption form
+        this.router.navigate(['/animals-form', this.animal.animalId]);
+      } else {
+        // User is not logged in, redirect to login page with alert
+        Swal.fire({
+          title: 'Login Required',
+          text: 'You have to log in first to sign in',
+          icon: 'warning',
+          confirmButtonText: 'Okay'
+        }).then(() => {
+          this.router.navigate(['/login']); // Navigate to the login page
+        });
+      }
     });
   }
 }

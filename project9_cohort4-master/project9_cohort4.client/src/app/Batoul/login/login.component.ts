@@ -11,6 +11,7 @@ export class LoginComponent {
 
   ngOnInit() { }
 
+  check: any
 
   constructor(private _ser: BUrlServicesService, private _route: Router) { }
 
@@ -38,14 +39,25 @@ export class LoginComponent {
 
       })
 
+      this.check = localStorage.getItem("isAdmin")
 
+      if (this.check === true) {
 
+        this._route.navigate(["/dashboard"])
 
-      this._route.navigate(['/'])
+      }
+      else {
+
+        this._route.navigate(['/'])
+
+      }
+
 
     })
 
   }
+
+
 
 
 

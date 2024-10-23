@@ -28,21 +28,21 @@
           <p class="text-n10 font-instrument fw-normal">
             {{item.storyContent}}
           </p>
-          
+
         </div>
         <div class="post-quote d-flex gap-xl-7 gap-md-5 gap-3 p-xl-14 p-md-10 p-md-8 p-xs-6 p-4 bg-primary radius-16 mb-lg-10 mb-md-8 mb-6">
           <div class="post-quote-icon">
             <img src="assets/images/post-quote-icon.png" alt="quote icon">
           </div>
-          <span class="text-n0 text-2xl fw-semibold">
+          <span class="text-n0 text-xl fw-semibold">
             “When you listen to yourself, everything come naturally. It come from in, like a kind of
             will to do something”
           </span>
         </div>
-        
+
         <div class="service-details-content d-flex align-items-center justify-content-between gap-lg-6 gap-4 flex-wrap mb-lg-10 mb-md-8 mb-6">
           <div class="d-flex align-items-center gap-lg-4 gap-2">
-            
+
             <div class="position-relative d-inline-block" data-lenis-prevent>
               <div class="share-options" id="shareOptions">
                 <a href="#" class="share-option" data-platform="facebook">
@@ -79,7 +79,23 @@
             </div>
           </div>
         </div>
+        <!-- comment form -->
+        <div class="comment-form">
+          <div class="mb-lg-4 mb-2">
+            <h3 class="text-n20 font-otomanopee fw-normal mb-lg-5 mb-3">Leave a comment</h3>
+          </div>
+          <form #formData="ngForm" class="d-grid gap-lg-6 gap-4" (ngSubmit)="Addcomment(formData.value)" >
 
+            <div class="mb-lg-2 mb-1">
+              <textarea name="content"
+                        class="px-xl-6 px-lg-4 px-3 py-lg-3 py-2 w-100 border n20-1-border radius-8 focus-primary w-100"
+                        rows="6" placeholder="comment here" ngModel ></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn-primary mb-5">Add Comment</button>
+            </div>
+          </form>
+        </div>
         <!-- comment area -->
         <div class="comment-area mb-lg-10 mb-md-8 mb-6">
           <h3 class="text-n20 font-otomanopee fw-normal mb-lg-6 mb-4"> Comments</h3>
@@ -97,105 +113,47 @@
                     </span>
                   </div>
                 </div>
-                <button class="comment-replay-btn btn-primary py-1 px-2 radius-4 font-instrument fw-normal">
-                  <span><i class="ph-fill ph-share-fat"></i></span> Reply
-                </button>
+                <div class="d-flex flex-column">
+                  <button (click)="toggleForm(item)" class="comment-replay-btn btn-primary py-1 px-2 radius-4 font-instrument fw-normal mb-3">
+                    <span><i class="ph-fill ph-share-fat"></i></span> Reply
+                  </button>
+                  <button (click)="getreplaybycommentid(item.commentId)" (click)="replaysForm(item)" class="comment-replay-btn btn-primary py-1 px-2 radius-4 font-instrument fw-normal">
+                    <span><i class="ph-fill ph-share-fat"></i></span> All replays
+                  </button>
+                </div>
               </div>
               <span class="text-n10 font-instrument fw-normal">
                 {{item.content}}
               </span>
-              <div class="comment-replay-form">
-                <form action="#"
-                      class="d-flex align-items-center gap-lg-4 gap-2 border n20-border radius-4 overflow-hidden p-3">
-
-                  <textarea class="comment-textarea w-100 font-instrument border-0"
-                            placeholder="Write a comment..."></textarea>
-
-                  <button class="comment-replay-submit btn-primary py-1 px-2 radius-4 font-instrument fw-normal"
-                          type="submit">
-                    <i class="ph-fill ph-paper-plane-right"></i>
-                  </button>
-                </form>
-              </div>
-            </div>
-            <div class="single-comment d-grid gap-lg-4 gap-2">
-              <div class="d-flex align-items-center justify-content-between gap-lg-4 gap-2 flex-wrap">
-                <div class="d-flex align-items-center gap-lg-4 gap-2">
-                  <div class="commenter icon-100px">
-                    <img class="w-100" src="assets/images/author-1.png" alt="author">
+              <div class="replies" *ngIf="item.showreply">
+                <div class="single-reply mb-2" *ngFor="let reply of replays" style="border:1px solid gray;border-radius:10px">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="commenter icon-100px">
+                      <img class="w-50 ms-10" src="assets/images/author-1.png" alt="author">
+                    </div>
+                    <span class="text-n20 font-instrument fw-bold">{{reply.fullName}}</span>
+                    <span class="text-n10 font-instrument fw-normal">{{reply.createDate | date: 'yyyy/MM/dd hh:mm a'}}</span>
                   </div>
-                  <div class="d-grid gap-1">
-                    <span class="text-n20 font-instrument fw-bold">Admin</span>
-                    <span class="text-n10 font-instrument fw-normal">
-                      
-                    </span>
-                  </div>
+                  <p class="text-start m-10">{{reply.content}}</p>
                 </div>
-                <button class="comment-replay-btn btn-primary py-1 px-2 radius-4 font-instrument fw-normal">
-                  <span><i class="ph-fill ph-share-fat"></i></span> Reply
-                </button>
               </div>
-              <span class="text-n10 font-instrument fw-normal">
-                This article really highlights the importance of Materials Science and
-                Engineering in modern construction. The ability to manipulate and enhance
-                material properties is crucial for creating more durable and sustainable
-                buildings. I'm excited to see how Construct360 leverages these advancements in
-                their projects. Great read!"
-              </span>
-              <div class="comment-replay-form">
-
-                <form action="#"
+              <div class="form" *ngIf="item.showForm">
+                <form action="#" #formdata="ngForm" (ngSubmit)="addreplay(formdata.value ,item.commentId)"
                       class="d-flex align-items-center gap-lg-4 gap-2 border n20-border radius-4 overflow-hidden p-3">
-
-                  <textarea class="comment-textarea w-100 font-instrument border-0"
+                  <textarea class="comment-textarea w-100 font-instrument border-0" name="content" ngModel
                             placeholder="Write a comment..."></textarea>
 
                   <button class="comment-replay-submit btn-primary py-1 px-2 radius-4 font-instrument fw-normal"
                           type="submit">
                     <i class="ph-fill ph-paper-plane-right"></i>
                   </button>
-
                 </form>
               </div>
             </div>
           </div>
         </div>
-        <!-- comment form -->
-        <div class="comment-form">
-          <div class="mb-lg-4 mb-2">
-            <h3 class="text-n20 font-otomanopee fw-normal mb-lg-5 mb-3">Leave a comment</h3>
-            <span class="text-n10 font-instrument fw-normal">
-              Your email address will not be published. Required fields are marked *
-            </span>
-          </div>
-          <form class="d-grid gap-lg-6 gap-4">
-            <div class="d-lg-flex d-grid align-items-center justify-content-lg-between gap-lg-6 gap-4">
-              <div class="w-100">
-                <input type="text" placeholder="Your Name"
-                       class="px-xl-6 px-lg-4 px-3 py-lg-3 py-2 w-100 border n20-1-border radius-8 focus-primary w-100">
-              </div>
-              <div class="w-100">
-                <input type="email" placeholder="Your Email"
-                       class="px-xl-6 px-lg-4 px-3 py-lg-3 py-2 w-100 border n20-1-border radius-8 focus-primary w-100">
-              </div>
-            </div>
-            <div class="mb-lg-2 mb-1">
-              <textarea name="message"
-                        class="px-xl-6 px-lg-4 px-3 py-lg-3 py-2 w-100 border n20-1-border radius-8 focus-primary w-100"
-                        rows="6" placeholder="Message"></textarea>
-            </div>
-            <div>
-              <div class="form-check mb-lg-3 mb-2">
-                <input class="form-check-input n20-border" type="checkbox" value="">
-                <label class="form-check-label">
-                  Save my name, email, and website in this browser for the next time I
-                  comment.
-                </label>
-              </div>
-              <button type="submit" class="btn-primary">Post Comment</button>
-            </div>
-          </form>
-        </div>
+
+
       </div>
       <div class="col-lg-4">
 

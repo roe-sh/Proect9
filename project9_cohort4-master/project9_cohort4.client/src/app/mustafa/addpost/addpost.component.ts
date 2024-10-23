@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../Urlmustafa/url.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addpost',
@@ -10,7 +11,7 @@ export class AddpostComponent {
   userId: any;
   image: any;
 
-  constructor(private _src: UrlService) { }
+  constructor(private _src: UrlService, private _router: Router) { }
 
   ngOnInit() {
     // الحصول على userId من localStorage
@@ -45,6 +46,7 @@ export class AddpostComponent {
       () => {
         alert("Post added successfully");
         console.log("Response:", form);
+        this._router.navigate(['/allposts']);
 
       },
       (error) => {

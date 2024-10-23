@@ -11,13 +11,14 @@ import { NgForm } from '@angular/forms';
 export class AnimalFormComponent implements OnInit {
 
   adoptionDetails = {
-    userId: 1, 
+    userId: 1, // This will depend on the logged-in user
     animalId: null as number | null,
-    medicalStatus: '',
+    userMedicalStatus: '', // Make sure this property exists in your DTO
     housingType: 'Apartment',
-    financialStatus: '',
-    flatType: '',
-    additionalDetails: ''
+    userFinancialStatus: '', // Update according to your DTO
+    userFlatType: '', // Update according to your DTO
+    userLivingStatus: '', // Update according to your DTO
+    userMoreDetails: '' // Update according to your DTO
   };
 
   constructor(private adoptionService: AdoptionService) { }
@@ -32,7 +33,7 @@ export class AnimalFormComponent implements OnInit {
         response => {
           console.log('Adoption request submitted successfully:', response);
           Swal.fire({
-            title: 'Success!',
+            title: 'Thank U For Choosing Me:3',
             text: 'Your adoption request has been submitted successfully!',
             icon: 'success',
             confirmButtonText: 'Okay'

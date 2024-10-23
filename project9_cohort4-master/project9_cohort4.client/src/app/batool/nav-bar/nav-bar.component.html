@@ -32,9 +32,6 @@
             <a href="about-us.html" class="slide-vertical" data-splitting>About</a>
           </li>
           <li class="menu-link">
-            <a routerLink="/addpost" class="slide-vertical" data-splitting>addpost</a>
-          </li>
-          <li class="menu-link">
             <a routerLink="/allposts" class="slide-vertical" data-splitting>Our Community</a>
           </li>
           <li class="menu-item">
@@ -82,8 +79,6 @@
           <li class="menu-link">
             <a routerLink="/animals" class="slide-horizontal">Adoption </a>
           </li>
-
-
           <li class="menu-link">
             <a href="contact-us.html" class="slide-vertical" data-splitting>Contact</a>
           </li>
@@ -96,10 +91,10 @@
           <i class="ph ph-magnifying-glass"></i>
         </button>
 
-        <a routerLink="/register" class="btn-secondary text-nowrap" style="color:black">Register</a>
+        <a routerLink="/userprofile" class="btn-primary text-nowrap" *ngIf="userId != ''">Profile</a>
+        <a (click)="logout()" id="NavBarProfile" *ngIf="userId != ''">Logout</a>
 
-
-        <a routerLink="/login" class="btn-primary text-nowrap">Login</a>
+        <a routerLink="/login" class="btn-primary text-nowrap" *ngIf="userId == ''">Login</a>
 
         <button class="menu-toggle-btn text-2xl">
           <i class="ph ph-list"></i>
