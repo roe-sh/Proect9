@@ -48,25 +48,29 @@ export class PostCommentsComponent {
 
   Addcomment(formData: any) {
     debugger;
-    const form = new FormData();
-    
-    for (let key in formData) {
-      form.append(key, formData[key]);
-    }
-    form.append("userId", this.userId);
-    
-    this._ser.AddnewComment(this.parameter, form).subscribe(
-      () => {
-        alert("comment added successfully");
-        console.log("Response:", form);
-        this.getcommentsByPostId(this.parameter);
+    if (this.userId != undefined || this.userId != null) {
+      const form = new FormData();
 
-      },
-      (error) => {
-        alert("Failed to add comment");
-        console.error("Error:", error);
+      for (let key in formData) {
+        form.append(key, formData[key]);
       }
-    );
+      form.append("userId", this.userId);
+
+      this._ser.AddnewComment(this.parameter, form).subscribe(
+        () => {
+          alert("comment added successfully");
+          console.log("Response:", form);
+          this.getcommentsByPostId(this.parameter);
+
+        },
+        (error) => {
+          alert("Failed to add comment");
+          console.error("Error:", error);
+        }
+      );
+    } else {
+      alert("you have to logged in to add comment")
+    }
   }
 
   getreplaybycommentid(id: any) {
