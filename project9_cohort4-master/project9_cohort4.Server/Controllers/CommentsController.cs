@@ -23,7 +23,7 @@ namespace project9_cohort4.Server.Controllers
             var comments = _db.Comments
                 .Where(w => w.PostId == postid)
                 .OrderByDescending(g => g.CreateDate)
-                .Select(s => new 
+                .Select(s => new
                 {
                     s.CommentId,
                     s.UserId,
@@ -70,7 +70,7 @@ namespace project9_cohort4.Server.Controllers
             }
             var allreplay = _db.Replies
                 .Where(x => x.CommentId == commentId)
-                .Select(x => new 
+                .Select(x => new
                 {
                     x.User.FullName,
                     x.User.Image,
@@ -80,7 +80,7 @@ namespace project9_cohort4.Server.Controllers
                 ).ToList();
 
             if (allreplay == null)
-            { 
+            {
                 return NotFound("there is no replay");
             }
 
@@ -107,44 +107,45 @@ namespace project9_cohort4.Server.Controllers
             _db.SaveChanges();
             return Ok(replay);
         }
-        [HttpGet("CountOfLikesAndComments/{postid}")]
-        public IActionResult CountOfLikesAndComments(int postid)
+        // POST: api/likes
+        [HttpPost("addLike")]
+        public IActionResult LikePost([FromBody] LikeDto likeDto)
         {
-            if (postid <= 0)
-            {
-                return BadRequest("The ID cannot be zero or negative.");
-            }
-            var likesCount = _db.Likes.Count(x => x.PostId == postid);
-            var commentsCount = _db.Comments.Count(x => x.PostId == postid);
-            var commentandlikesCount = new
-            {
-                oplikesCounts = likesCount,
-                opcommentsCounts = commentsCount
-            };
-            return Ok(commentandlikesCount);
-        }
+            // Check if the like already exists
+            var existingLike = _db.Likes
+                .FirstOrDefault(l => l.PostId == likeDto.PostId && l.UserId == likeDto.UserId);
 
-        [HttpPost("likePost")]
-        public async Task<IActionResult> LikePost(int postId, int userId)
-        {
-            var existingLike = await _db.Likes.FirstOrDefaultAsync(l => l.PostId == postId && l.UserId == userId);
             if (existingLike != null)
             {
-                _db.Likes.Remove(existingLike);
-                await _db.SaveChangesAsync();
-                return Ok(new { message = "Like removed" });
+                // Toggle the like flag (like/unlike)
+                existingLike.Flag = !existingLike.Flag;
+                _db.SaveChanges();
+                return Ok(existingLike);
             }
-
-            var like = new Like
+            else
             {
-                PostId = postId,
-                UserId = userId
-            };
+                // Add a new like
+                var like = new Like
+                {
+                    PostId = likeDto.PostId,
+                    UserId = likeDto.UserId,
+                    Flag = true
+                };
+                _db.Likes.Add(like);
+                _db.SaveChanges();
+                return Ok(like);
+            }
+        }
 
-            _db.Likes.Add(like);
-            await _db.SaveChangesAsync();
+        // GET: api/likes/{postId}
+        [HttpGet("countLikes/{postId}")]
+        public IActionResult GetLikesForPost(int postId)
+        {
+            var likeCount = _db.Likes
+                .Where(l => l.PostId == postId && l.Flag == true)
+                .Count();
 
-            return Ok(new { message = "Post liked" });
+            return Ok(likeCount);
         }
     }
 }
