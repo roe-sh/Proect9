@@ -32,6 +32,7 @@ import { PostsAdminComponent } from './Admin/posts-admin/posts-admin.component';
 import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts.component';
 import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
 import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
+import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
     NotAcceptpostsComponent,
     ContactUsComponent,
     SheltersComponent,
+    SheltersadminComponent,
   ],
   imports: [
     FormsModule,
