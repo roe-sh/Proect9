@@ -38,7 +38,7 @@
               </p>
               
               <div class="d-flex justify-content-around align-items-center mt-3" style="border:1px solid gray;padding:2%;border-radius:10px">
-                <span class="like-icon" (click)="addLike(post.postId)" [ngClass]="{'text-danger': post.userHasLiked}">
+                <span class="like-icon" (click)="addLike(post.postId)" [ngClass]="{'bg-danger text-white': post.userHasLiked}">
                   <i class="ph ph-heart"></i>
                   <span class="">{{post.likesCount}}</span>
                 </span>
@@ -48,12 +48,13 @@
 
                     <i class="ph ph-chat"></i>
                   </a>
-                  <span class="">31</span>
+                  <span class="">{{post.commentcount}}</span>
                 </span>
 
                 <span (click)="shareOnX(post)">
                   <i  class="ph ph-share"></i>
                 </span>
+
               </div>
             </div>
           </div>

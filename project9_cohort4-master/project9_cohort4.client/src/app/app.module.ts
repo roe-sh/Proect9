@@ -29,6 +29,7 @@ import { PostCommentsComponent } from './mustafa/post-comments/post-comments.com
 import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-adoption.component';
 import { PostsAdminComponent } from './Admin/posts-admin/posts-admin.component';
 import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts.component';
+import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts
     PostCommentsComponent,
     PostsAdminComponent,
     NotAcceptpostsComponent,
+    PostadminComponent,
   ],
   imports: [
     FormsModule,

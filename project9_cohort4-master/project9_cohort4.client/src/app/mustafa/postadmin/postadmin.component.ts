@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { UrlService } from '../../Urlmustafa/url.service';
 
 @Component({
-  selector: 'app-not-acceptposts',
-  templateUrl: './not-acceptposts.component.html',
-  styleUrl: './not-acceptposts.component.css'
+  selector: 'app-postadmin',
+  templateUrl: './postadmin.component.html',
+  styleUrl: './postadmin.component.css'
 })
-export class NotAcceptpostsComponent {
-
+export class PostadminComponent {
   ngOnInit() {
     this.GetAllTestimonial();
   }
@@ -39,7 +38,5 @@ export class NotAcceptpostsComponent {
       this.GetAllTestimonial();
     })
   }
-
-
 
 }
