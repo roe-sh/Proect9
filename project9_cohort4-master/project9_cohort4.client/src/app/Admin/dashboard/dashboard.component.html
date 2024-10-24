@@ -7,10 +7,17 @@
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
+          <br>
+
+          <li>
+            <a routerLink="/dashboard/allusers" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Site Users</span>
+            </a>
+          </li>
 
           <li>
             <a routerLink="/dashboard/AdminAdoption" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Animal Adoption</span>
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Admin Adoption</span>
             </a>
           </li>
           <li>
@@ -18,6 +25,18 @@
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Add Admin Adoption</span>
             </a>
           </li>
+
+          <li>
+            <a routerLink="/dashboard/AdminAdoption" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Admin Adoption</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/dashboard/sheltersadmin" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Nshelters</span>
+            </a>
+          </li>
+
           <li>
             <a routerLink="/dashboard/allpostadmin" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Posts</span>
@@ -30,21 +49,27 @@
           </li>
 
           <li>
-            <a routerLink="/dash/ContactAdmin" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Contact</span>
+            <a routerLink="/dashboard/allcontacts" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Contacts</span>
             </a>
           </li>
 
-          <li>
-            <a routerLink="/dash/TestimonialAdmin" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Testimonial</span>
+
+
+
+
+
+          <!-- example on drop down -->
+          <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle px-0 align-middle" href="#" id="dropdownA" role="button" (click)="toggleDropdown($event)" aria-expanded="false">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">A</span>
             </a>
-          </li>
-
-        
-
-         
-
+            <ul class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }" aria-labelledby="dropdownA">
+              <li><a class="dropdown-item" routerLink="/dashboard/item1">1</a></li>
+              <li><a class="dropdown-item" routerLink="/dashboard/item2">2</a></li>
+              <li><a class="dropdown-item" routerLink="/dashboard/item3">3</a></li>
+            </ul>
+          </li>-->
 
         </ul>
         <hr>

@@ -9,6 +9,19 @@
         <!-- Start of Form -->
         <form #adoptionForm="ngForm" (ngSubmit)="submitAdoptionForm(adoptionForm)">
 
+          <!-- Name Field -->
+          <div class="form-group mb-4">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="adoptionDetails.userName" name="userName" required>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group mb-4">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="adoptionDetails.userEmail" name="userEmail" required>
+          </div>
+
+
           <!-- Medical Status -->
           <div class="form-group mb-4">
             <label for="medicalStatus">Medical Status</label>
@@ -49,13 +62,11 @@
             <textarea class="form-control" id="additionalDetails" [(ngModel)]="adoptionDetails.userMoreDetails" name="userMoreDetails"></textarea>
           </div>
 
-          <!-- Submit Button -->
           <div class="text-center">
-            <button type="submit" class="btn-primary" [disabled]="adoptionForm.invalid">Submit Adoption Request</button>
+            <button type="submit" class="btn btn-primary" [disabled]="adoptionForm.invalid">Submit Adoption Request</button>
           </div>
 
         </form> <!-- End of Form -->
-
       </div> <!-- End of col-lg-8 -->
     </div> <!-- End of row -->
   </div> <!-- End of container -->

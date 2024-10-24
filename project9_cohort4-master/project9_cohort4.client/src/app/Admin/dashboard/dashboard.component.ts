@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  isDropdownOpen = false;
+
+  toggleDropdown(event: MouseEvent): void {
+    event.preventDefault();
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
 }

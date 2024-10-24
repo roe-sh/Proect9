@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdoptionService {
-  private baseUrl = 'https://localhost:7001/api/AdoptionApplications'; 
+  private baseUrl = 'https://localhost:7001/api/AdoptionApplications';
+  private animalUrl = 'https://localhost:7001/api/Animals'; // Base URL for animals API
 
   constructor(private http: HttpClient) { }
 
@@ -16,5 +17,11 @@ export class AdoptionService {
 
   sendAdoptionEmail(userEmail: string): Observable<any> {
     return this.http.post(`${this.baseUrl}/send-email`, { userEmail });
+  }
+
+  // New method to fetch related animals
+  getRelatedAnimals(shelterId: number, species: string): Observable<any[]> {
+    const params = { shelterId: shelterId.toString(), species };
+    return this.http.get<any[]>(`${this.animalUrl}/related`, { params });
   }
 }

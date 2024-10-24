@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { AuthGuard } from './Adoptioh/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './batool/home/home.component';
@@ -15,7 +15,7 @@ import { UpdateInfoComponent } from './batool/update-info/update-info.component'
 import { AnimalsComponent } from './Adoptioh/animals/animals.component';
 import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
-import { TypeComponent } from './Adoptioh/type/type.component';
+
 import { FooterComponent } from './batool/footer/footer.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
@@ -27,8 +27,16 @@ import { UserResetPasswordComponent } from './Batoul/user-reset-password/user-re
 import { AllPostsComponent } from './mustafa/all-posts/all-posts.component';
 import { PostCommentsComponent } from './mustafa/post-comments/post-comments.component';
 import { AddAdminAdoptionComponent } from './Admin/add-admin-adoption/add-admin-adoption.component';
+import { EditAnimalComponent } from './Admin/edit-animal/edit-animal.component';
 import { PostsAdminComponent } from './Admin/posts-admin/posts-admin.component';
 import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts.component';
+import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
+import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
+import { AllUsersComponent } from './Admin/all-users/all-users.component';
+import { UserDetailsComponent } from './Admin/user-details/user-details.component';
+import { AdminAllContactsComponent } from './Admin/admin-all-contacts/admin-all-contacts.component';
+import { AdminContactDetailsComponent } from './Admin/admin-contact-details/admin-contact-details.component';
+import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.component';
 import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
 
 @NgModule({
@@ -43,7 +51,7 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
     AnimalsComponent,
     AnimalsDetailsComponent,
     AnimalFormComponent,
-    TypeComponent,
+
     FooterComponent,
     FooterComponent,
     LoginComponent,
@@ -56,9 +64,18 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
     AllPostsComponent,
     PostCommentsComponent,
     AddAdminAdoptionComponent,
+    AdminAdoptionComponent,
     PostCommentsComponent,
+    EditAnimalComponent,
     PostsAdminComponent,
     NotAcceptpostsComponent,
+    ContactUsComponent,
+    SheltersComponent,
+    AllUsersComponent,
+    UserDetailsComponent,
+    AdminAllContactsComponent,
+    AdminContactDetailsComponent,
+    SheltersadminComponent,
     PostadminComponent,
   ],
   imports: [
@@ -80,6 +97,7 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
       { path: "register", component: RegisterComponent },
       { path: "userprofile", component: UserProfileComponent },
       { path: "userpassword", component: UserResetPasswordComponent },
+      { path: "contactus", component: ContactUsComponent },
 
 
       { path: 'animals', component: AnimalsComponent },
@@ -87,7 +105,6 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
       { path: 'animals', component: AnimalsComponent },
 
       
-      { path: 'dashboard', component: DashboardComponent },
       { path: 'allposts', component: AllPostsComponent },
       { path: 'postcomments/:id', component: PostCommentsComponent },
 
@@ -95,16 +112,32 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
       component: DashboardComponent,
       children: [
       
-        { path: 'AdminAdoption', component: AdminAdoptionComponent },
         { path: 'allpostadmin', component: PostsAdminComponent },
         { path: 'notacceptpostadmin', component: NotAcceptpostsComponent },
-        {
-          path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
-        { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
+        { path: 'animals/:id', component: AnimalsDetailsComponent },
+        { path: 'animals-form', component: AnimalFormComponent, canActivate: [AuthGuard] },
+
+
+        {path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
+        {path: 'AdminAdoption', component: AdminAdoptionComponent },
+        { path: '', redirectTo: 'user', pathMatch: 'full' },// Redirect to 'stats' as default child
+
+
+        { path: "allusers", component: AllUsersComponent },
+        { path: "userdetails/:id", component: UserDetailsComponent },
+        { path: "allcontacts", component: AdminAllContactsComponent },
+        { path: "contactdetails/:id", component: AdminContactDetailsComponent },
+
       ]
   },
       
       
+      {
+        path: 'Shelters', component: SheltersComponent, children: [
+
+          { path: '', redirectTo: 'user', pathMatch: 'full' },
+        ]
+      }
 
     ])
   ],
