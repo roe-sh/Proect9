@@ -36,6 +36,7 @@ import { AllUsersComponent } from './Admin/all-users/all-users.component';
 import { UserDetailsComponent } from './Admin/user-details/user-details.component';
 import { AdminAllContactsComponent } from './Admin/admin-all-contacts/admin-all-contacts.component';
 import { AdminContactDetailsComponent } from './Admin/admin-contact-details/admin-contact-details.component';
+import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { AdminContactDetailsComponent } from './Admin/admin-contact-details/admi
     UserDetailsComponent,
     AdminAllContactsComponent,
     AdminContactDetailsComponent,
+    SheltersadminComponent,
   ],
   imports: [
     FormsModule,
