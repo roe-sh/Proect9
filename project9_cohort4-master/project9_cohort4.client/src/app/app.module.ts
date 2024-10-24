@@ -59,6 +59,7 @@ import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.comp
     AllPostsComponent,
     PostCommentsComponent,
     AddAdminAdoptionComponent,
+    AdminAdoptionComponent,
     PostCommentsComponent,
     EditAnimalComponent,
     PostsAdminComponent,
@@ -94,7 +95,6 @@ import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.comp
       { path: 'animals', component: AnimalsComponent },
 
       
-      { path: 'dashboard', component: DashboardComponent },
       { path: 'allposts', component: AllPostsComponent },
       { path: 'postcomments/:id', component: PostCommentsComponent },
 
@@ -102,25 +102,22 @@ import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.comp
       component: DashboardComponent,
       children: [
       
-        { path: 'AdminAdoption', component: AdminAdoptionComponent },
         { path: 'allpostadmin', component: PostsAdminComponent },
         { path: 'notacceptpostadmin', component: NotAcceptpostsComponent },
         { path: 'animals/:id', component: AnimalsDetailsComponent },
         { path: 'animals-form', component: AnimalFormComponent, canActivate: [AuthGuard] },
 
 
-        {
-          path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
+        {path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
+        {path: 'AdminAdoption', component: AdminAdoptionComponent },
         { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
       ]
   },
       
       
-      { path: 'dashboard', component: DashboardComponent },
       {
         path: 'Shelters', component: SheltersComponent, children: [
 
-          { path: 'AdminAdoption', component: AdminAdoptionComponent },
           { path: '', redirectTo: 'user', pathMatch: 'full' },
         ]
       }
