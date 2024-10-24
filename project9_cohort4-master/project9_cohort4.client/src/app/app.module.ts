@@ -32,6 +32,10 @@ import { PostsAdminComponent } from './Admin/posts-admin/posts-admin.component';
 import { NotAcceptpostsComponent } from './Admin/not-acceptposts/not-acceptposts.component';
 import { ContactUsComponent } from './Batoul/contact-us/contact-us.component';
 import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
+import { AllUsersComponent } from './Admin/all-users/all-users.component';
+import { UserDetailsComponent } from './Admin/user-details/user-details.component';
+import { AdminAllContactsComponent } from './Admin/admin-all-contacts/admin-all-contacts.component';
+import { AdminContactDetailsComponent } from './Admin/admin-contact-details/admin-contact-details.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +69,10 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
     NotAcceptpostsComponent,
     ContactUsComponent,
     SheltersComponent,
+    AllUsersComponent,
+    UserDetailsComponent,
+    AdminAllContactsComponent,
+    AdminContactDetailsComponent,
   ],
   imports: [
     FormsModule,
@@ -108,7 +116,14 @@ import { SheltersComponent } from './Adoptioh/shelters/shelters.component';
 
         {path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
         {path: 'AdminAdoption', component: AdminAdoptionComponent },
-        { path: '', redirectTo: 'user', pathMatch: 'full' } ,// Redirect to 'stats' as default child
+        { path: '', redirectTo: 'user', pathMatch: 'full' },// Redirect to 'stats' as default child
+
+
+        { path: "allusers", component: AllUsersComponent },
+        { path: "userdetails/:id", component: UserDetailsComponent },
+        { path: "allcontacts", component: AdminAllContactsComponent },
+        { path: "contactdetails/:id", component: AdminContactDetailsComponent },
+
       ]
   },
       
