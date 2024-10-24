@@ -1,5 +1,3 @@
-
-
 <!-- main start -->
 <main>
 
@@ -29,12 +27,10 @@
   <!-- shop details section start -->
   <section class="shop-details-section pt-120">
     <div class="container">
-      <!-- product info start -->
       <div class="row g-6 justify-content-between mb-lg-15 mb-md-10 mb-8">
         <div class="col-lg-6">
           <div class="swiper product-swiper mb-6">
             <div class="swiper-wrapper">
-
               <div class="swiper-slide" *ngIf="animal.image1">
                 <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
                   <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
@@ -57,16 +53,16 @@
               <div class="swiper-slide radius-8" *ngIf="animal.image1">
                 <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
               </div>
-              <div class="swiper-slide radius-8">
+              <div class="swiper-slide radius-8" *ngIf="animal.image2">
                 <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
               </div>
-
               <div class="swiper-slide radius-8" *ngIf="animal.image3">
                 <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
               </div>
             </div>
           </div>
         </div>
+
         <div class="col-lg-5">
           <div class="d-grid gap-lg-6 gap-4">
             <div>
@@ -80,11 +76,10 @@
             <p class="text-n10 fw-normal">
               {{ animal.description }}
             </p>
-
           </div>
 
           <div class="d-flex justify-content-center align-items-center gap-lg-3 gap-2 flex-wrap flex-xs-nowrap mt-lg-8 mt-6 mb-lg-10 mb-8">
-            <button class="btn-primary" [routerLink]="['/animals-form', animal.animalId]">Adopt Now</button>
+            <button class="btn-primary"(click)="rahaf(animal.animalId)">Adopt Now</button>
             <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
               <i class="ph-fill ph-heart"></i>
             </button>
@@ -108,199 +103,41 @@
               <span class="text-base fw-normal font-instrument text-n10">{{ animal.id }}</span>
             </li>
           </ul>
-
-
         </div>
       </div>
-      <!-- product info end -->
-
-
     </div>
+
+    <section class="related-animals-section pt-120">
+      <div class="container">
+        <h2 class="text-h1">Random Animals</h2>
+        <div class="row g-6">
+          <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let randomAnimal of randomAnimals">
+            <div class="product-card border radius-16 overflow-hidden hover-primary-border">
+              <div class="product-thumb scale-animation position-relative">
+                <img class="w-100" [src]="'https://localhost:7001/api/Animals1/getImages/' + randomAnimal.image1" alt="{{ randomAnimal.name }}">
+                <div class="product-btns d-grid gap-1 position-absolute top-0 right-0">
+                  <button class="wishlist-btn">
+                    <i class="ph-fill ph-heart"></i>
+                  </button>
+                  <button class="cart-btn">
+                    <i class="ph-fill ph-shopping-cart"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-info p-4 text-center">
+                <a [routerLink]="['/animals-details', randomAnimal.animalId]" class="text-h6 fw-normal hover-text-primary">
+                  {{ randomAnimal.name }}
+                </a>
+                <span class="text-primary font-instrument fw-semibold">{{ randomAnimal.species }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </section>
   <!-- shop details section end -->
-  <!--shop section start -->
-  <section class="shop-section pt-120 pb-120">
-    <div class="container">
-      <div class="row g-6 align-items-end justify-content-between mb-lg-15 mb-md-10 mb-8">
-        <div class="col-lg-6">
-          <h2 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal">
-            Related Products
-          </h2>
-        </div>
-        <div class="col-auto">
-          <a href="shop.html" class="btn-primary text-xl">
-            More Products
-          </a>
-        </div>
-      </div>
-      <!-- product list start -->
-      <div class="row g-6 mb-lg-10 mb-md-8 mb-6">
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="product-card border n20-1-border radius-16 overflow-hidden hover-primary-border">
-            <div class="product-thumb scale-animation position-relative">
-              <img class="w-100" src="assets/images/product-1.png" alt="product">
-              <div class="product-btns d-grid gap-1 position-absolute top-0 right-0 mt-lg-6 mt-4 me-lg-6 me-4">
-                <button class="wishlist-btn icon-40px bg-n0 text-primary text-xl hover-text-secondary">
-                  <i class="ph-fill ph-heart"></i>
-                </button>
-                <button class="cart-btn icon-40px bg-n0 text-primary text-xl hover-text-secondary">
-                  <i class="ph-fill ph-shopping-cart"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-info p-lg-6 p-4 text-center">
-              <a href="shop-details.html"
-                 class="text-h6 text-n20 font-otomanopee fw-normal hover-text-primary hover-underline mb-2">
-                Pet
-                Shampoos
-              </a>
-              <ul class="d-flex align-items-center justify-content-center gap-1 mb-lg-4 mb-2">
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star-half"></i></span>
-                </li>
-              </ul>
-              <span class="text-primary font-instrument fw-semibold">$35.00</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="product-card border n20-1-border radius-16 overflow-hidden hover-primary-border">
-            <div class="product-thumb scale-animation position-relative">
-              <img class="w-100" src="assets/images/product-2.png" alt="product">
-              <span class="seal-tag py-1 px-lg-4 px-2 bg-primary text-n0 radius-pill position-absolute top-0 left-0 mt-lg-6 mt-4 ms-lg-6 ms-4">Sale!</span>
-              <div class="product-btns d-grid gap-1 position-absolute top-0 right-0 mt-lg-6 mt-4 me-lg-6 me-4">
-                <button class="wishlist-btn icon-40px bg-n0 text-primary text-xl hover-text-secondary">
-                  <i class="ph-fill ph-heart"></i>
-                </button>
-                <button class="cart-btn icon-40px bg-n0 text-primary text-xl hover-text-secondary">
-                  <i class="ph-fill ph-shopping-cart"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-info p-lg-6 p-4 text-center">
-              <a href="shop-details.html"
-                 class="text-h6 text-n20 font-otomanopee fw-normal hover-text-primary hover-underline mb-2">
-                Pet
-                Brushes
-              </a>
-              <ul class="d-flex align-items-center justify-content-center gap-1 mb-lg-4 mb-2">
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star-half"></i></span>
-                </li>
-              </ul>
-              <span class="text-primary font-instrument fw-semibold">$60.00</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="product-card border n20-1-border radius-16 overflow-hidden hover-primary-border">
-            <div class="product-thumb scale-animation position-relative">
-              <img class="w-100" src="assets/images/product-3.png" alt="product">
-              <span class="seal-tag py-1 px-lg-4 px-2 bg-primary text-n0 radius-pill position-absolute top-0 left-0 mt-lg-6 mt-4 ms-lg-6 ms-4">Sale!</span>
-              <div class="product-btns d-grid gap-1 position-absolute top-0 right-0 mt-lg-6 mt-4 me-lg-6 me-4">
-                <button class="wishlist-btn icon-40px bg-n0 text-primary text-xl hover-text-secondary">
-                  <i class="ph-fill ph-heart"></i>
-                </button>
-                <button class="cart-btn icon-40px bg-n0 text-primary text-xl hover-text-secondary">
-                  <i class="ph-fill ph-shopping-cart"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-info p-lg-6 p-4 text-center">
-              <a href="shop-details.html"
-                 class="text-h6 text-n20 font-otomanopee fw-normal hover-text-primary hover-underline mb-2">
-                Pet
-                Nail Clippers
-              </a>
-              <ul class="d-flex align-items-center justify-content-center gap-1 mb-lg-4 mb-2">
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star-half"></i></span>
-                </li>
-              </ul>
-              <span class="text-primary font-instrument fw-semibold">$45.00</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <div class="product-card border n20-1-border radius-16 overflow-hidden hover-primary-border">
-            <div class="product-thumb scale-animation position-relative">
-              <img class="w-100" src="assets/images/product-4.png" alt="product">
-              <div class="product-btns d-grid gap-1 position-absolute top-0 right-0 mt-lg-6 mt-4 me-lg-6 me-4">
-                <button class="wishlist-btn icon-40px bg-n0 text-primary text-xl hover-text-secondary">
-                  <i class="ph-fill ph-heart"></i>
-                </button>
-                <button class="cart-btn icon-40px bg-n0 text-primary text-xl hover-text-secondary">
-                  <i class="ph-fill ph-shopping-cart"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-info p-lg-6 p-4 text-center">
-              <a href="shop-details.html"
-                 class="text-h6 text-n20 font-otomanopee fw-normal hover-text-primary hover-underline mb-2">
-                Ear
-                Cleaning
-              </a>
-              <ul class="d-flex align-items-center justify-content-center gap-1 mb-lg-4 mb-2">
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star"></i></span>
-                </li>
-                <li>
-                  <span class="text-secondary text-xl"><i class="ph-fill ph-star-half"></i></span>
-                </li>
-              </ul>
-              <span class="text-primary font-instrument fw-semibold">$37.00</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--shop section end -->
 
 </main>
 <!-- main end -->
