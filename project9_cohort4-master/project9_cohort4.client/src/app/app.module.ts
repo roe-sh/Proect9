@@ -101,8 +101,6 @@ import { AboutComponent } from './batool/about/about.component';
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent },
       { path: "animal-details/:id", component: AnimalsDetailsComponent },
       { path: "animals-form/:animalId", component: AnimalFormComponent },
-      { path: 'animals', component: AnimalsComponent },
-      { path: 'animals', component: AnimalsComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "userprofile", component: UserProfileComponent },
@@ -112,6 +110,9 @@ import { AboutComponent } from './batool/about/about.component';
       { path: 'services', component: ServicesComponent },
       { path: 'about', component: AboutComponent },
       { path: 'animals', component: AnimalsComponent },
+      { path: 'services', component: ServicesComponent }, 
+
+     
       { path: 'addpost', component: AddpostComponent },
       { path: 'animals', component: AnimalsComponent },
 

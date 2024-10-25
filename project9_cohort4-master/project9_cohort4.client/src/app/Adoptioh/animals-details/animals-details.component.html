@@ -25,6 +25,7 @@
   </section>
   <!-- inner hero section end -->
   <!-- shop details section start -->
+  <!-- shop details section start -->
   <section class="shop-details-section pt-120">
     <div class="container">
       <div class="row g-6 justify-content-between mb-lg-15 mb-md-10 mb-8">
@@ -49,17 +50,18 @@
             </div>
           </div>
           <div class="swiper swiper-thumb">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide radius-8" *ngIf="animal.image1">
-                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+            <div class="image-gallery">
+              <div class="gallery-item">
+                <img src="https://localhost:7001/api/Animals1/getImages/{{ animal.image1 }}" alt="{{ animal.name }}">
               </div>
-              <div class="swiper-slide radius-8" *ngIf="animal.image2">
-                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+              <div class="gallery-item">
+                <img src="https://localhost:7001/api/Animals1/getImages/{{ animal.image2 }}" alt="{{ animal.name }}">
               </div>
-              <div class="swiper-slide radius-8" *ngIf="animal.image3">
-                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+              <div class="gallery-item">
+                <img src="https://localhost:7001/api/Animals1/getImages/{{ animal.image3 }}" alt="{{ animal.name }}">
               </div>
             </div>
+
           </div>
         </div>
 
@@ -79,7 +81,7 @@
           </div>
 
           <div class="d-flex justify-content-center align-items-center gap-lg-3 gap-2 flex-wrap flex-xs-nowrap mt-lg-8 mt-6 mb-lg-10 mb-8">
-            <button class="btn-primary"(click)="rahaf(animal.animalId)">Adopt Now</button>
+            <button class="btn-primary" (click)="rahaf(animal.animalId)">Adopt Now</button>
             <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
               <i class="ph-fill ph-heart"></i>
             </button>
@@ -137,6 +139,7 @@
     </section>
 
   </section>
+  <!-- shop details section end -->
   <!-- shop details section end -->
 
 </main>
