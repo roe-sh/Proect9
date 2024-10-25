@@ -41,6 +41,7 @@ import { TeamComponent } from './Adoptioh/team/team.component';
 import { ServicesComponent } from './Adoptioh/services/services.component';
 import { ServiceDetailsComponent } from './Adoptioh/service-details/service-details.component';
 import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
+import { AboutComponent } from './batool/about/about.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
     ServicesComponent,
     ServiceDetailsComponent,
     PostadminComponent,
+    AboutComponent,
   ],
   imports: [
     FormsModule,
@@ -107,8 +109,8 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
       { path: "userpassword", component: UserResetPasswordComponent },
       { path: "contactus", component: ContactUsComponent },
       { path: 'team', component: TeamComponent },
-      { path: 'services', component: ServicesComponent }, 
-
+      { path: 'services', component: ServicesComponent },
+      { path: 'about', component: AboutComponent },
       { path: 'animals', component: AnimalsComponent },
       { path: 'addpost', component: AddpostComponent },
       { path: 'animals', component: AnimalsComponent },

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using project9_cohort4.Server.Email_Helper;
+
 
 //using project9_cohort4.Server.Controllers;
 using project9_cohort4.Server.Models;
@@ -76,10 +78,10 @@ builder.Services.AddCors(options =>
 
 // Register the ContactsEmailService
 builder.Services.AddScoped<ContactsEmailService>();
+builder.Services.AddScoped<EmailService>();
 
 
-
-
+builder.Services.AddTransient<EmailHelper>();
 
 
 var app = builder.Build();
