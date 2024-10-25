@@ -8,7 +8,7 @@
           All success store from our cleints
         </h1>
         <h4>If you have a success story please share it with us</h4>
-        <a routerLink="/addpost" class="btn w-25 mt-4" style="background-color: #FB7B53;color:white;">Add Post</a>
+        <button class="btn w-25 mt-4" style="background-color: #FB7B53;color:white;" data-bs-toggle="modal" data-bs-target="#addPostModal">Add Post</button>
       </div>
     </div>
     <div class="row gx-6 gy-8 justify-content-center justify-content-md-start mb-lg-10 mb-md-8 mb-6">
@@ -36,7 +36,7 @@
               <p class="text-n10 fw-normal">
                 {{post.storyContent}}
               </p>
-              
+
               <div class="d-flex justify-content-around align-items-center mt-3" style="border:1px solid gray;padding:2%;border-radius:10px">
                 <span class="like-icon" (click)="addLike(post.postId)" [ngClass]="{'bg-danger text-white': post.userHasLiked}">
                   <i class="ph ph-heart"></i>
@@ -52,7 +52,7 @@
                 </span>
 
                 <span (click)="shareOnX(post)">
-                  <i  class="ph ph-share"></i>
+                  <i class="ph ph-share"></i>
                 </span>
 
               </div>
@@ -267,7 +267,6 @@
     </ul>
   </div>
 </section>
-<!-- blogs section end -->
 
 
 
@@ -279,40 +278,119 @@
 
 
 
-<!--<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+
+
+
+
+<!-- المودال -->
+<div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addPostModalLabel">Add New Post</h5>
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title w-40 text-center" id="addPostModalLabel">Create a Post</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">-->
-        <!-- Form inside the modal -->
-        <!--<form #formData="ngForm" class="d-grid gap-lg-5 gap-3" (ngSubmit)="Addpost(formData.value)">
-          <div class="d-lg-flex d-grid align-items-center justify-content-lg-between gap-lg-6 gap-4">
-            <div class="d-grid gap-lg-3 gap-2 w-100">
-              <label for="name">StoryContent <span class="text-primary">*</span></label>
-              <input type="text" id="name" name="storyContent" placeholder="write post"
-                     class="px-xl-8 px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 border n20-1-border radius-pill focus-primary w-100" ngModel required>
-            </div>
-            <div class="d-grid gap-lg-3 gap-2 w-100">
-              <label for="email">StoryTitle <span class="text-primary">*</span></label>
-              <input type="text" id="email" name="storyTitle" placeholder="StoryTitle"
-                     class="px-xl-8 px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 border n20-1-border radius-pill focus-primary w-100" ngModel required>
-            </div>
+      <div class="modal-body">
+
+        <!-- User Information Section -->
+      
+        <!-- Post Content Form -->
+        <form #formData="ngForm" (ngSubmit)="Addpost(formData.value)" class="d-grid gap-3 mx-auto">
+
+          <!-- Story Title Input -->
+          <div class="form-group mb-3">
+            <input type="text" id="storyTitle" name="storyTitle" placeholder="Story Title"
+                   class="form-control form-control-lg rounded-3" ngModel required>
           </div>
-          <div class="d-lg-flex d-grid align-items-center justify-content-lg-between gap-lg-6 gap-4">
-            <div class="d-grid gap-lg-3 gap-2 w-100">
-              <label for="phone">Image <span class="text-primary">*</span></label>
-              <input type="file" id="phone" name="storyPhoto" placeholder="image"
-                     class="px-xl-8 px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 border n20-1-border radius-pill focus-primary w-100" (change)="changeImage($event)" required>
-            </div>
+
+          <!-- Story Content Input -->
+          <div class="form-group mb-3">
+            <textarea id="storyContent" name="storyContent" placeholder="What's on your mind?"
+                      class="form-control form-control-lg rounded-3" rows="4" ngModel required></textarea>
           </div>
-          <div class="mt-4">
-            <button type="submit" class="btn btn-primary">Send Message</button>
+
+          <!-- Image Upload -->
+          <div class="mb-3 d-flex align-items-center justify-content-between">
+            <label class="btn btn-light rounded-pill px-3 upload-btn" style="cursor: pointer;">
+              <i class="ph ph-camera text-primary"></i> Add Photo
+              <input type="file" name="storyPhoto" (change)="changeImage($event)" hidden>
+            </label>
+            <button type="submit" class="btn btn-primary rounded-pill px-4">Post</button>
           </div>
         </form>
       </div>
     </div>
   </div>
-</div>-->
+</div>
+
+<!-- CSS لتحسين التنسيق -->
+<style>
+  /* تنسيق العنوان */
+  .modal-header {
+    border-bottom: none;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+
+  }
+
+  /* تنسيق صورة المستخدم */
+  .profile-img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+  }
+
+  /* تنسيق منطقة الكتابة */
+  .form-control-lg {
+    font-size: 1.1rem;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+  }
+
+    .form-control-lg:focus {
+      border-color: #1877f2;
+      background-color: #fff;
+    }
+
+  /* زر تحميل الصورة */
+  .upload-btn {
+    color: #555;
+    font-size: 0.95rem;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s;
+  }
+
+    .upload-btn:hover {
+      background-color: #e7e7e7;
+    }
+
+  /* زر الإرسال */
+  .btn-primary {
+    background-color: #1877f2;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+    .btn-primary:hover {
+      background-color: #165cdb;
+    }
+
+  /* تباعد داخلي وتناسق بين العناصر */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  /* تنسيق لعرض المودال */
+  .modal-body {
+    padding: 20px;
+  }
+</style>

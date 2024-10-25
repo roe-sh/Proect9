@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../Urlmustafa/url.service';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-post-comments',
@@ -8,8 +9,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './post-comments.component.css'
 })
 export class PostCommentsComponent {
-
-  
 
   toggleForm(item: any) {
     item.showForm = !item.showForm;
@@ -19,12 +18,11 @@ export class PostCommentsComponent {
     item.showreply = !item.showreply;
   }
 
-
   userId: any;
   parameter: any;
-  postdetails: any
-  comments: any
-  replays: any
+  postdetails: any;
+  comments: any;
+  replays: any;
 
   ngOnInit() {
     this.userId = localStorage.getItem("userId");
@@ -32,14 +30,15 @@ export class PostCommentsComponent {
     this.getPostById(this.parameter);
     this.getcommentsByPostId(this.parameter);
   }
-  
+
   constructor(private _ser: UrlService, private _route: ActivatedRoute) { }
- 
+
   getPostById(postId: any) {
     this._ser.GetPostDetails(postId).subscribe((data) => {
       this.postdetails = data;
     });
   }
+
   getcommentsByPostId(postId: any) {
     this._ser.GetCommentByPostId(postId).subscribe((data) => {
       this.comments = data;
@@ -47,7 +46,6 @@ export class PostCommentsComponent {
   }
 
   Addcomment(formData: any) {
-    debugger;
     if (this.userId != undefined || this.userId != null) {
       const form = new FormData();
 
@@ -58,18 +56,34 @@ export class PostCommentsComponent {
 
       this._ser.AddnewComment(this.parameter, form).subscribe(
         () => {
-          alert("comment added successfully");
+          Swal.fire({
+            icon: 'success',
+            title: 'Comment added successfully',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+          });
           console.log("Response:", form);
           this.getcommentsByPostId(this.parameter);
-
         },
         (error) => {
-          alert("Failed to add comment");
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed to add comment',
+            text: 'An error occurred while adding your comment. Please try again.',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          });
           console.error("Error:", error);
         }
       );
     } else {
-      alert("you have to logged in to add comment")
+      Swal.fire({
+        icon: 'warning',
+        title: 'You must be logged in',
+        text: 'Please log in to add a comment.',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      });
     }
   }
 
@@ -79,30 +93,45 @@ export class PostCommentsComponent {
     });
   }
 
-  addreplay(formdata: any, commentId : any) {
+  addreplay(formdata: any, commentId: any) {
     if (this.userId != undefined || this.userId != null) {
-    const form = new FormData();
-    for (let key in formdata) {
-      form.append(key, formdata[key]);
-    }
-    form.append("userId", this.userId);
-    form.append("commentId", commentId);
-
-    this._ser.AddreplayoneComment(form).subscribe(
-      () => {
-        alert("replay added successfully");
-        console.log("Response:", form);
-        this.getcommentsByPostId(this.parameter);
-      },
-      (error) => {
-        alert("Failed to add replay");
-        console.error("Error:", error);
+      const form = new FormData();
+      for (let key in formdata) {
+        form.append(key, formdata[key]);
       }
+      form.append("userId", this.userId);
+      form.append("commentId", commentId);
+
+      this._ser.AddreplayoneComment(form).subscribe(
+        () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Reply added successfully',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+          });
+          console.log("Response:", form);
+          this.getcommentsByPostId(this.parameter);
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed to add reply',
+            text: 'An error occurred while adding your reply. Please try again.',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          });
+          console.error("Error:", error);
+        }
       );
     } else {
-      alert("you have to logged in to add replay")
+      Swal.fire({
+        icon: 'warning',
+        title: 'You must be logged in',
+        text: 'Please log in to add a reply.',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      });
     }
   }
-  
 }
-
