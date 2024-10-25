@@ -27,84 +27,80 @@
     <!-- shop details section start -->
     <section class="shop-details-section pt-120">
         <div class="container">
-            <div class="row g-6 justify-content-between mb-lg-15 mb-md-10 mb-8">
-                <div class="col-lg-6">
-                    <div class="swiper product-swiper mb-6">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" *ngIf="animal.image1">
-                                <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
-                                    <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
-                                </div>
-                            </div>
-                            <div class="swiper-slide" *ngIf="animal.image2">
-                                <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
-                                    <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
-                                </div>
-                            </div>
-                            <div class="swiper-slide" *ngIf="animal.image3">
-                                <div class="swiper-product zoomable-image-container radius-16" data-lenis-prevent>
-                                    <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper swiper-thumb">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide radius-8" *ngIf="animal.image1">
-                                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
-                            </div>
-                            <div class="swiper-slide radius-8" *ngIf="animal.image2">
-                                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
-                            </div>
-                            <div class="swiper-slide radius-8" *ngIf="animal.image3">
-                                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
-                            </div>
-                        </div>
-                    </div>
+          <div class="row g-6 justify-content-between mb-lg-15 mb-md-10 mb-8">
+            <div class="col-lg-6">
+              <div class="product-images mb-6">
+
+
+                <div class="image-container" *ngIf="animal.image1" [class.active]="activeImage === 'image1'">
+                  <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
                 </div>
-
-                <div class="col-lg-5">
-                    <div class="d-grid gap-lg-6 gap-4">
-                        <div>
-                            <h1 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal mb-lg-4 mb-2">
-                                {{ animal.name }}
-                            </h1>
-                            <span class="text-primary text-xl fw-semibold font-instrument">
-                                Age: {{ animal.age }}
-                            </span>
-                        </div>
-                        <p class="text-n10 fw-normal">
-                            {{ animal.description }}
-                        </p>
-                    </div>
-
-                    <div class="d-flex justify-content-center align-items-center gap-lg-3 gap-2 flex-wrap flex-xs-nowrap mt-lg-8 mt-6 mb-lg-10 mb-8">
-                        <button class="btn-primary" (click)="rahaf(animal.animalId)">Adopt Now</button>
-                        <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
-                            <i class="ph-fill ph-heart"></i>
-                        </button>
-                    </div>
-
-                    <ul class="d-grid gap-lg-4 gap-2">
-                        <li class="d-flex align-items-center gap-1">
-                            <span class="text-base fw-medium font-instrument text-n20">Shelter: </span>
-                            <span class="text-base fw-normal font-instrument text-n10">{{ animal.shelterName }}</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-1">
-                            <span class="text-base fw-medium font-instrument text-n20">Species: </span>
-                            <span class="text-base fw-normal font-instrument text-n10">{{ animal.species }}</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-1">
-                            <span class="text-base fw-medium font-instrument text-n20">Breed: </span>
-                            <span class="text-base fw-normal font-instrument text-n10">{{ animal.breed }}</span>
-                        </li>
-                        <li class="d-flex align-items-center gap-1">
-                            <span class="text-base fw-medium font-instrument text-n20">Animal ID: </span>
-                            <span class="text-base fw-normal font-instrument text-n10">{{ animal.id }}</span>
-                        </li>
-                    </ul>
+                <div class="image-container" *ngIf="animal.image2" [class.active]="activeImage === 'image2'">
+                  <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
                 </div>
+                <div class="image-container" *ngIf="animal.image3" [class.active]="activeImage === 'image3'">
+                  <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 300px; height: 300px;">
+                </div>
+              </div>
+
+              <div class="thumbnail-images d-flex mt-3">
+
+
+                <div class="thumb-image radius-8" *ngIf="animal.image1" (click)="changeImage('image1')">
+                  <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+                </div>
+                <div class="thumb-image radius-8" *ngIf="animal.image2" (click)="changeImage('image2')">
+                  <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+                </div>
+                <div class="thumb-image radius-8" *ngIf="animal.image3" (click)="changeImage('image3')">
+                  <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+                </div>
+              </div>
             </div>
+
+
+            <div class="col-lg-5">
+              <div class="d-grid gap-lg-6 gap-4">
+                <div>
+                  <h1 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal mb-lg-4 mb-2">
+                    {{ animal.name }}
+                  </h1>
+                  <span class="text-primary text-xl fw-semibold font-instrument">
+                    Age: {{ animal.age }}
+                  </span>
+                </div>
+                <p class="text-n10 fw-normal">
+                  {{ animal.description }}
+                </p>
+              </div>
+
+              <div class="d-flex justify-content-center align-items-center gap-lg-3 gap-2 flex-wrap flex-xs-nowrap mt-lg-8 mt-6 mb-lg-10 mb-8">
+                <button class="btn-primary" (click)="rahaf(animal.animalId)">Adopt Now</button>
+                <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
+                  <i class="ph-fill ph-heart"></i>
+                </button>
+              </div>
+
+              <ul class="d-grid gap-lg-4 gap-2">
+                <li class="d-flex align-items-center gap-1">
+                  <span class="text-base fw-medium font-instrument text-n20">Shelter: </span>
+                  <span class="text-base fw-normal font-instrument text-n10">{{ animal.shelterName }}</span>
+                </li>
+                <li class="d-flex align-items-center gap-1">
+                  <span class="text-base fw-medium font-instrument text-n20">Species: </span>
+                  <span class="text-base fw-normal font-instrument text-n10">{{ animal.species }}</span>
+                </li>
+                <li class="d-flex align-items-center gap-1">
+                  <span class="text-base fw-medium font-instrument text-n20">Breed: </span>
+                  <span class="text-base fw-normal font-instrument text-n10">{{ animal.breed }}</span>
+                </li>
+                <li class="d-flex align-items-center gap-1">
+                  <span class="text-base fw-medium font-instrument text-n20">Animal ID: </span>
+                  <span class="text-base fw-normal font-instrument text-n10">{{ animal.id }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <!--

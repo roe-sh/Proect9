@@ -23,6 +23,7 @@ export class AnimalsDetailsComponent implements OnInit {
     userLivingStatus: '',
     userMoreDetails: ''
   };
+  activeImage: string = 'image1'; // الصورة الافتراضية التي سيتم عرضها
 
   constructor(
     private animalService: AnimalService,
@@ -34,18 +35,22 @@ export class AnimalsDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.fetchAnimalDetails();
     this.fetchAnimals();
-    this.getUserDetails(); // Fetch user details on initialization
-    this.loadRelatedAnimals(); // Fetch user details on initialization
+    this.getUserDetails();
+    this.loadRelatedAnimals();
   }
+
+  // دالة لتغيير الصورة المعروضة بناءً على الصورة المصغّرة التي يتم النقر عليها
+  changeImage(image: string): void {
+    this.activeImage = image;
+  }
+
   rahaf(b: any) {
-  
-    var x = localStorage.getItem("userId");
-    if (x == null || undefined) {
-      this.router.navigate(['/login'])
+    const x = localStorage.getItem("userId");
+    if (!x) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/animals-form', b]);
     }
-    else {
-      this.router.navigate(['/animals-form',b ])
-    } 
   }
 
   fetchAnimalDetails(): void {
@@ -65,21 +70,17 @@ export class AnimalsDetailsComponent implements OnInit {
 
   getUserDetails(): void {
     this.authService.getUserDetails().subscribe((userData: any) => {
-      this.adoptionDetails.userName = userData.name; // Assuming userData has a 'name' field
-      this.adoptionDetails.userEmail = userData.email; // Assuming userData has an 'email' field
+      this.adoptionDetails.userName = userData.name;
+      this.adoptionDetails.userEmail = userData.email;
     });
   }
 
-
   loadRelatedAnimals(): void {
-    debugger
     const animalId = Number(this.route.snapshot.paramMap.get('id'));
-
     if (animalId) {
       this.animalService.getRelatedAnimal(animalId).subscribe(
         (animals: any) => {
-          console.log("Related animals fetched:", animals); // Debugging line
-          this.relatedAnimals = animals; // Assign the fetched animals
+          this.relatedAnimals = animals;
         },
         error => {
           console.error("Error fetching related animals:", error);

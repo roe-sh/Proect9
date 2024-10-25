@@ -1,18 +1,18 @@
-.image-gallery {
-  display: flex;
-  gap: 10px;
+.product-images .image-container {
+  display: none; 
 }
 
-.gallery-item img {
-  width: 150px;
-  height: 150px;
-  border-radius: 16px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-  .gallery-item img.selected {
-    width: 300px;
-    height: 300px;
-    transform: scale(1.5);
+  .product-images .image-container.active {
+    display: block;
   }
+
+
+.thumbnail-images {
+  display: flex;
+  gap: 10px; 
+  margin-top: 16px;
+}
+
+.thumb-image {
+  border-radius: 8px;
+}
