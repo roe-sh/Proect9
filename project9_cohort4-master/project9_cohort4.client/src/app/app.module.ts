@@ -37,6 +37,9 @@ import { UserDetailsComponent } from './Admin/user-details/user-details.componen
 import { AdminAllContactsComponent } from './Admin/admin-all-contacts/admin-all-contacts.component';
 import { AdminContactDetailsComponent } from './Admin/admin-contact-details/admin-contact-details.component';
 import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.component';
+import { TeamComponent } from './Adoptioh/team/team.component';
+import { ServicesComponent } from './Adoptioh/services/services.component';
+import { ServiceDetailsComponent } from './Adoptioh/service-details/service-details.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,9 @@ import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.comp
     AdminAllContactsComponent,
     AdminContactDetailsComponent,
     SheltersadminComponent,
+    TeamComponent,
+    ServicesComponent,
+    ServiceDetailsComponent,
   ],
   imports: [
     FormsModule,
@@ -96,13 +102,16 @@ import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.comp
       { path: "userprofile", component: UserProfileComponent },
       { path: "userpassword", component: UserResetPasswordComponent },
       { path: "contactus", component: ContactUsComponent },
-
+      { path: 'team', component: TeamComponent },
+      { path: 'services', component: ServicesComponent }, 
 
       { path: 'animals', component: AnimalsComponent },
       { path: 'addpost', component: AddpostComponent },
       { path: 'animals', component: AnimalsComponent },
 
-      
+      { path: 'service-details/:id', component: ServiceDetailsComponent },
+
+
       { path: 'allposts', component: AllPostsComponent },
       { path: 'postcomments/:id', component: PostCommentsComponent },
 
@@ -132,6 +141,7 @@ import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.comp
       
       {
         path: 'Shelters', component: SheltersComponent, children: [
+        
 
           { path: '', redirectTo: 'user', pathMatch: 'full' },
         ]
