@@ -3,7 +3,7 @@
 
   <!-- inner hero section start -->
   <section class="inner-hero-section pt-xxl-0 pt-md-15 pt-20 pt-120 bg-primary2">
-    <div class="container position-relative">
+    <div >
       <div class="row g-6 justify-content-between align-items-center">
         <div class="col-sm-6">
           <span class="mb-3 text-h1 text-n20">Pet Details</span>
@@ -13,7 +13,7 @@
           </ul>
         </div>
         <div class="col-xl-5 col-sm-6 me-auto d-none d-sm-block">
-          <div class="reveal-bottom inner-hero-banner">
+          <div >
             <img class="w-100" src="assets/images/inner-hero-banner.png" alt="inner hero banner">
           </div>
         </div>
@@ -66,7 +66,7 @@
         <div class="col-lg-5">
           <div class="d-grid gap-lg-6 gap-4">
             <div>
-              <h1 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal mb-lg-4 mb-2">
+              <h1 class=" font-otomanopee text-n20 fw-normal mb-lg-4 mb-2">
                 {{ animal.name }}
               </h1>
               <span class="text-primary text-xl fw-semibold font-instrument">
@@ -113,7 +113,7 @@
         <div class="row g-6">
           <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let randomAnimal of randomAnimals">
             <div class="product-card border radius-16 overflow-hidden hover-primary-border">
-              <div class="product-thumb scale-animation position-relative">
+              <div class="product-thumb ">
                 <img class="w-100" [src]="'https://localhost:7001/api/Animals1/getImages/' + randomAnimal.image1" alt="{{ randomAnimal.name }}">
                 <div class="product-btns d-grid gap-1 position-absolute top-0 right-0">
                   <button class="wishlist-btn">
