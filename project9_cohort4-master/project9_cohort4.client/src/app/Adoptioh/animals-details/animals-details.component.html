@@ -3,7 +3,7 @@
 
   <!-- inner hero section start -->
   <section class="inner-hero-section pt-xxl-0 pt-md-15 pt-20 pt-120 bg-primary2">
-    <div >
+    <div class="container position-relative">
       <div class="row g-6 justify-content-between align-items-center">
         <div class="col-sm-6">
           <span class="mb-3 text-h1 text-n20">Pet Details</span>
@@ -13,7 +13,7 @@
           </ul>
         </div>
         <div class="col-xl-5 col-sm-6 me-auto d-none d-sm-block">
-          <div >
+          <div class="reveal-bottom inner-hero-banner">
             <img class="w-100" src="assets/images/inner-hero-banner.png" alt="inner hero banner">
           </div>
         </div>
@@ -24,6 +24,7 @@
     </div>
   </section>
   <!-- inner hero section end -->
+  <!-- shop details section start -->
   <!-- shop details section start -->
   <section class="shop-details-section pt-120">
     <div class="container">
@@ -49,24 +50,25 @@
             </div>
           </div>
           <div class="swiper swiper-thumb">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide radius-8" *ngIf="animal.image1">
-                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image1" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+            <div class="image-gallery">
+              <div class="gallery-item">
+                <img src="https://localhost:7001/api/Animals1/getImages/{{ animal.image1 }}" alt="{{ animal.name }}">
               </div>
-              <div class="swiper-slide radius-8" *ngIf="animal.image2">
-                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image2" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+              <div class="gallery-item">
+                <img src="https://localhost:7001/api/Animals1/getImages/{{ animal.image2 }}" alt="{{ animal.name }}">
               </div>
-              <div class="swiper-slide radius-8" *ngIf="animal.image3">
-                <img class="radius-16" [src]="'https://localhost:7001/api/Animals1/getImages/' + animal.image3" alt="{{ animal.name }}" style="width: 150px; height: 150px;">
+              <div class="gallery-item">
+                <img src="https://localhost:7001/api/Animals1/getImages/{{ animal.image3 }}" alt="{{ animal.name }}">
               </div>
             </div>
+
           </div>
         </div>
 
         <div class="col-lg-5">
           <div class="d-grid gap-lg-6 gap-4">
             <div>
-              <h1 class=" font-otomanopee text-n20 fw-normal mb-lg-4 mb-2">
+              <h1 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal mb-lg-4 mb-2">
                 {{ animal.name }}
               </h1>
               <span class="text-primary text-xl fw-semibold font-instrument">
@@ -79,7 +81,7 @@
           </div>
 
           <div class="d-flex justify-content-center align-items-center gap-lg-3 gap-2 flex-wrap flex-xs-nowrap mt-lg-8 mt-6 mb-lg-10 mb-8">
-            <button class="btn-primary"(click)="rahaf(animal.animalId)">Adopt Now</button>
+            <button class="btn-primary" (click)="rahaf(animal.animalId)">Adopt Now</button>
             <button class="cart-btn icon-48px bg-n0 text-primary text-xl hover-text-secondary shadow-3">
               <i class="ph-fill ph-heart"></i>
             </button>
@@ -113,7 +115,7 @@
         <div class="row g-6">
           <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let randomAnimal of randomAnimals">
             <div class="product-card border radius-16 overflow-hidden hover-primary-border">
-              <div class="product-thumb ">
+              <div class="product-thumb scale-animation position-relative">
                 <img class="w-100" [src]="'https://localhost:7001/api/Animals1/getImages/' + randomAnimal.image1" alt="{{ randomAnimal.name }}">
                 <div class="product-btns d-grid gap-1 position-absolute top-0 right-0">
                   <button class="wishlist-btn">
@@ -137,6 +139,7 @@
     </section>
 
   </section>
+  <!-- shop details section end -->
   <!-- shop details section end -->
 
 </main>
