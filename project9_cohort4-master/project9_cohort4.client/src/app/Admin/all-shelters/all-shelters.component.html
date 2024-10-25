@@ -42,7 +42,7 @@
             <td>{{item.address}}</td>
             <td>
               <!-- Bootstrap buttons for Edit and Delete -->
-              <button class="btn btn-primary btn-sm" [routerLink]="['/adminDashBoard/UpdateShelter', item.shelterId]">
+              <button class="btn btn-primary btn-sm" [routerLink]="['/dashboard/UpdateShelters', item.shelterId]">
                 Edit
               </button>
               <button class="btn btn-danger btn-sm" (click)="deleteShelter(item.shelterId)">

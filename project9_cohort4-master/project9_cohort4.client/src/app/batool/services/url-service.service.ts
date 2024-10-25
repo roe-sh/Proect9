@@ -17,6 +17,10 @@ export class UrlServiceService {
 
     return this.http.get<any>(`${this.baseUrl}/Animals1/${id}`)
   }
+  getShelterById(id :any) : Observable<any> {
+
+    return this.http.get<any>(`${this.baseUrl}/Shelters/${id}`)
+  }
 
   addAnimal(data :any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/Animals1`, data)
@@ -44,8 +48,18 @@ export class UrlServiceService {
     return this.http.post<any>(`${this.baseUrl}/Categories/AddCategory`, data)
   }
 
+  AddShelter(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/Shelters`, data)
+  }
+
   UpdateCategory(id: any, data: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/Categories/UpdateCategory/${id}`, data);
+  }
+
+
+  
+  UpdateShelter(id: any, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/Shelters/${id}`, data);
   }
 
 
