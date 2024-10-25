@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class AnimalsDetailsComponent implements OnInit {
   animal: any;
   randomAnimals: any[] = [];
+  relatedAnimals: any[] = [];
   adoptionDetails: any = {
     userName: '',
     userEmail: '',
@@ -34,6 +35,7 @@ export class AnimalsDetailsComponent implements OnInit {
     this.fetchAnimalDetails();
     this.fetchAnimals();
     this.getUserDetails(); // Fetch user details on initialization
+    this.loadRelatedAnimals(); // Fetch user details on initialization
   }
   rahaf(b: any) {
   
@@ -66,6 +68,24 @@ export class AnimalsDetailsComponent implements OnInit {
       this.adoptionDetails.userName = userData.name; // Assuming userData has a 'name' field
       this.adoptionDetails.userEmail = userData.email; // Assuming userData has an 'email' field
     });
+  }
+
+
+  loadRelatedAnimals(): void {
+    debugger
+    const animalId = Number(this.route.snapshot.paramMap.get('id'));
+
+    if (animalId) {
+      this.animalService.getRelatedAnimal(animalId).subscribe(
+        (animals: any) => {
+          console.log("Related animals fetched:", animals); // Debugging line
+          this.relatedAnimals = animals; // Assign the fetched animals
+        },
+        error => {
+          console.error("Error fetching related animals:", error);
+        }
+      );
+    }
   }
 
   adoptNow(): void {

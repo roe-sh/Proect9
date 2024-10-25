@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './Adoptioh/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,7 +37,11 @@ import { UserDetailsComponent } from './Admin/user-details/user-details.componen
 import { AdminAllContactsComponent } from './Admin/admin-all-contacts/admin-all-contacts.component';
 import { AdminContactDetailsComponent } from './Admin/admin-contact-details/admin-contact-details.component';
 import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.component';
+import { TeamComponent } from './Adoptioh/team/team.component';
+import { ServicesComponent } from './Adoptioh/services/services.component';
+import { ServiceDetailsComponent } from './Adoptioh/service-details/service-details.component';
 import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
+import { AboutComponent } from './batool/about/about.component';
 
 @NgModule({
   declarations: [
@@ -76,13 +80,19 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
     AdminAllContactsComponent,
     AdminContactDetailsComponent,
     SheltersadminComponent,
+    TeamComponent,
+    ServicesComponent,
+    ServiceDetailsComponent,
     PostadminComponent,
+    AboutComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "getAllUsers", component: GetAllComponent },
@@ -91,20 +101,24 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent },
       { path: "animal-details/:id", component: AnimalsDetailsComponent },
       { path: "animals-form/:animalId", component: AnimalFormComponent },
-      { path: 'animals', component: AnimalsComponent },
-      { path: 'animals', component: AnimalsComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "userprofile", component: UserProfileComponent },
       { path: "userpassword", component: UserResetPasswordComponent },
       { path: "contactus", component: ContactUsComponent },
-
-
+      { path: 'team', component: TeamComponent },
+      { path: 'services', component: ServicesComponent },
+      { path: 'about', component: AboutComponent },
       { path: 'animals', component: AnimalsComponent },
+      { path: 'services', component: ServicesComponent }, 
+
+     
       { path: 'addpost', component: AddpostComponent },
       { path: 'animals', component: AnimalsComponent },
 
-      
+      { path: 'service-details/:id', component: ServiceDetailsComponent },
+
+
       { path: 'allposts', component: AllPostsComponent },
       { path: 'postcomments/:id', component: PostCommentsComponent },
 
@@ -134,6 +148,7 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
       
       {
         path: 'Shelters', component: SheltersComponent, children: [
+        
 
           { path: '', redirectTo: 'user', pathMatch: 'full' },
         ]

@@ -59,8 +59,11 @@ namespace project9_cohort4.Server.Controllers
 
 
 
+
+
+
         [HttpPost]
-        public IActionResult PostAnimal([FromForm] AddAnimalDTO animalDto)
+        public async Task<IActionResult> PostAnimal([FromForm] AddAnimalDTO animalDto)
         {
             // Check if the shelter exists
             var shelterExists = _context.Shelters.Any(s => s.ShelterId == animalDto.ShelterId);
@@ -76,6 +79,30 @@ namespace project9_cohort4.Server.Controllers
                 return BadRequest($"Category with ID {animalDto.CategoryId} does not exist.");
             }
 
+            // Ensure the Animal_Images directory exists
+            var imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Animal_Images");
+            if (!Directory.Exists(imagesDirectory))
+            {
+                Directory.CreateDirectory(imagesDirectory);
+            }
+
+            // Handling the image uploads
+            string? image1Url = null, image2Url = null, image3Url = null;
+
+            if (animalDto.Image1 != null)
+            {
+                image1Url = await SaveImageAsync(animalDto.Image1, imagesDirectory);
+            }
+            if (animalDto.Image2 != null)
+            {
+                image2Url = await SaveImageAsync(animalDto.Image2, imagesDirectory);
+            }
+            if (animalDto.Image3 != null)
+            {
+                image3Url = await SaveImageAsync(animalDto.Image3, imagesDirectory);
+            }
+
+            // Create a new Animal entity
             var newAnimal = new Animal
             {
                 Name = animalDto.Name,
@@ -86,17 +113,46 @@ namespace project9_cohort4.Server.Controllers
                 Temperament = animalDto.Temperament,
                 SpecialNeeds = animalDto.SpecialNeeds,
                 Description = animalDto.Description,
-                AdoptionStatus = animalDto.AdoptionStatus,
-                ShelterId = animalDto.ShelterId, // Link the animal to the specified shelter
+                ShelterId = animalDto.ShelterId,
                 CategoryId = animalDto.CategoryId,
-                AddedAt = DateTime.UtcNow
+                AddedAt = DateTime.UtcNow,
+
+                // Assign the uploaded image URLs or paths
+                Image1 = image1Url,
+                Image2 = image2Url,
+                Image3 = image3Url
             };
 
             _context.Animals.Add(newAnimal);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetAnimal), new { id = newAnimal.AnimalId }, newAnimal);
         }
+
+        // The SaveImageAsync method for saving images
+        private async Task<string?> SaveImageAsync(IFormFile imageFile, string imagesDirectory)
+        {
+            if (imageFile.Length > 0)
+            {
+                // Create a unique file name for the image
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                var filePath = Path.Combine(imagesDirectory, fileName);
+
+                // Save the image file to the specified directory
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(fileStream);
+                }
+
+                // Return the relative path that can be used to serve the image later
+                return fileName;
+            }
+
+            return null;
+        }
+
+
+
 
 
         [HttpDelete("{id}")]
@@ -119,6 +175,21 @@ namespace project9_cohort4.Server.Controllers
 
 
 
+        [HttpGet("{id}/random-animals")]
+        public IActionResult GetRandomAnimalsBySpecies(int id)
+        {
+            var animal = _context.Animals.Find(id);
+            if (animal == null)
+                return NotFound();
+
+            var randomAnimals = _context.Animals
+                .Where(a => a.Species == animal.Species && a.AnimalId != id)
+                .OrderBy(r => Guid.NewGuid())
+                .Take(4)
+                .ToList();
+
+            return Ok(randomAnimals);
+        }
 
 
 
