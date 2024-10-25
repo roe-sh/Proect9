@@ -51,4 +51,9 @@ export class AnimalService {
   getAllShelters(): Observable<any[]> {
     return this.http.get<any[]>(this.shelterApiUrl);
   }
+
+
+  deleteShelters(id: any): Observable<any> {
+    return this.http.delete<any>(`${this.shelterApiUrl}/${id}`)
+  }
 }

@@ -40,6 +40,25 @@ export class UrlServiceService {
     return this.http.get<any>(`${this.baseUrl}/Shelters`)
   }
 
+  addCategory(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/Categories/AddCategory`, data)
+  }
+
+  UpdateCategory(id: any, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/Categories/UpdateCategory/${id}`, data);
+  }
 
 
+
+
+
+  getCategoryById(id: any): Observable<any> {
+
+    return this.http.get<any>(`${this.baseUrl}/Categories/${id}`)
+  }
+
+
+  deleteCategory(id: any): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/Categories/${id}`)
+  }
 }
