@@ -175,6 +175,21 @@ namespace project9_cohort4.Server.Controllers
 
 
 
+        [HttpGet("{id}/random-animals")]
+        public IActionResult GetRandomAnimalsBySpecies(int id)
+        {
+            var animal = _context.Animals.Find(id);
+            if (animal == null)
+                return NotFound();
+
+            var randomAnimals = _context.Animals
+                .Where(a => a.Species == animal.Species && a.AnimalId != id)
+                .OrderBy(r => Guid.NewGuid())
+                .Take(4)
+                .ToList();
+
+            return Ok(randomAnimals);
+        }
 
 
 
