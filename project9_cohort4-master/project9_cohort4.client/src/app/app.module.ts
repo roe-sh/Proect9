@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './Adoptioh/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +40,7 @@ import { SheltersadminComponent } from './Admin/sheltersadmin/sheltersadmin.comp
 import { TeamComponent } from './Adoptioh/team/team.component';
 import { ServicesComponent } from './Adoptioh/services/services.component';
 import { ServiceDetailsComponent } from './Adoptioh/service-details/service-details.component';
+import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
 
 @NgModule({
   declarations: [
@@ -81,12 +82,15 @@ import { ServiceDetailsComponent } from './Adoptioh/service-details/service-deta
     TeamComponent,
     ServicesComponent,
     ServiceDetailsComponent,
+    PostadminComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "getAllUsers", component: GetAllComponent },

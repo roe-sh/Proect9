@@ -29,4 +29,17 @@ export class UrlServiceService {
   deleteAnimal(id: any): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/Animals1/${id}`)
   }
+
+  getAllCategories(): Observable<any> {
+    
+    return this.http.get<any>(`${this.baseUrl}/Categories`)
+  }
+
+  getAllShelters(): Observable<any> {
+    
+    return this.http.get<any>(`${this.baseUrl}/Shelters`)
+  }
+
+
+
 }

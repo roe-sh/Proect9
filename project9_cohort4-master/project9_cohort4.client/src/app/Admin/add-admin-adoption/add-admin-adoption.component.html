@@ -1,120 +1,89 @@
 <div class="container mt-4" style="max-width: 700px;">
-  <!-- Set max-width to reduce width -->
   <h2 class="text-center mb-4">Add Animal</h2>
 
-  <!-- Animal form inside a bold, shadowed card -->
   <div class="p-xxl-15 p-lg-10 p-md-8 p-6 bg-n0 radius-20 border n20-1-border bold-card">
-    <form action="#" class="d-grid gap-lg-6 gap-md-5 gap-4">
+    <form [formGroup]="addAnimalForm" (ngSubmit)="addAnimal(addAnimalForm.value)" class="d-grid gap-lg-6 gap-md-5 gap-4">
+
       <!-- Animal Name -->
       <div class="d-grid gap-2">
         <label class="text-n20 fw-normal font-instrument">Animal Name <span class="text-primary">*</span></label>
-        <input type="text" placeholder="Animal Name"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
+        <input type="text" formControlName="name" placeholder="Animal Name" class="form-control" required>
       </div>
 
       <!-- Species -->
       <div class="d-grid gap-2">
         <label class="text-n20 fw-normal font-instrument">Species <span class="text-primary">*</span></label>
-        <input type="text" placeholder="Species"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
+        <input type="text" formControlName="species" placeholder="Species" class="form-control" required>
       </div>
 
       <!-- Breed -->
       <div class="d-grid gap-2">
         <label class="text-n20 fw-normal font-instrument">Breed <span class="text-primary">*</span></label>
-        <input type="text" placeholder="Breed"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
+        <input type="text" formControlName="breed" placeholder="Breed" class="form-control" required>
       </div>
 
       <!-- Age -->
       <div class="d-grid gap-2">
         <label class="text-n20 fw-normal font-instrument">Age (in years) <span class="text-primary">*</span></label>
-        <input type="number" min="0" placeholder="Age"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
+        <input type="number" formControlName="age" min="0" placeholder="Age" class="form-control" required>
       </div>
 
       <!-- Size -->
       <div class="d-grid gap-2">
         <label class="text-n20 fw-normal font-instrument">Size <span class="text-primary">*</span></label>
-        <div class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-             data-lenis-prevent>
-          <select name="size" class="w-100 bg-transparent p-0 no-border" required>
-            <option value="" disabled selected>Select Size</option>
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
-          </select>
-        </div>
+        <select formControlName="size" class="form-control" required>
+          <option value="" disabled>Select Size</option>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
       </div>
 
       <!-- Temperament -->
       <div class="d-grid gap-2">
         <label class="text-n20 fw-normal font-instrument">Temperament <span class="text-primary">*</span></label>
-        <input type="text" placeholder="Temperament"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
+        <input type="text" formControlName="temperament" placeholder="Temperament" class="form-control" required>
       </div>
 
       <!-- Special Needs -->
       <div class="d-grid gap-2">
         <label class="text-n20 fw-normal font-instrument">Special Needs <span class="text-primary">*</span></label>
-        <input type="text" placeholder="Special Needs"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
+        <input type="text" formControlName="specialNeeds" placeholder="Special Needs" class="form-control" required>
       </div>
 
       <!-- Description -->
       <div class="d-grid gap-2">
         <label class="text-n20 fw-normal font-instrument">Description <span class="text-primary">*</span></label>
-        <textarea placeholder="Animal Description"
-                  class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-8 focus-primary w-100"
-                  rows="3" required></textarea>
+        <textarea formControlName="description" placeholder="Animal Description" class="form-control" rows="3" required></textarea>
       </div>
 
-      <!-- Adoption Status -->
+      <!-- File Upload for Images -->
       <div class="d-grid gap-2">
-        <label class="text-n20 fw-normal font-instrument">Adoption Status <span class="text-primary">*</span></label>
-        <div class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-             data-lenis-prevent>
-          <select name="adoptionStatus" class="w-100 bg-transparent p-0 no-border" required>
-            <option value="" disabled selected>Select Status</option>
-            <option value="Available">Available</option>
-            <option value="Adopted">Adopted</option>
-            <option value="Pending">Pending</option>
-          </select>
-        </div>
+        <label class="text-n20 fw-normal font-instrument">Upload Images (Select multiple) <span class="text-primary">*</span></label>
+        <input type="file" (change)="changeImages($event)" accept="image/*" multiple required
+               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary">
       </div>
 
-      <!-- Photo URL -->
+      <!-- Category Dropdown -->
       <div class="d-grid gap-2">
-        <label class="text-n20 fw-normal font-instrument">Photo URL <span class="text-primary">*</span></label>
-        <input type="text" placeholder="Photo URL"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
+        <label class="text-n20 fw-normal font-instrument">Category <span class="text-primary">*</span></label>
+        <select formControlName="categoryId" class="form-control" required>
+          <option value="" disabled>Select Category</option>
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
       </div>
 
-      <!-- Shelter ID -->
+      <!-- Shelter Dropdown -->
       <div class="d-grid gap-2">
-        <label class="text-n20 fw-normal font-instrument">Shelter ID <span class="text-primary">*</span></label>
-        <input type="number" min="1" placeholder="Shelter ID"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
-      </div>
-
-      <!-- Category ID -->
-      <div class="d-grid gap-2">
-        <label class="text-n20 fw-normal font-instrument">Category ID <span class="text-primary">*</span></label>
-        <input type="number" min="1" placeholder="Category ID"
-               class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100"
-               required>
+        <label class="text-n20 fw-normal font-instrument">Shelter <span class="text-primary">*</span></label>
+        <select formControlName="shelterId" class="form-control" required>
+          <option value="" disabled>Select Shelter</option>
+          <option *ngFor="let shelter of shelters" [value]="shelter.id">{{ shelter.shelterName }}</option>
+        </select>
       </div>
 
       <!-- Submit Button -->
-      <button type="submit" class="w-100 btn-primary mt-lg-6">Add Animal</button>
+      <button type="submit" class="btn btn-primary mt-lg-6" [disabled]="addAnimalForm.invalid">Add Animal</button>
     </form>
   </div>
 </div>
@@ -124,9 +93,5 @@
     border: 2px solid #333; /* Darker and thicker border */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
     background-color: #ffffff; /* Ensure a white background */
-  }
-
-  .no-border {
-    border: none; /* Remove border for the select field */
   }
 </style>

@@ -1,7 +1,6 @@
 <hr />
-<h2 class="text-center my-4">All Customer Testimonials</h2> <!-- Title for the table -->
+<h2 class="text-center my-4">Customer Testimonials</h2> <!-- Title for the table -->
 <hr />
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -10,6 +9,7 @@
       <th scope="col">The message</th>
 
       <th scope="col">Actions</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -19,9 +19,11 @@
       <td>{{Testimonial.storyTitle}}</td>
       <td><img class="w-20 h-20" src="https://localhost:7001{{Testimonial.storyPhoto}}" /></td>
 
-
       <td>
-        <button class="btn btn-danger" (click)="deleteContactById(Testimonial.postId)">Delete</button>
+        <button class="btn btn-success" (click)="AcceptTheTestimonial(Testimonial.testimonialId)">Accept</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="deleteContactById(Testimonial.testimonialId)">Delete</button>
       </td>
     </tr>
   </tbody>
