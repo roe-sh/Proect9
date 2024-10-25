@@ -38,4 +38,26 @@ export class UrlService {
   addLike(data: any): Observable<any> {
     return this.http.post<any>(`${this.staticData}/Comments/addLike`,data);
   }
+  /////////////////admin mustafa//////////
+  UpdateTestimonial(id: any): Observable<any> {
+    return this.http.put(`${this.staticData}/Posts/AcceptPostById/${id}`, {})
+  }
+
+  deleteTestimonial(id: any): Observable<any> {
+
+    return this.http.delete<any>(`${this.staticData}/Posts/DeletePost/${id}`)
+  }
+
+  GetAllTestimonialToAccept(): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Posts/postnotaccepted`);
+
+  }
+
+  GetTestimonial(): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Posts/GetAllAcceptedPost`);
+
+  }
+
+
+  ////////////////end admin ///////////
 }

@@ -37,6 +37,8 @@ namespace project9_cohort4.Server.Controllers
                         s.User.FullName,
                     },
                     likesCount = s.Likes.Where(l => l.Flag == true).Count(),
+
+                    Commentcount = s.Comments.Count(),
                 }).ToList();
 
             return Ok(posts);
@@ -147,22 +149,39 @@ namespace project9_cohort4.Server.Controllers
                 return StatusCode(500, "An error occurred while processing your request.");
             }
         }
-        [HttpDelete("DeletePostId/{id}")]
-        public async Task<IActionResult> DeletePostId(int id)
+        [HttpDelete("DeletePost/{id}")]
+        public IActionResult DeletePostId(int id)
         {
-            if (id <= 0)
+            var post = _db.Posts.Find(id);
+            if (post == null)
             {
-                return BadRequest("The ID cannot be zero or negative.");
+                return NotFound();
             }
-            var postToDelete = await _db.Posts.FirstOrDefaultAsync(x => x.PostId == id);
-            if (postToDelete == null)
+
+            // First, delete the related likes
+            var likes = _db.Likes.Where(l => l.PostId == id).ToList();
+            _db.Likes.RemoveRange(likes);
+
+            // Then, delete related comments
+            var comments = _db.Comments.Where(c => c.PostId == id).ToList();
+
+            // Delete replies associated with the comments
+            foreach (var comment in comments)
             {
-                return BadRequest("the post is not exist");
+                var replies = _db.Replies.Where(r => r.CommentId == comment.CommentId).ToList();
+                _db.Replies.RemoveRange(replies);
             }
-            _db.Posts.Remove(postToDelete);
-            await _db.SaveChangesAsync();
+
+            _db.Comments.RemoveRange(comments);
+
+            // Finally, delete the post
+            _db.Posts.Remove(post);
+            _db.SaveChanges();
+
             return Ok();
         }
+
+
 
         [HttpGet("PostDetailsById/{postid}")]
         public async Task<IActionResult> GetPostDetailsById(int postid)
@@ -233,6 +252,23 @@ namespace project9_cohort4.Server.Controllers
                             }).ToListAsync();
             return Ok(posts);
 
+        }
+        [HttpGet("postnotaccepted")]
+        public IActionResult postnotaccept()
+        {
+            var notaccept = _db.Posts.Where(x => x.IsAccept != true).OrderByDescending(w => w.StoryDate).Select(s => new
+            {
+                s.PostId,
+                s.StoryTitle,
+                s.StoryContent,
+                s.StoryDate,
+                s.StoryPhoto,
+                User = new
+                {
+                    s.User.FullName,
+                }
+            }).ToArray();
+            return Ok(notaccept);
         }
     }
 }

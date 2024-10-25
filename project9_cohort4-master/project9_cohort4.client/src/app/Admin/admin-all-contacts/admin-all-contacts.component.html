@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Contacts List</h2>
+
+
+  <!-- Make the table responsive -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Date</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Message</th>
+          <th scope="col">Reply</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let message of contactsArray; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{message.sentAt | date}}</td>
+          <td>{{message.senderName}}</td>
+          <td>{{message.senderEmail}}</td>
+          <td>{{message.subject}}</td>
+          <td>{{message.message}}</td>
+          <td>{{message.adminReply}}</td>
+          <td>
+            <a routerLink="/dashboard/contactdetails/{{message.contactId}}" class="btn btn-outline-primary">Details</a>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Info message for no products available -->
+  <div class="alert alert-info" *ngIf="contactsArray == null">
+    No message recieved at the moment.
+  </div>
+</div>

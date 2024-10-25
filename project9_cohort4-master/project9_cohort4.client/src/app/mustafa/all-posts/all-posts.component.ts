@@ -19,18 +19,7 @@ export class AllPostsComponent {
     });
   }
 
-  toggleLike(post: any) {
-    // منطق لتغيير حالة اللايك
-    post.userHasLiked = !post.userHasLiked;
-
-    if (post.userHasLiked) {
-      console.log('User liked the post');
-      // إضافة منطق لحفظ حالة اللايك في الـ Backend إذا لزم الأمر
-    } else {
-      console.log('User unliked the post');
-      // منطق لحفظ إزالة اللايك في الـ Backend
-    }
-  }
+  
 
 
 
@@ -52,5 +41,18 @@ export class AllPostsComponent {
 
     })
   }
+  toggleLike(post: any) {
+    // منطق لتغيير حالة اللايك
+    post.userHasLiked = !post.userHasLiked;
+
+    if (post.userHasLiked) {
+      console.log('User liked the post');
+      // إضافة منطق لحفظ حالة اللايك في الـ Backend إذا لزم الأمر
+    } else {
+      console.log('User unliked the post');
+      // منطق لحفظ إزالة اللايك في الـ Backend
+    }
+  }
+
 
 }

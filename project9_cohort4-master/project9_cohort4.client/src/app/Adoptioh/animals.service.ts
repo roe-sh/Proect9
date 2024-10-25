@@ -37,13 +37,10 @@ export class AnimalService {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  getRelatedAnimals(shelterId: number, species: string): Observable<any[]> {
-    let params = new HttpParams()
-      .set('shelterId', shelterId.toString())
-      .set('species', species);
-
-    return this.http.get<any[]>(`${this.apiUrl}/related`, { params });
+  getRandomAnimals(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/random`); // Adjust the endpoint as necessary
   }
+
 
   // New method to get all shelters
   getAllShelters(): Observable<any[]> {
