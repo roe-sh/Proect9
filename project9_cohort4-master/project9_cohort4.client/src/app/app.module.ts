@@ -99,8 +99,6 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
       { path: "UpdateAnimal/:id", component: UpdateInfoComponent },
       { path: "animal-details/:id", component: AnimalsDetailsComponent },
       { path: "animals-form/:animalId", component: AnimalFormComponent },
-      { path: 'animals', component: AnimalsComponent },
-      { path: 'animals', component: AnimalsComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "userprofile", component: UserProfileComponent },
@@ -109,7 +107,7 @@ import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
       { path: 'team', component: TeamComponent },
       { path: 'services', component: ServicesComponent }, 
 
-      { path: 'animals', component: AnimalsComponent },
+     
       { path: 'addpost', component: AddpostComponent },
       { path: 'animals', component: AnimalsComponent },
 
