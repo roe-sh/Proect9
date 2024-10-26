@@ -143,6 +143,7 @@ import { UpdateSheltersComponent } from './Admin/update-shelters/update-shelters
         { path: 'animals/:id', component: AnimalsDetailsComponent },
         { path: 'animals-form', component: AnimalFormComponent, canActivate: [AuthGuard] },
 
+        { path: 'UpdateAnimal/:id', component: EditAnimalComponent },
 
         {path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
         {path: 'AdminAdoption', component: AdminAdoptionComponent },
