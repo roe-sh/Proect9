@@ -82,6 +82,11 @@ export class BUrlServicesService {
   }
 
 
+  searchUser(text: string): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}AdminUsers/searchUser/${text}`)
+  }
+
+
 
   //////////////////////////////////////// contacts
   sendMessage(data: any): Observable<any> {
@@ -101,18 +106,31 @@ export class BUrlServicesService {
   }
 
 
-
-
-  //////////////////////////////////// admin users
-  assignAdmin(userId: any): Observable<any> {
-    return this.http.put<any>(`${this.BaseUrl}AdminUsers/assignUserAsAdmin/${userId}`, {})
+  searchContacts(text: string): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}Contacts/searchContacts/${text}`)
+  }
+  
+  searchContactsByAdminReply(text: string): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}searchContactsByAdminReply/${text}`)
   }
 
 
 
 
 
+  //////////////////////////////////// admin users
+  //assignAdmin(userId: any): Observable<any> {
+  //  return this.http.put<any>(`${this.BaseUrl}AdminUsers/assignUserAsAdmin/${userId}`, {})
+  //}
 
+
+
+
+  /////////////////////////////////// for the home page
+
+  Latest3Posts(): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}Posts/getLatest3PostsForHP`)
+  }
 
 
 

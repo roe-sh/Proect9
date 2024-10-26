@@ -30,13 +30,13 @@ export class UserDetailsComponent {
     })
   }
 
-  assign(id: any) {
-    this._ser.assignAdmin(id).subscribe(() => {
+  //assign(id: any) {
+  //  this._ser.assignAdmin(id).subscribe(() => {
 
-      this.getUserInfo(id)
+  //    this.getUserInfo(id)
 
-    })
-  }
+  //  })
+  //}
 
 
 

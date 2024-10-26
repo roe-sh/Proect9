@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using project9_cohort4.Server.DTOs;
 using project9_cohort4.Server.Models;
 
@@ -21,7 +22,7 @@ namespace project9_cohort4.Server.Controllers
         public IActionResult GetAllPosts()
         {
             var posts = _db.Posts
-                .Where( w => w.IsAccept == true)
+                .Where(w => w.IsAccept == true)
                 .OrderByDescending(w => w.StoryDate)
                 .Select(s => new
                 {
@@ -234,5 +235,48 @@ namespace project9_cohort4.Server.Controllers
             return Ok(posts);
 
         }
+
+
+
+
+
+
+
+
+
+
+
+        ///////////////////////////////////// for the home page
+        [HttpGet("getLatest3PostsForHP")]
+        public IActionResult getLatest3PostsForHP()
+        {
+            var latest3 = _db.Posts
+                .Where(x => x.IsAccept == true)
+                .OrderByDescending(w => w.StoryDate)
+                .Select(s => new
+                {
+                    s.PostId,
+                    s.StoryTitle,
+                    s.StoryContent,
+                    s.StoryDate,
+                    s.StoryPhoto,
+                    User = new
+                    {
+                        s.User.FullName,
+                    }
+                })
+                .Take(3)
+                .ToList();
+
+            if (latest3.IsNullOrEmpty()) return NotFound("no post was found");
+
+            return Ok(latest3);
+        }
+
+
+
+
+
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using project9_cohort4.Server.DTOs;
 using project9_cohort4.Server.Models;
 using project9_cohort4.Server.Services;
@@ -98,9 +99,59 @@ namespace project9_cohort4.Server.Controllers
         }
 
 
+        ////////// search contacts by user name or email
+        ///
+
+        [HttpGet("searchContacts/{text}")]
+        public IActionResult searchContacts(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return BadRequest("invalid search");
+
+            var users = _db.Contacts
+                .Where(a => a.SenderName.ToLower().Contains(text) || a.SenderEmail.ToLower().Contains(text))
+                .ToList();
+
+            if (users.IsNullOrEmpty()) return NotFound("no match was found");
+
+            return Ok(users);
+        }
 
 
+        ////////// search contacts by admin reply
+        ///
 
+        [HttpGet("searchContactsByAdminReply/{text}")]
+        public IActionResult searchContactsByAdminReply(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return BadRequest("Invalid search");
+
+            List<Contact> messages;
+
+            if (text.Equals("noReply", StringComparison.OrdinalIgnoreCase))
+            {
+                messages = _db.Contacts
+                    .Where(a => a.AdminReply == "no reply")
+                    .ToList();
+            }
+            else if (text.Equals("replied", StringComparison.OrdinalIgnoreCase))
+            {
+                messages = _db.Contacts
+                    .Where(a => a.AdminReply != "no reply")
+                    .ToList();
+            }
+            else if (text.Equals("all", StringComparison.OrdinalIgnoreCase))
+            {
+                messages = _db.Contacts.ToList();
+            }
+            else
+            {
+                return BadRequest("Invalid search parameter");
+            }
+
+            if (messages.IsNullOrEmpty()) return NotFound("No match was found");
+
+            return Ok(messages);
+        }
 
 
 

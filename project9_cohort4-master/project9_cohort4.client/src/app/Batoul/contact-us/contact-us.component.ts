@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BUrlServicesService } from '../burl-services.service';
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-us',
@@ -53,8 +54,15 @@ export class ContactUsComponent {
       }
     );
 
+  }
 
 
+  onSubmit(form: NgForm) {
+    if (form.invalid) {
+      console.log('Form is invalid:', form);
+      return;
+    }
+    console.log('Form is valid:', form);
   }
 
 

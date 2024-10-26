@@ -26,7 +26,16 @@ export class AllUsersComponent {
   }
 
 
-
+  searchUsers(event: any) {
+    const searchText = event.target.value.trim();
+    if (searchText === '') {
+      this.getAll(); // Load all users if the search text is empty
+    } else {
+      this._ser.searchUser(searchText).subscribe((data) => {
+        this.usersarray = data;
+      });
+    }
+  }
 
 
 

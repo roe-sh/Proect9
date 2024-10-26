@@ -18,7 +18,7 @@ export class AdminContactDetailsComponent {
     this.contactId = this._route.snapshot.paramMap.get("id");
 
     this._ser.userIdObs.subscribe((userId) => {
-      this.adminId = 5
+      this.adminId = userId
     })
 
     this.getMessageDetails(this.contactId)
