@@ -15,11 +15,13 @@ namespace project9_cohort4.Server.Controllers
     {
         private readonly MyDbContext _context;
         private readonly EmailHelper _emailHelper; // Change this to EmailHelper
+        private readonly EmailService _emailService;
 
-        public AdoptionApplicationsController(MyDbContext context, EmailHelper emailHelper)
+        public AdoptionApplicationsController(MyDbContext context, EmailHelper emailHelper, EmailService emailService)
         {
             _context = context;
             _emailHelper = emailHelper; // Assign emailHelper in constructor
+            _emailService = emailService;
         }
 
 
@@ -163,40 +165,92 @@ namespace project9_cohort4.Server.Controllers
         }
 
 
-        [HttpPut("acceptAdoption/{animalId}/{requestId}")]
-        public IActionResult acceptAdoption(int animalId, int requestId)
-        {
-            if (requestId <= 0) return BadRequest("invalid id");
+        //[HttpPut("acceptAdoption/{animalId}/{requestId}")]
+        //public IActionResult acceptAdoption(int animalId, int requestId)
+        //{
+        //    if (requestId <= 0) return BadRequest("invalid id");
 
-            var request = _context.AdoptionApplications.FirstOrDefault(a => a.ApplicationId == requestId);
+        //    var request = _context.AdoptionApplications.FirstOrDefault(a => a.ApplicationId == requestId);
+
+        //    var otherRequests = _context.AdoptionApplications
+        //        .Where(a => a.AnimalId == animalId && a.ApplicationId != requestId)
+        //        .ToList();
+
+        //    if (request == null) return NotFound("the request was not found");
+
+        //    request.Status = "Approved";
+        //    _context.AdoptionApplications.Update(request);
+
+        //    if (!otherRequests.IsNullOrEmpty())
+        //    {
+        //        foreach (var req in otherRequests)
+        //        {
+        //            req.Status = "Rejected";
+        //        }
+        //    }
+        //    _context.AdoptionApplications.UpdateRange(otherRequests);
+
+        //    _context.SaveChanges();
+
+        //    return Ok("request accepted");
+
+        //}
+
+
+        [HttpPut("acceptAdoption/{animalId}/{requestId}")]
+        public IActionResult AcceptAdoption(int animalId, int requestId)
+        {
+            if (requestId <= 0) return BadRequest("Invalid request ID");
+
+            var request = _context.AdoptionApplications
+                .Include(a => a.User)
+                .Include(a => a.Animal)
+                .FirstOrDefault(a => a.ApplicationId == requestId);
+
+            if (request == null) return NotFound("The request was not found");
 
             var otherRequests = _context.AdoptionApplications
                 .Where(a => a.AnimalId == animalId && a.ApplicationId != requestId)
+                .Include(a => a.User)
+                .Include(a => a.Animal)
                 .ToList();
 
-            if (request == null) return NotFound("the request was not found");
-
+            // Approve the selected request
             request.Status = "Approved";
             _context.AdoptionApplications.Update(request);
 
-            if (!otherRequests.IsNullOrEmpty())
+            // Reject other requests for the same animal
+            if (otherRequests.Any())
             {
                 foreach (var req in otherRequests)
                 {
                     req.Status = "Rejected";
                 }
+                _context.AdoptionApplications.UpdateRange(otherRequests);
             }
-            _context.AdoptionApplications.UpdateRange(otherRequests);
 
+            // Save changes to the database
             _context.SaveChanges();
 
-            return Ok("request accepted");
+            // Get user details for the email
+            var userEmail = request.User.Email;
+            var userName = request.User.FullName; // Assuming there's a Name property in the User class
+            var animalName = request.Animal.Name; // Assuming there's a Name property in the Animal class
 
+            // Send acceptance email
+            _emailService.SendAcceptance(userName, userEmail, animalName);
 
+            // Send rejection emails to others
+            foreach (var rejectedRequest in otherRequests)
+            {
+                var rejectedUserEmail = rejectedRequest.User.Email;
+                var rejectedUserName = rejectedRequest.User.FullName;
 
+                _emailService.SendRejection(rejectedUserName, rejectedUserEmail, animalName);
+            }
+
+            return Ok("Request accepted and emails sent");
         }
-
-
 
 
 
