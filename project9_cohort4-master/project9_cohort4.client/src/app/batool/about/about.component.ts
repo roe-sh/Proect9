@@ -13,19 +13,25 @@ export class AboutComponent {
     {
       name: 'Esraa Odat',
       position: 'Scrum Master',
-      image: 'team-1.png', 
+      image: 'photo.jpg', 
       description: 'A dedicated Scrum Master with a passion for agile methodologies and team collaboration.'
+    },
+    {
+      name: 'Batool Al-dalki',
+      position: 'Coach and Guider',
+      image: 'team-2.png', 
+      "description": "An inspiring Coach and Guider who excels at empowering individuals to reach their potential and guiding teams toward achieving their goals with clarity and confidence."
     },
     {
       name: 'Batool Khazali',
       position: 'Product Owner',
-      image: 'team-2.png',
+      image: 'WhatsApp Image 2024-09-19 at 19.45.05_973ad229.jpg',
       description: 'An experienced Product Owner who excels at defining product vision and prioritizing tasks.'
     },
     {
       name: 'Rahaf AL-Shorman',
       position: 'Web Developer',
-      image: 'team-3.png',
+      image: 'WhatsApp Image 2024-10-26 at 21.35.36_bf07f33b.jpg',
       description: 'A skilled Web Developer with expertise in creating responsive and user-friendly applications.'
     },
     {
