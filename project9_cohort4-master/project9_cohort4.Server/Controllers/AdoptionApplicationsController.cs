@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project9_cohort4.Server.Models;
 using project9_cohort4.Server.DTOs;
-using System.Linq;
+using project9_cohort4.Server.Email_Helper;
 
 namespace project9_cohort4.Server.Controllers
 {
@@ -11,11 +13,14 @@ namespace project9_cohort4.Server.Controllers
     public class AdoptionApplicationsController : ControllerBase
     {
         private readonly MyDbContext _context;
+        private readonly EmailHelper _emailHelper; // Change this to EmailHelper
 
-        public AdoptionApplicationsController(MyDbContext context)
+        public AdoptionApplicationsController(MyDbContext context, EmailHelper emailHelper)
         {
             _context = context;
+            _emailHelper = emailHelper; // Assign emailHelper in constructor
         }
+       
 
         // GET: api/AdoptionApplications
         [HttpGet]
@@ -49,6 +54,7 @@ namespace project9_cohort4.Server.Controllers
             {
                 return NotFound();
             }
+
             existingApplication.UserMedicalStatus = adoptionApplicationDto.UserMedicalStatus;
             existingApplication.UserFlatType = adoptionApplicationDto.UserFlatType;
             existingApplication.UserFinaincalStatus = adoptionApplicationDto.UserFinancialStatus;
@@ -62,16 +68,21 @@ namespace project9_cohort4.Server.Controllers
             return Ok(existingApplication);
         }
 
-
+        // POST: api/AdoptionApplications
         [HttpPost]
         public IActionResult PostAdoptionApplication([FromBody] AddAdoptionApplicationDTO adoptionApplicationDto)
         {
             try
             {
+                if (adoptionApplicationDto == null)
+                {
+                    return BadRequest("Empty form");
+                }
+
                 var newApplication = new AdoptionApplication
                 {
                     UserId = adoptionApplicationDto.UserId,
-                  
+                    AnimalId = adoptionApplicationDto.AnimalId,
                     UserMedicalStatus = adoptionApplicationDto.UserMedicalStatus,
                     UserFlatType = adoptionApplicationDto.UserFlatType,
                     UserFinaincalStatus = adoptionApplicationDto.UserFinaincalStatus,
@@ -84,15 +95,18 @@ namespace project9_cohort4.Server.Controllers
                 _context.AdoptionApplications.Add(newApplication);
                 _context.SaveChanges();
 
+                // Send email
+                _emailHelper.SendMessage(adoptionApplicationDto.UserName, adoptionApplicationDto.UserEmail,
+                    "Adoption Application Received", $"Thank you for your application for animal .");
+
                 return CreatedAtAction(nameof(GetAdoptionApplication), new { id = newApplication.ApplicationId }, newApplication);
             }
             catch (Exception ex)
             {
+                // Log exception details
                 return StatusCode(500, $"Internal server error: {ex.Message}"); // Log and return error
             }
         }
-
-
 
         // DELETE: api/AdoptionApplications/5
         [HttpDelete("{id}")]

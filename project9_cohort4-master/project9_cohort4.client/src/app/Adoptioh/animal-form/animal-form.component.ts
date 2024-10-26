@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AdoptionService } from '../../Adoptioh/adoption.service';
-import { BUrlServicesService } from '../../Batoul/burl-services.service'; // Add this import
+import { BUrlServicesService } from '../../Batoul/burl-services.service';
 import Swal from 'sweetalert2';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-animal-form',
@@ -11,25 +12,36 @@ import Swal from 'sweetalert2';
 })
 export class AnimalFormComponent implements OnInit {
   adoptionDetails = {
-    userId: null as number | null,  // Initialize with the logged-in user's ID later
-    animalId: null as number | null,
+    userId: null as number | null,
+    AnimalId: null as number | null,
     userMedicalStatus: '',
     housingType: 'Apartment',
     userFinancialStatus: '',
     userFlatType: '',
     userLivingStatus: '',
-    userMoreDetails: ''
+    userMoreDetails: '',
+    userName: '', // Add userName property
+    userEmail: ''  // Add userEmail property
   };
 
-  constructor(private adoptionService: AdoptionService, private authService: BUrlServicesService) { }
-
+  constructor(private adoptionService: AdoptionService, private authService: BUrlServicesService, private _active: ActivatedRoute) { }
+  
   ngOnInit(): void {
-    // Assuming you set the userId from the logged-in user data
-    this.adoptionDetails.userId = this.authService.userId.value; // Fetch logged-in user ID from service
+    this.adoptionDetails.userId = this.authService.userId.value;
+    this.getUserDetails(); // Fetch user details on initialization
+  }
+
+  getUserDetails(): void {
+    this.authService.getUserDetails().subscribe((userData: any) => {
+      this.adoptionDetails.userName = userData.name; // Assuming userData has a 'name' field
+      this.adoptionDetails.userEmail = userData.email; // Assuming userData has an 'email' field
+    });
   }
 
   submitAdoptionForm(form: NgForm): void {
     if (form.valid) {
+     
+      this.adoptionDetails.AnimalId = Number(this._active.snapshot.paramMap.get('animalId'))
       this.adoptionService.submitAdoptionRequest(this.adoptionDetails).subscribe(
         response => {
           console.log('Adoption request submitted successfully:', response);
@@ -40,7 +52,7 @@ export class AnimalFormComponent implements OnInit {
             confirmButtonText: 'Okay'
           });
           form.reset();
-          this.adoptionDetails.animalId = null;
+          this.adoptionDetails.AnimalId = null;
         },
         error => {
           console.error('Error submitting adoption request:', error);

@@ -1,1 +1,87 @@
-<p>edit-animal works!</p>
+<form #updateanimal="ngForm" (ngSubmit)="Updateanimal(updateanimal.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+  <h2 style="text-align: center; margin-bottom: 20px;">Add Animal</h2>
+
+  <div class="form-container">
+    <!-- Animal Name Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Name" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Animal Name</label>
+      <input type="text" id="Name" name="Name" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+
+    <!-- Species Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Species" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Species</label>
+      <input type="text" id="Species" name="Species" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+
+    <!-- Breed Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Breed" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Breed</label>
+      <input type="text" id="Breed" name="Breed" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+
+    <!-- Age Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Age" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Age</label>
+      <input type="number" id="Age" name="Age" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+
+    <!-- Size Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Size" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Size</label>
+      <input type="text" id="Size" name="Size" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+
+    <!-- Temperament Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Temperament" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Temperament</label>
+      <input type="text" id="Temperament" name="Temperament" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+
+    <!-- Special Needs Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="SpecialNeeds" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Special Needs</label>
+      <input type="text" id="SpecialNeeds" name="SpecialNeeds" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+
+    <!-- Description Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Description" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Description</label>
+      <textarea id="Description" name="Description" ngModel class="form-control" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+    </div>
+
+    <!-- Image Uploads -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Image1" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Image 1</label>
+      <input NAME="Image1" type="file" id="Image1" (change)="changeImage($event, 0)" class="form-control" accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Image2" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Image 2</label>
+      <input name="Image2" type="file" id="Image2" (change)="changeImage($event, 1)" accept="image/*" class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Image3" image="Image3" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Image 3</label>
+      <input type="file" id="Image3" (change)="changeImage($event, 2)" accept="image/*" class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    </div>
+
+    <!-- Shelter and Category Fields -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Shelter" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Shelter</label>
+      <select id="Shelter" name="ShelterId" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <option *ngFor="let shelter of shelters" [value]="shelter.shelterId">{{ shelter.shelterName }}</option>
+      </select>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="Category" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Category</label>
+      <select id="Category" name="CategoryId" ngModel class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.name }}</option>
+      </select>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group" style="text-align: center;">
+      <button type="submit" class="btn btn-primary" style="padding: 10px 20px; background-color: #007bff; border: none; border-radius: 5px; color: white; font-size: 1em; cursor: pointer;">Add Animal</button>
+    </div>
+  </div>
+</form>

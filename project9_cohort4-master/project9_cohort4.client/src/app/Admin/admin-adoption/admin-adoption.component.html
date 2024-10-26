@@ -38,8 +38,11 @@
           <td>{{ animal.size }}</td>  <!-- Bind the animal's size -->
           <td>{{ animal.temperament }}</td>  <!-- Bind the animal's temperament -->
           <td>{{ animal.adoptionStatus }}</td>  <!-- Bind the animal's adoption status -->
+          
           <td>
-            <button type="button" class="btn btn-outline-primary" (click)="editAnimal(animal.animalId)">Edit</button>  <!-- Bind the edit button to the editAnimal method -->
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/dashboard/UpdateAnimal', animal.animalId]">
+              Edit
+            </button>
             &nbsp;
             <button type="button" class="btn btn-outline-danger" (click)="deleteAnimal(animal.animalId)">Delete</button><!--   Bind the delete button to the deleteAnimal method-->
           </td>
