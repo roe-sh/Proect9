@@ -256,41 +256,6 @@ namespace project9_cohort4.Server.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-        ///////////////////////////////////// for the home page
-        [HttpGet("getLatest3PostsForHP")]
-        public IActionResult getLatest3PostsForHP()
-        {
-            var latest3 = _db.Posts
-                .Where(x => x.IsAccept == true)
-                .OrderByDescending(w => w.StoryDate)
-                .Select(s => new
-                {
-                    s.PostId,
-                    s.StoryTitle,
-                    s.StoryContent,
-                    s.StoryDate,
-                    s.StoryPhoto,
-                    User = new
-                    {
-                        s.User.FullName,
-                    }
-                })
-                .Take(3)
-                .ToList();
-
-            if (latest3.IsNullOrEmpty()) return NotFound("no post was found");
-
-            return Ok(latest3);
-        }
         [HttpGet("postnotaccepted")]
         public IActionResult postnotaccept()
         {
@@ -308,6 +273,18 @@ namespace project9_cohort4.Server.Controllers
             }).ToArray();
             return Ok(notaccept);
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

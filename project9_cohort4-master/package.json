@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "@angular/localize": "^18.2.9",
-    "@angular/localize": "^18.2.9",
     "@ng-bootstrap/ng-bootstrap": "^17.0.1",
     "sweetalert2": "^11.14.4"
   }

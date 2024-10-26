@@ -122,7 +122,7 @@ export class BUrlServicesService {
   /////////////////////////////////// for the home page
 
   Latest3Posts(): Observable<any> {
-    return this.http.get<any>(`${this.BaseUrl}Posts/getLatest3PostsForHP`)
+    return this.http.get<any>(`${this.BaseUrl}HomePage/getLatest3PostsForHP`)
   }
 
 

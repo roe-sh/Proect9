@@ -327,119 +327,177 @@
       </div>
 
       <div class="row g-6 justify-content-center justify-content-md-start">
-        <div class="col-lg-4 col-md-6 col-xs-10">
-          <div class="blog-card">
-            <div class="blog-img scale-animation position-relative radius-20 overflow-hidden mb-lg-7 mb-md-5 mb-3">
-              <img class="w-100" src="assets/images/blog-img-1.png" alt="blog image">
+
+        <div class="col-lg-4 col-md-6 col-xs-10" *ngFor="let post of leatestArray">
+          <div class="blog-card" routerLink="/postcomments/{{post.postId}}">
+            <div class="blog-img scale-animation position-relative radius-20 overflow-hidden mb-lg-7 mb-lg-5 mb-3">
+              <img class="w-100" src="https://localhost:7001{{post.storyPhoto}}" alt="blog image">
               <div class="position-absolute end-0 bottom-0 mb-lg-6 mb-4 me-lg-6 me-4">
-                <a href="#" class="btn-primary n0-border text-n0 font-instrument">Education Pet</a>
+                <a routerLink="/postcomments/{{post.postId}}" class="btn-primary n0-border text-n0 font-instrument">{{post.storyTitle}}</a>
               </div>
             </div>
             <div class="blog-content">
               <div class="d-flex align-items-center gap-xl-3 gap-2 mb-lg-3 mb-2">
                 <div class="d-flex align-items-center gap-2">
                   <span class="text-lg text-primary"><i class="ph ph-calendar-blank"></i></span>
-                  <span class="text-n20 fw-normal">Feb 16, 2022</span>
+                  <span class="text-n20 fw-normal">{{post.storyDate | date: 'yyyy/MM/dd hh:mm a'}}</span>
                 </div>
                 <div class="d-flex align-items-center gap-2">
                   <span class="text-lg text-primary"><i class="ph ph-user"></i></span>
-                  <span class="text-n20 fw-normal">By Admin</span>
+                  <span class="text-n20 fw-normal">{{post.user.fullName}}</span>
                 </div>
               </div>
-              <a href="#">
-                <h4 class="text-animation-line text-n20 hover-text-primary hover-underline mb-lg-4 mb-3">
-                  Get Paid To Walk Dogs
-                </h4>
-              </a>
+
               <p class="text-n10 fw-normal">
-                Discover essential tips to ensure your pet's health and happiness, from proper
-                nutrition
+                {{post.storyContent}}
               </p>
+
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-xs-10">
-          <div class="blog-card">
-            <div class="blog-img scale-animation position-relative radius-20 overflow-hidden mb-lg-7 mb-md-5 mb-3">
-              <img class="w-100" src="assets/images/blog-img-2.png" alt="blog image">
-              <div class="position-absolute end-0 bottom-0 mb-lg-6 mb-4 me-lg-6 me-4">
-                <a href="#" class="btn-primary n0-border text-n0 font-instrument">Medical Care</a>
-              </div>
-            </div>
-            <div class="blog-content">
-              <div class="d-flex align-items-center gap-xl-3 gap-2 mb-lg-3 mb-2">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="text-lg text-primary"><i class="ph ph-calendar-blank"></i></span>
-                  <span class="text-n20 fw-normal">Feb 16, 2022</span>
-                </div>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="text-lg text-primary"><i class="ph ph-user"></i></span>
-                  <span class="text-n20 fw-normal">By Admin</span>
-                </div>
-              </div>
-              <a href="#">
-                <h4 class="text-animation-line text-n20 hover-text-primary hover-underline mb-lg-4 mb-3">
-                  What Does A Dog Walker Do?
-                </h4>
-              </a>
-              <p class="text-n10 fw-normal">
-                Discover essential tips to ensure your pet's health and happiness, from proper
-                nutrition
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-xs-10">
-          <div class="blog-card">
-            <div class="blog-img scale-animation position-relative radius-20 overflow-hidden mb-lg-7 mb-md-5 mb-3">
-              <img class="w-100" src="assets/images/blog-img-3.png" alt="blog image">
-              <div class="position-absolute end-0 bottom-0 mb-lg-6 mb-4 me-lg-6 me-4">
-                <a href="#" class="btn-primary n0-border text-n0 font-instrument">Pet Boarding</a>
-              </div>
-            </div>
-            <div class="blog-content">
-              <div class="d-flex align-items-center gap-xl-3 gap-2 mb-lg-3 mb-2">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="text-lg text-primary"><i class="ph ph-calendar-blank"></i></span>
-                  <span class="text-n20 fw-normal">Feb 16, 2022</span>
-                </div>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="text-lg text-primary"><i class="ph ph-user"></i></span>
-                  <span class="text-n20 fw-normal">By Admin</span>
-                </div>
-              </div>
-              <a href="#">
-                <h4 class="text-animation-line text-n20 hover-text-primary hover-underline mb-lg-4 mb-3">
-                  Walk Your Best doggo friend
-                </h4>
-              </a>
-              <p class="text-n10 fw-normal">
-                Discover essential tips to ensure your pet's health and happiness, from proper
-                nutrition
-              </p>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
   <!-- blogs section end -->
   <!-- team section -->
   <!-- team section start  -->
-  <section class="team-section pt-120 pb-120">
+  <!--<section class="team-section pt-120 pb-120">
     <div class="container">
       <div class="row justify-content-center mb-lg-15 mb-md-10 mb-8 position-relative">
         <div class="col-lg-6 text-center px-lg-0">
           <span class="d-block text-primary text-uppercase mb-lg-4 mb-3">TEAM MEMBERS</span>
           <h2 class="text-animation-word text-h1 text-center font-otomanopee text-n20 fw-normal">
-            Meet Our Experience Pet Care Team
+            Meet Our Team
           </h2>
         </div>
       </div>
-      <div class="row g-6 mb-lg-15 mb-md-10 mb-8 justify-content-center justify-content-md-start">
+      <div class="row g-6 mb-lg-15 mb-md-10 mb-8 justify-content-center justify-content-around">
+
         <div class="col-lg-4 col-md-6 col-xs-10">
           <div class="team-card radius-pill position-relative overflow-hidden">
-            <a href="team-details.html" class="team-member-img shake-animation d-block">
+            <a class="team-member-img shake-animation d-block">
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-1.jpg" alt="Esraa Odat" class="w-100" />
+              </div>
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-1.jpg" alt="Esraa Odat" class="w-100" />
+              </div>
+            </a>
+            <div class="team-member-info w-100 d-center py-lg-8 py-6 position-absolute bottom-0 start-0 bg-secondary3 z-1">
+              <div class="text-center">
+                <div class="d-grid gap-2 mb-lg-4 mb-2">
+                  <a class="text-n20 text-h5 hover-text-n0">
+                    Esraa Odat
+                  </a>
+                  <span class="text-n20 fw-normal">Scrum Master</span>
+                  <span class="text-n20 fw-normal">A dedicated Scrum Master with a passion for agile methodologies and team collaboration.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-xs-10">
+          <div class="team-card radius-pill position-relative overflow-hidden">
+            <a class="team-member-img shake-animation d-block">
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-2.jpg" alt="Batool Khazali" class="w-100" />
+              </div>
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-2.jpg" alt="Batool Khazali" class="w-100" />
+              </div>
+            </a>
+            <div class="team-member-info w-100 d-center py-lg-8 py-6 position-absolute bottom-0 start-0 bg-secondary3 z-1">
+              <div class="text-center">
+                <div class="d-grid gap-2 mb-lg-4 mb-2">
+                  <a class="text-n20 text-h5 hover-text-n0">
+                    Batool Khazali
+                  </a>
+                  <span class="text-n20 fw-normal">Product Owner</span>
+                  <span class="text-n20 fw-normal">An experienced Product Owner who excels at defining product vision and prioritizing tasks.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-xs-10">
+          <div class="team-card radius-pill position-relative overflow-hidden">
+            <a class="team-member-img shake-animation d-block">
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-3.jpg" alt="Rahaf Al-Shorman" class="w-100" />
+              </div>
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-3.jpg" alt="Rahaf Al-Shorman" class="w-100" />
+              </div>
+            </a>
+            <div class="team-member-info w-100 d-center py-lg-8 py-6 position-absolute bottom-0 start-0 bg-secondary3 z-1">
+              <div class="text-center">
+                <div class="d-grid gap-2 mb-lg-4 mb-2">
+                  <a class="text-n20 text-h5 hover-text-n0">
+                    Rahaf Al-Shorman
+                  </a>
+                  <span class="text-n20 fw-normal">Web Developer</span>
+                  <span class="text-n20 fw-normal">A skilled Web Developer with expertise in creating responsive and user-friendly applications.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-xs-10">
+          <div class="team-card radius-pill position-relative overflow-hidden">
+            <a class="team-member-img shake-animation d-block">
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-3.jpg" alt="Mostafa Al-Momani" class="w-100" />
+              </div>
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-3.jpg" alt="Mostafa Al-Momani" class="w-100" />
+              </div>
+            </a>
+            <div class="team-member-info w-100 d-center py-lg-8 py-6 position-absolute bottom-0 start-0 bg-secondary3 z-1">
+              <div class="text-center">
+                <div class="d-grid gap-2 mb-lg-4 mb-2">
+                  <a class="text-n20 text-h5 hover-text-n0">
+                    Mostafa Al-Momani
+                  </a>
+                  <span class="text-n20 fw-normal">Web Developer</span>
+                  <span class="text-n20 fw-normal">A passionate Web Developer who specializes in front-end technologies and enjoys solving complex problems.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-xs-10">
+          <div class="team-card radius-pill position-relative overflow-hidden">
+            <a class="team-member-img shake-animation d-block">
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-3.jpg" alt="Malik" class="w-100" />
+              </div>
+              <div class="shake-thumb">
+                <img src="assets/images/team-member-3.jpg" alt="Malik" class="w-100" />
+              </div>
+            </a>
+            <div class="team-member-info w-100 d-center py-lg-8 py-6 position-absolute bottom-0 start-0 bg-secondary3 z-1">
+              <div class="text-center">
+                <div class="d-grid gap-2 mb-lg-4 mb-2">
+                  <a class="text-n20 text-h5 hover-text-n0">
+                    Malik
+                  </a>
+                  <span class="text-n20 fw-normal">Web Developer</span>
+                  <span class="text-n20 fw-normal">A creative Web Developer focused on building innovative solutions and enhancing user experiences.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6 col-xs-10">
+          <div class="team-card radius-pill position-relative overflow-hidden">
+            <a class="team-member-img shake-animation d-block">
               <div class="shake-thumb">
                 <img src="assets/images/team-1.png" alt="team member" class="w-100" />
               </div>
@@ -450,96 +508,21 @@
             <div class="team-member-info w-100 d-center py-lg-8 py-6 position-absolute bottom-0 start-0 bg-secondary3 z-1">
               <div class="text-center">
                 <div class="d-grid gap-2 mb-lg-4 mb-2">
-                  <a href="team-details.html" class="text-n20 text-h5 hover-text-n0">
+                  <a class="text-n20 text-h5 hover-text-n0">
                     Pearlie
                     Bowman
                   </a>
                   <span class="text-n20 fw-normal">Veterinarians</span>
+                  <span class="text-n20 fw-normal">Veterinarians</span>
                 </div>
-                <ul class="d-flex align-items-center justify-content-center gap-2">
-                  <li>
-                    <a href="#" class="icon-32px bg-n20 text-n0 text-lg box-style box-primary">
-                      <i class="ph ph-facebook-logo"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icon-32px bg-n20 text-n0 text-lg box-style box-primary">
-                      <i class="ph ph-instagram-logo"></i>
-                    </a>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-xs-10">
-          <div class="team-card radius-pill position-relative overflow-hidden">
 
-            <a href="team-details.html" class="team-member-img shake-animation d-block">
-              <div class="shake-thumb">
-                <img src="assets/images/team-2.png" alt="team member" class="w-100" />
-              </div>
-              <div class="shake-thumb">
-                <img src="assets/images/team-2.png" alt="team member" class="w-100" />
-              </div>
-            </a>
-            <div class="team-member-info w-100 d-center py-lg-8 py-6 position-absolute bottom-0 start-0 bg-primary z-1">
-              <div class="text-center">
-                <div class="d-grid gap-2 mb-lg-4 mb-2">
-                  <a href="team-details.html" class="text-n20 text-h5 hover-text-n0">David Warner</a>
-                  <span class="text-n20 fw-normal">Pet Groomer</span>
-                </div>
-                <ul class="d-flex align-items-center justify-content-center gap-2">
-                  <li>
-                    <a href="#" class="icon-32px bg-n20 text-n0 text-lg box-style box-primary">
-                      <i class="ph ph-facebook-logo"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icon-32px bg-n20 text-n0 text-lg box-style box-primary">
-                      <i class="ph ph-instagram-logo"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-xs-10">
-          <div class="team-card radius-pill position-relative overflow-hidden">
-            <a href="team-details.html" class="team-member-img shake-animation d-block">
-              <div class="shake-thumb">
-                <img src="assets/images/team-3.png" alt="team member" class="w-100" />
-              </div>
-              <div class="shake-thumb">
-                <img src="assets/images/team-3.png" alt="team member" class="w-100" />
-              </div>
-            </a>
-            <div class="team-member-info w-100 d-center py-lg-8 py-6 position-absolute bottom-0 start-0 bg-secondary z-1">
-              <div class="text-center">
-                <div class="d-grid gap-2 mb-lg-4 mb-2">
-                  <a href="team-details.html" class="text-n20 text-h5 hover-text-n0">Brooklyn Simmons</a>
-                  <span class="text-n20 fw-normal">Pet Nutritionist</span>
-                </div>
-                <ul class="d-flex align-items-center justify-content-center gap-2">
-                  <li>
-                    <a href="#" class="icon-32px bg-n20 text-n0 text-lg box-style box-primary">
-                      <i class="ph ph-facebook-logo"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="icon-32px bg-n20 text-n0 text-lg box-style box-primary">
-                      <i class="ph ph-instagram-logo"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-  </section>
+  </section>-->
   <!-- team section end  -->
 
 
