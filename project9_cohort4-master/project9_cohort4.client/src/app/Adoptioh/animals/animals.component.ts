@@ -12,7 +12,7 @@ export class AnimalsComponent implements OnInit {
   animals: any[] = [];
   displayedAnimals: any[] = [];
   shelters: any[] = [];
-  speciesList: string[] = ['Dog', 'Cat', 'Bird', 'Reptile'];
+  speciesList: string[] = ['Dog', 'Cat', 'Bird', 'Rabbit'];
   selectedShelter: number | null = null;
   selectedSpecies: string = '';
   searchTerm: string = '';

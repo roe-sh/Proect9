@@ -63,19 +63,20 @@
         </div>
 
         <!-- Image Uploads -->
+        <!-- Image Uploads -->
         <div class="d-grid gap-2">
           <label for="Image1" class="text-n20 fw-normal font-instrument">Image 1 <span class="text-primary">*</span></label>
-          <input name="Image1" type="file" id="Image1" [(ngModel)]="animal.Image1" (change)="changeImage($event, 0)" accept="image/*" required
+          <input name="Image1" type="file" id="Image1" (change)="changeImage($event, 0)" accept="image/*" required
                  class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100">
         </div>
         <div class="d-grid gap-2">
           <label for="Image2" class="text-n20 fw-normal font-instrument">Image 2</label>
-          <input name="Image2" type="file" id="Image2" [(ngModel)]="animal.Image2" (change)="changeImage($event, 1)" accept="image/*"
+          <input name="Image2" type="file" id="Image2" (change)="changeImage($event, 1)" accept="image/*"
                  class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100">
         </div>
         <div class="d-grid gap-2">
           <label for="Image3" class="text-n20 fw-normal font-instrument">Image 3</label>
-          <input type="file" id="Image3" [(ngModel)]="animal.Image3" (change)="changeImage($event, 2)" accept="image/*"
+          <input type="file" id="Image3" (change)="changeImage($event, 2)" accept="image/*"
                  class="px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 w-100 border n20-1-border radius-pill focus-primary w-100">
         </div>
 
