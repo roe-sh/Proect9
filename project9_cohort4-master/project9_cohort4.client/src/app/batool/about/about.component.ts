@@ -43,7 +43,7 @@ export class AboutComponent {
     {
       name: 'Malik Ibdah',
       position: 'Web Developer',
-      image: 'team-3.png',
+      image: 'WhatsApp Image 2024-10-26 at 23.03.01_62bc962b.jpg',
       description: 'A creative Web Developer focused on building innovative solutions and enhancing user experiences.'
     }
   ];
