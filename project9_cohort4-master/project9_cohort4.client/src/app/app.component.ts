@@ -25,10 +25,14 @@ export class AppComponent implements OnInit {
 
     this._ser.isAdminObs.subscribe((data) => {
       this.check = data
+      console.log("bs: ", this.check)
+      console.log("data: ", data)
       this.cdr.detectChanges();
     })
 
     this.checkLS = localStorage.getItem("isAdmin")
+    console.log("ls: ", this.checkLS)
+
   
   }
 
