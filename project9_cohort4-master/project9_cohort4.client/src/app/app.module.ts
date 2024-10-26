@@ -48,6 +48,7 @@ import { AllCategoryComponent } from './Admin/all-category/all-category.componen
 import { AllSheltersComponent } from './Admin/all-shelters/all-shelters.component';
 import { AddSheltersComponent } from './Admin/add-shelters/add-shelters.component';
 import { UpdateSheltersComponent } from './Admin/update-shelters/update-shelters.component';
+import { AllAdoptionRequestsComponent } from './Admin/all-adoption-requests/all-adoption-requests.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { UpdateSheltersComponent } from './Admin/update-shelters/update-shelters
     AllSheltersComponent,
     AddSheltersComponent,
     UpdateSheltersComponent,
+    AllAdoptionRequestsComponent,
   ],
   imports: [
     FormsModule,
@@ -160,6 +162,7 @@ import { UpdateSheltersComponent } from './Admin/update-shelters/update-shelters
         { path: "AllShelters", component: AllSheltersComponent },
         { path: "AddShelters", component: AddSheltersComponent },
         { path: "UpdateShelters/:id", component: UpdateSheltersComponent },
+        { path: "allrequests", component: AllAdoptionRequestsComponent },
 
 
       ]
