@@ -10,13 +10,15 @@ import { Router } from '@angular/router';
 export class UserProfileComponent {
 
   userId: any
+  userIdLS: any
 
   ngOnInit() {
     this._ser.userIdObs.subscribe((userId) => {
       this.userId = userId
     })
+    this.userIdLS = localStorage.getItem("userId")
 
-    this.getUserInfo(this.userId)
+    this.getUserInfo(this.userIdLS)
   }
 
   constructor(private _ser: BUrlServicesService, private _route: Router) { }

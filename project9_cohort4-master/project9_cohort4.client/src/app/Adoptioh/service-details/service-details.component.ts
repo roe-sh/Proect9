@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServicesService } from '../services.service';
-import Swal from 'sweetalert2';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2'; // Fixed import statement for SweetAlert
 
 @Component({
   selector: 'app-service-details',
@@ -11,12 +11,15 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ServiceDetailsComponent implements OnInit {
   service: any;
-  modalRef!: NgbModalRef;  
+  modalRef!: NgbModalRef;
+  userName: string = '';
+  userEmail: string = '';
 
+  
   constructor(
     private route: ActivatedRoute,
     private serviceService: ServicesService,
-    private modalService: NgbModal 
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +32,6 @@ export class ServiceDetailsComponent implements OnInit {
       this.serviceService.getServiceById(serviceId).subscribe(
         (data: any) => {
           this.service = data;
-          console.log('Service fetched:', this.service);
         },
         (error) => {
           console.error('Error fetching service details:', error);
@@ -44,22 +46,23 @@ export class ServiceDetailsComponent implements OnInit {
     }
   }
 
- 
   openAdoptModal(content: any): void {
     this.modalRef = this.modalService.open(content);
   }
 
-  submitAdoptionForm(form: any): void {
+  submitAdoptionForm(form: any, modal: NgbModalRef): void {
     if (form.valid) {
       console.log(`Adopting service: ${this.service.name}`);
+      // Here you can handle the adoption logic, e.g., sending data to your API
+
       Swal.fire({
         title: 'Success!',
         text: `You have adopted the service: ${this.service.name}`,
         icon: 'success',
         confirmButtonText: 'Okay'
       });
-    
-      this.modalRef.close();
+
+      modal.close(); // Close the modal after submission
     } else {
       Swal.fire({
         title: 'Error!',
