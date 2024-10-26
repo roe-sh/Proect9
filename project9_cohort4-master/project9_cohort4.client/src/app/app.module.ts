@@ -62,7 +62,7 @@ import { AllAdoptionRequestsComponent } from './Admin/all-adoption-requests/all-
     AnimalsComponent,
     AnimalsDetailsComponent,
     AnimalFormComponent,
-
+    ServiceDetailsComponent,
     FooterComponent,
     FooterComponent,
     LoginComponent,
@@ -130,7 +130,7 @@ import { AllAdoptionRequestsComponent } from './Admin/all-adoption-requests/all-
       { path: 'addpost', component: AddpostComponent },
       { path: 'animals', component: AnimalsComponent },
 
-      { path: 'service-details/:id', component: ServiceDetailsComponent },
+      
 
 
       { path: 'allposts', component: AllPostsComponent },

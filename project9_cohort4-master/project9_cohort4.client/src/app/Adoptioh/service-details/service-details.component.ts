@@ -12,7 +12,10 @@ import Swal from 'sweetalert2'; // Fixed import statement for SweetAlert
 export class ServiceDetailsComponent implements OnInit {
   service: any;
   modalRef!: NgbModalRef;
+  userName: string = '';
+  userEmail: string = '';
 
+  
   constructor(
     private route: ActivatedRoute,
     private serviceService: ServicesService,
@@ -25,7 +28,6 @@ export class ServiceDetailsComponent implements OnInit {
   }
 
   fetchServiceDetails(serviceId: string | null): void {
-    debugger
     if (serviceId) {
       this.serviceService.getServiceById(serviceId).subscribe(
         (data: any) => {
@@ -48,18 +50,26 @@ export class ServiceDetailsComponent implements OnInit {
     this.modalRef = this.modalService.open(content);
   }
 
-  confirmAdoption(modal: NgbModalRef): void {
-    console.log(`Adopting service: ${this.service.name}`);
-    // Here you can handle the adoption logic, e.g., sending data to your API
+  submitAdoptionForm(form: any, modal: NgbModalRef): void {
+    if (form.valid) {
+      console.log(`Adopting service: ${this.service.name}`);
+      // Here you can handle the adoption logic, e.g., sending data to your API
 
-    Swal.fire({
-      title: 'Success!',
-      text: `You have adopted the service: ${this.service.name}`,
-      icon: 'success',
-      confirmButtonText: 'Okay'
-    });
+      Swal.fire({
+        title: 'Success!',
+        text: `You have adopted the service: ${this.service.name}`,
+        icon: 'success',
+        confirmButtonText: 'Okay'
+      });
 
-    modal.close(); // Close the modal after confirmation
-  
+      modal.close(); // Close the modal after submission
+    } else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please fill in all required fields.',
+        icon: 'error',
+        confirmButtonText: 'Okay'
+      });
+    }
   }
 }
