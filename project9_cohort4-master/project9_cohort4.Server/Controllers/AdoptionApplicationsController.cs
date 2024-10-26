@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using project9_cohort4.Server.Models;
 using project9_cohort4.Server.DTOs;
 using project9_cohort4.Server.Email_Helper;
+using Microsoft.IdentityModel.Tokens;
 
 namespace project9_cohort4.Server.Controllers
 {
@@ -20,7 +21,7 @@ namespace project9_cohort4.Server.Controllers
             _context = context;
             _emailHelper = emailHelper; // Assign emailHelper in constructor
         }
-       
+
 
         // GET: api/AdoptionApplications
         [HttpGet]
@@ -128,5 +129,78 @@ namespace project9_cohort4.Server.Controllers
         {
             return _context.AdoptionApplications.Any(e => e.ApplicationId == id);
         }
+
+
+
+        ////////////////////////////////////// for admin
+        [HttpGet("allAdoptionRequestsForAdmin")]
+        public IActionResult allAdoptionRequestsForAdmin()
+        {
+            var requests = _context.AdoptionApplications
+                .Include(e => e.User)
+                .Include(a => a.Animal)
+                .Select(x => new AdminAdoptionRequestsDTO
+                {
+                    ApplicationId = x.ApplicationId,
+                    UserName = x.User.FullName,
+                    AnimalName = x.Animal.Name,
+                    AnimalImage = x.Animal.Image1,
+                    AnimalId = x.AnimalId,
+                    Status = x.Status,
+                    ApplicationDate = x.ApplicationDate,
+                    IsReceived = x.IsReceived,
+                    UserMedicalStatus = x.UserMedicalStatus,
+                    UserFlatType = x.UserFlatType,
+                    UserFinaincalStatus = x.UserFinaincalStatus,
+                    UserLivingStatus = x.UserLivingStatus,
+                    UserMoreDetails = x.UserMoreDetails,
+                })
+                .ToList();
+
+            if (requests.IsNullOrEmpty()) return NotFound("no request was found");
+
+            return Ok(requests);
+        }
+
+
+        [HttpPut("acceptAdoption/{animalId}/{requestId}")]
+        public IActionResult acceptAdoption(int animalId, int requestId)
+        {
+            if (requestId <= 0) return BadRequest("invalid id");
+
+            var request = _context.AdoptionApplications.FirstOrDefault(a => a.ApplicationId == requestId);
+
+            var otherRequests = _context.AdoptionApplications
+                .Where(a => a.AnimalId == animalId && a.ApplicationId != requestId)
+                .ToList();
+
+            if (request == null) return NotFound("the request was not found");
+
+            request.Status = "Approved";
+            _context.AdoptionApplications.Update(request);
+
+            if (!otherRequests.IsNullOrEmpty())
+            {
+                foreach (var req in otherRequests)
+                {
+                    req.Status = "Rejected";
+                }
+            }
+            _context.AdoptionApplications.UpdateRange(otherRequests);
+
+            _context.SaveChanges();
+
+            return Ok("request accepted");
+
+
+
+        }
+
+
+
+
+
+
+
     }
 }
