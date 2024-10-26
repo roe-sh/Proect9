@@ -24,7 +24,7 @@ export class UpdateCategoryComponent {
   fetchCategoryData() {
     this._ser.getCategoryById(this.param).subscribe(
       (response: any) => {
-        debugger
+        
         this.categoryData = response;
 
       },

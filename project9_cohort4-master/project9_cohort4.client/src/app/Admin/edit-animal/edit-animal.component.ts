@@ -21,7 +21,6 @@ export class EditAnimalComponent {
     this.param = this._active.snapshot.paramMap.get('id')
 
     this._ser.geytAnumalById(this.param).subscribe(response => {
-      debugger
       this.animal = response;
     }
 
@@ -54,7 +53,7 @@ export class EditAnimalComponent {
   changeImage(event: any, index: number) {
     const file = event.target.files[0];
     if (file) {
-      this.image[index] = file; // Assign the selected file to the correct index
+      this.image[index] = file;
     }
   }
 
@@ -69,10 +68,9 @@ export class EditAnimalComponent {
     // Append images to FormData
     this.image.forEach((imageFile: File | undefined, index: number) => {
       if (imageFile) {
-        form.append(`Image${index + 1}`, imageFile); // Append each image to the FormData
+        form.append(`Image${index + 1}`, imageFile);
       }
     });
-
 
     this._ser.updateAnimal(this.param, form).subscribe(
       response => {
