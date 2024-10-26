@@ -37,7 +37,7 @@ export class AboutComponent {
     {
       name: 'Mostafa Al-Momani',
       position: 'Web Developer',
-      image: 'team-3.png',
+      image: 'WhatsApp Image 2024-10-26 at 23.48.34_6f9db3d9.jpg',
       description: 'A passionate Web Developer who specializes in front-end technologies and enjoys solving complex problems.'
     },
     {
