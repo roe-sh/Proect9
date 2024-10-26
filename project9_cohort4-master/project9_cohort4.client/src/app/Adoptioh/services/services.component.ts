@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
-interface Service {
-  serviceId: number;
-  name: string;
+// service.model.ts (or wherever your Service interface is defined)
+export interface Service {
+  serviceId: string;
+  serviceName: string;
   description: string;
-  image: string; 
+  imagePath?: string; // Add imagePath as an optional property
 }
+
 
 @Component({
   selector: 'app-services',
