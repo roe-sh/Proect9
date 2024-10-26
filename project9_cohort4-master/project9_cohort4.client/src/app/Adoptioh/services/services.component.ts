@@ -26,6 +26,7 @@ export class ServicesComponent implements OnInit {
 
 
   fetchServices(): void {
+ 
     this.getServices().subscribe(
       data => {
         this.services = data;
