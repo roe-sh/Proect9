@@ -10,7 +10,6 @@
         <h4 class="fw-bold">Price: {{ service?.price | currency }}</h4>
         <p class="text-muted">{{ service?.subDescription }}</p>
         <div class="mt-4">
-          <!-- Updated button to pass the modal reference -->
           <button class="btn btn-primary btn-lg" (click)="openAdoptModal(adoptModal)">Adopt This Service</button>
         </div>
       </div>
@@ -24,19 +23,11 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <form #adoptionForm="ngForm" (ngSubmit)="submitAdoptionForm(adoptionForm)">
-        <div class="form-group">
-          <label for="userName">Your Name</label>
-          <input type="text" class="form-control" id="userName" name="userName" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="userEmail">Your Email</label>
-          <input type="email" class="form-control" id="userEmail" name="userEmail" ngModel required>
-        </div>
-     
-        <input type="hidden" name="serviceId" [value]="service?.serviceId">
-        <button type="submit" class="btn btn-primary">Submit Adoption</button>
-      </form>
+      <p>Are you sure you want to adopt the service: <strong>{{ service?.name }}</strong>?</p>
+      <div class="mt-4">
+        <button class="btn btn-primary" (click)="confirmAdoption(modal)">Confirm Adoption</button>
+        <button class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+      </div>
     </div>
   </ng-template>
 </section>

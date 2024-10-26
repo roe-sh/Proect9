@@ -125,7 +125,7 @@ import { AllAdoptionRequestsComponent } from './Admin/all-adoption-requests/all-
       { path: 'about', component: AboutComponent },
       { path: 'animals', component: AnimalsComponent },
       { path: 'services', component: ServicesComponent }, 
-
+      { path: 'service-details/:id', component: ServiceDetailsComponent }, 
      
       { path: 'addpost', component: AddpostComponent },
       { path: 'animals', component: AnimalsComponent },
