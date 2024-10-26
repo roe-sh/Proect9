@@ -34,16 +34,20 @@ namespace project9_cohort4.Server.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutShelter(int id, updateShelderDTO shelter)
+        public IActionResult PutShelter(int id, [FromForm] addShelderDTO shelter)
         {
             var existShelter = _context.Shelters.Find(id);
             if (existShelter == null)
                 return BadRequest();
 
+            // Update existShelter with values from shelter DTO
             existShelter.ShelterName = shelter.ShelterName;
             existShelter.Description = shelter.Description;
             existShelter.ContactEmail = shelter.ContactEmail;
-            existShelter.ContactPhone = shelter.Phone;
+            existShelter.OpenTime = shelter.OpenTime;
+            existShelter.CloseTime = shelter.CloseTime;
+            existShelter.OpenDay = shelter.OpenDay;
+            existShelter.ContactPhone = shelter.ContactPhone;
             existShelter.Address = shelter.Address;
 
             _context.Shelters.Update(existShelter);
@@ -52,15 +56,19 @@ namespace project9_cohort4.Server.Controllers
             return Ok(existShelter);
         }
 
+
         [HttpPost]
-        public IActionResult PostShelter(addShelderDTO shelter)
+        public IActionResult PostShelter([FromForm] addShelderDTO shelter)
         {
             var newShelter = new Shelter
             {
                 ShelterName = shelter.ShelterName,
                 Description = shelter.Description,
                 ContactEmail = shelter.ContactEmail,
-                ContactPhone = shelter.Phone,
+                OpenTime = shelter.OpenTime,
+                CloseTime = shelter.CloseTime,
+                OpenDay = shelter.OpenDay,
+                ContactPhone = shelter.ContactPhone,
                 Address = shelter.Address
             };
 

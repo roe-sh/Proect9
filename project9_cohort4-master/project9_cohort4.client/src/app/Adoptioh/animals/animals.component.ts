@@ -12,7 +12,7 @@ export class AnimalsComponent implements OnInit {
   animals: any[] = [];
   displayedAnimals: any[] = [];
   shelters: any[] = [];
-  speciesList: string[] = ['Dog', 'Cat', 'Bird', 'Reptile'];
+  speciesList: string[] = ['Dog', 'Cat', 'Bird', 'Rabbit'];
   selectedShelter: number | null = null;
   selectedSpecies: string = '';
   searchTerm: string = '';
@@ -24,7 +24,9 @@ export class AnimalsComponent implements OnInit {
   totalItems: number = 0;
   totalPages: number = 0;
   Math = Math;
+  activeSpecies: string | null = null;
 
+ 
   constructor(private animalService: AnimalService, private shelterService: ShelterService) { }
 
   ngOnInit(): void {
@@ -132,6 +134,8 @@ export class AnimalsComponent implements OnInit {
 
   onFilterChanged(species: string): void {
     this.selectedSpecies = species;
+    this.activeSpecies = species;
+
     this.applyFilters();
   }
 
@@ -139,4 +143,7 @@ export class AnimalsComponent implements OnInit {
     event.preventDefault();
     this.applyFilters();
   }
+
+  
+
 }

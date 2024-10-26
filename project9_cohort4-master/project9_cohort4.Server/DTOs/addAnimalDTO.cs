@@ -12,7 +12,7 @@ namespace project9_cohort4.Server.DTOs
         public string? Temperament { get; set; }
         public string? SpecialNeeds { get; set; }
         public string? Description { get; set; }
-        //public string? AdoptionStatus { get; set; }
+        public string? AdoptionStatus { get; set; }
 
         // Properties for images
         public IFormFile? Image1 { get; set; }  // Handling images as file uploads

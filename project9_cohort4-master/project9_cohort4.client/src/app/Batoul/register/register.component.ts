@@ -10,26 +10,30 @@ import Swal from 'sweetalert2';
 })
 export class RegisterComponent {
 
+  passwordsMatch: boolean = true;
+
   ngOnInit() { }
 
   constructor(private _ser: BUrlServicesService, private _route: Router) { }
+
+  checkPWd(data: any) {
+    this.passwordsMatch = data.password === data.ConfirmPassword;
+  }
+
+ 
 
 
   newUser(data: any) {
     debugger
 
-    if (data.password !== data.ConfirmPassword) {
-      //alert('Passwords do not match');
-
+    if (!this.passwordsMatch) {
       Swal.fire({
         icon: "error",
         title: "Passwords do not match",
         text: "Please retype your password",
       });
-
       return;
     }
-
     debugger
     const formData = new FormData();
     formData.append('FullName', data.fullName);

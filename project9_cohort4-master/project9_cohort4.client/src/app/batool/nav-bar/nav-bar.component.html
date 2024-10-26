@@ -19,33 +19,31 @@
       </div>
       <nav class="navbar-area">
         <ul class="nav-menu-items d-lg-flex d-grid gap-3xl-8 gap-xxl-6 gap-4">
+
           <li class="menu-link">
             <a routerLink="/" class="slide-vertical" data-splitting>Home</a>
           </li>
-          <li class="menu-link">
-            <a routerLink="/about" class="slide-vertical" data-splitting>About</a>
-          </li>
-          <li class="menu-link">
-            <a routerLink="/team" class="slide-vertical" data-splitting>Team</a>
-          </li>
+
           <li class="menu-link">
             <a routerLink="/services" class="slide-vertical" data-splitting>Our Services</a>
           </li>
-          <li class="menu-link">
-            <a routerLink="/addpost" class="slide-vertical" data-splitting>Add Post</a>
-          </li>
-          <li class="menu-link">
-            <a routerLink="/Shelters" class="slide-horizontal" data-splitting>Shelters</a>
-          </li>
-          <li class="menu-link">
-            <a routerLink="/allposts" class="slide-vertical" data-splitting>Our Community</a>
-          </li>
+
           <li class="menu-link">
             <a routerLink="/animals" class="slide-horizontal">Adoption</a>
           </li>
+
+          <li class="menu-link">
+            <a routerLink="/allposts" class="slide-vertical" data-splitting>Our Community</a>
+          </li>
+
+          <li class="menu-link">
+            <a routerLink="/about" class="slide-vertical" data-splitting>About</a>
+          </li>
+
           <li class="menu-link">
             <a routerLink="/contactus" class="slide-vertical" data-splitting>Contact</a>
           </li>
+
         </ul>
       </nav>
       <div class="nav-btns d-flex align-items-center gap-lg-5 gap-3">
@@ -54,9 +52,15 @@
           <i class="ph ph-magnifying-glass"></i>
         </button>
 
-        <a routerLink="/userprofile" class="btn-primary text-nowrap" *ngIf="userId != ''">Profile</a>
-        <a (click)="logout()" id="NavBarProfile" *ngIf="userId != ''">Logout</a>
-        <a routerLink="/login" class="btn-primary text-nowrap" *ngIf="userId == ''">Login</a>
+        <a routerLink="/userprofile" class="btn-primary text-nowrap" *ngIf="userId || userIdLS">Profile</a>
+        <a (click)="logout()" id="NavBarProfile" *ngIf="userId || userIdLS">Logout</a>
+        <a routerLink="/login" class="btn-primary text-nowrap" *ngIf="!userId && !userIdLS">Login</a>
+
+
+        <!--<a routerLink="/userprofile" class="btn-primary text-nowrap" *ngIf="userIdLS !== null && userIdLS !== undefined">Profile</a>
+        <a (click)="logout()" id="NavBarProfile" *ngIf="userIdLS !== null && userIdLS !== undefined">Logout</a>
+        <a routerLink="/login" class="btn-primary text-nowrap" *ngIf="userIdLS === null || userIdLS === undefined">Login</a>-->
+
         <button class="menu-toggle-btn text-2xl">
           <i class="ph ph-list"></i>
         </button>

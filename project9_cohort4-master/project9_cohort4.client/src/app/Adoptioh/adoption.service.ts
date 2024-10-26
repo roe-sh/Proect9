@@ -24,4 +24,23 @@ export class AdoptionService {
     const params = { shelterId: shelterId.toString(), species };
     return this.http.get<any[]>(`${this.animalUrl}/related`, { params });
   }
+
+  ///////////////////////// for dashboard
+
+  GetAllAdoptionApplications(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/allAdoptionRequestsForAdmin`)
+  }
+
+
+  acceptAdoption(animalId: any, requestId: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/acceptAdoption/${animalId}/${requestId}`, {})
+  }
+
+
+
+
+
+
+
+
 }

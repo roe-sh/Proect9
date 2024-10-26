@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { UrlServiceService } from '../../batool/services/url-service.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -10,28 +10,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-admin-adoption.component.css']
 })
 export class AddAdminAdoptionComponent implements OnInit {
-
   shelters: any[] = [];
   categories: any[] = [];
-  imageFiles: File[] = []; // Array to hold multiple image files
-  addAnimalForm: FormGroup;
+  image: File[] = []; // Initialize image as an empty array
+
+  // Form properties
 
   constructor(private _ser: UrlServiceService, private _router: Router, private fb: FormBuilder) {
-    this.addAnimalForm = this.fb.group({
-      name: ['', Validators.required],
-      species: ['', Validators.required],
-      breed: ['', Validators.required],
-      age: [0, [Validators.required, Validators.min(0)]],
-      size: ['', Validators.required],
-      temperament: ['', Validators.required],
-      specialNeeds: ['', Validators.required],
-      description: ['', Validators.required],
-      categoryId: ['', Validators.required],
-      shelterId: ['', Validators.required]
-    });
+    // Initialize form without any validators
+   
   }
 
   ngOnInit() {
+    // Fetch shelters and categories on initialization
     this._ser.getAllShelters().subscribe(
       (sheltersResponse) => {
         this.shelters = sheltersResponse;
@@ -40,6 +31,7 @@ export class AddAdminAdoptionComponent implements OnInit {
         console.error('Error fetching shelters', error);
       }
     );
+
     this._ser.getAllCategories().subscribe(
       (categoriesResponse) => {
         this.categories = categoriesResponse;
@@ -50,22 +42,29 @@ export class AddAdminAdoptionComponent implements OnInit {
     );
   }
 
-  changeImages(event: any) {
-    this.imageFiles = Array.from(event.target.files); // Convert FileList to Array
+  // Change image handler for multiple inputs
+  changeImage(event: any, index: number) {
+    const file = event.target.files[0];
+    if (file) {
+      this.image[index] = file; // Assign the selected file to the correct index
+    }
   }
 
+  // Method to add animal
+  // Method to add animal
   addAnimal(data: any) {
     const form = new FormData();
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        form.append(key, data[key]);
-      }
+    for (let key in data) {
+      form.append(key, data[key]);
     }
-
-    // Append images
-    this.imageFiles.forEach((file, index) => {
-      form.append(`Image${index + 1}`, file); // Append files as Image1, Image2, Image3
+    // Append images to FormData
+    // Append images to FormData
+    this.image.forEach((imageFile: File | undefined, index: number) => {
+      if (imageFile) {
+        form.append(`Image${index + 1}`, imageFile); // Append each image to the FormData
+      }
     });
+
 
     this._ser.addAnimal(form).subscribe(
       () => {
@@ -75,11 +74,11 @@ export class AddAdminAdoptionComponent implements OnInit {
           text: 'The animal has been added successfully!',
           confirmButtonText: 'OK'
         }).then(() => {
-          this._router.navigate(['AdminDashBoard/AllAnimal']);
+          this._router.navigate(['adminDashBoard/AllAnimal']);
         });
       },
       (error) => {
-        console.error('Error adding animal', error);
+        console.error('Error updating Animal', error);
         Swal.fire({
           icon: 'error',
           title: 'Error',

@@ -42,6 +42,13 @@ import { ServicesComponent } from './Adoptioh/services/services.component';
 import { ServiceDetailsComponent } from './Adoptioh/service-details/service-details.component';
 import { PostadminComponent } from './mustafa/postadmin/postadmin.component';
 import { AboutComponent } from './batool/about/about.component';
+import { AddCategoryComponent } from './Admin/add-category/add-category.component';
+import { UpdateCategoryComponent } from './Admin/update-category/update-category.component';
+import { AllCategoryComponent } from './Admin/all-category/all-category.component';
+import { AllSheltersComponent } from './Admin/all-shelters/all-shelters.component';
+import { AddSheltersComponent } from './Admin/add-shelters/add-shelters.component';
+import { UpdateSheltersComponent } from './Admin/update-shelters/update-shelters.component';
+import { AllAdoptionRequestsComponent } from './Admin/all-adoption-requests/all-adoption-requests.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +92,13 @@ import { AboutComponent } from './batool/about/about.component';
     ServiceDetailsComponent,
     PostadminComponent,
     AboutComponent,
+    AddCategoryComponent,
+    UpdateCategoryComponent,
+    AllCategoryComponent,
+    AllSheltersComponent,
+    AddSheltersComponent,
+    UpdateSheltersComponent,
+    AllAdoptionRequestsComponent,
   ],
   imports: [
     FormsModule,
@@ -131,6 +145,7 @@ import { AboutComponent } from './batool/about/about.component';
         { path: 'animals/:id', component: AnimalsDetailsComponent },
         { path: 'animals-form', component: AnimalFormComponent, canActivate: [AuthGuard] },
 
+        { path: 'UpdateAnimal/:id', component: EditAnimalComponent },
 
         {path: 'AddAdminAdoption', component: AddAdminAdoptionComponent },
         {path: 'AdminAdoption', component: AdminAdoptionComponent },
@@ -141,6 +156,14 @@ import { AboutComponent } from './batool/about/about.component';
         { path: "userdetails/:id", component: UserDetailsComponent },
         { path: "allcontacts", component: AdminAllContactsComponent },
         { path: "contactdetails/:id", component: AdminContactDetailsComponent },
+        { path: "UpdateCategory/:id", component: UpdateCategoryComponent },
+        { path: "AddCategory", component: AddCategoryComponent },
+        { path: "AllCategory", component: AllCategoryComponent },
+        { path: "AllShelters", component: AllSheltersComponent },
+        { path: "AddShelters", component: AddSheltersComponent },
+        { path: "UpdateShelters/:id", component: UpdateSheltersComponent },
+        { path: "allrequests", component: AllAdoptionRequestsComponent },
+
 
       ]
   },

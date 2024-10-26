@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using project9_cohort4.Server.DTOs;
 using project9_cohort4.Server.Models;
 
@@ -21,7 +22,7 @@ namespace project9_cohort4.Server.Controllers
         public IActionResult GetAllPosts()
         {
             var posts = _db.Posts
-                .Where( w => w.IsAccept == true)
+                .Where(w => w.IsAccept == true)
                 .OrderByDescending(w => w.StoryDate)
                 .Select(s => new
                 {
@@ -253,6 +254,8 @@ namespace project9_cohort4.Server.Controllers
             return Ok(posts);
 
         }
+
+
         [HttpGet("postnotaccepted")]
         public IActionResult postnotaccept()
         {
@@ -270,5 +273,23 @@ namespace project9_cohort4.Server.Controllers
             }).ToArray();
             return Ok(notaccept);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

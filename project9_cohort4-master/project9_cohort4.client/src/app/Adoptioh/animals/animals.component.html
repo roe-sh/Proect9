@@ -524,29 +524,40 @@
                 <span class="text-primary"><i class="ph-fill ph-paw-print"></i></span>
                 Search
               </h5>
-<!--              <form action="#"
-                    class="d-flex align-items-center border n20-1-border radius-8 focus-primary overflow-hidden">
--->                <input type="text" placeholder="Search" class="w-100 font-instrument border-0 outline-0 p-3" [(ngModel)]="searchTerm" (input)="onSearchChange(searchTerm)">
+              <!--              <form action="#"
+                      class="d-flex align-items-center border n20-1-border radius-8 focus-primary overflow-hidden">
+  -->
 
-                <!--<button class="btn-primary border-0 text-n0 text-2xl p-3 radius-8" type="button">
-                  <span><i class="ph ph-magnifying-glass"></i></span>
-                </button>-->
-<!--                       </form>
--->            </div>
+
+
+              <input type="text"
+                     placeholder="Search"
+                     class="w-100 font-instrument outline-0 p-3 custom-input"
+                     [(ngModel)]="searchTerm"
+                     (input)="onSearchChange(searchTerm)">
+
+
+              <!--<button class="btn-primary border-0 text-n0 text-2xl p-3 radius-8" type="button">
+    <span><i class="ph ph-magnifying-glass"></i></span>
+  </button>-->
+              <!--                       </form>
+  -->
+            </div>
             <!-- Categories list start -->
             <div class="top-products-list p-xxl-8 p-md-6 p-4 bg-white border n20-1-border radius-16">
               <h5 class="font-otomanopee fw-normal mb-lg-6 mb-4">
                 <span class="text-primary"><i class="ph-fill ph-paw-print"></i></span>
                 <!-- Categories-->
               </h5>
-                <ul class="d-grid gap-lg-6 gap-4">
-       <li *ngFor="let species of speciesList">
-         <a href="javascript:void(0);" (click)="onFilterChanged(species)"
-            class="d-flex align-items-center justify-content-between gap-lg-4 gap-2">
-           <span class="text-n20 fw-medium">{{ species }}</span>
-         </a>
-       </li>
-     </ul>
+              <ul class="dashboard-grid">
+                <li *ngFor="let species of speciesList"
+                    (click)="onFilterChanged(species)"
+                    [ngClass]="{'active': activeSpecies === species}"
+                    class="dashboard-item">
+                  <span>{{ species }}</span>
+                </li>
+              </ul>
+
             </div>
             <!-- Categories list end -->
           </div>
