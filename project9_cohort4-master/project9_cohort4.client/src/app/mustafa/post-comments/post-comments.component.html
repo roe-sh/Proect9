@@ -104,7 +104,7 @@
               <div class="d-flex align-items-center justify-content-between gap-lg-4 gap-2 flex-wrap">
                 <div class="d-flex align-items-center gap-lg-4 gap-2">
                   <div class="commenter icon-100px">
-                    <img class="w-100" src="assets/images/author-1.png" alt="author">
+                    <img class="w-100" src="https://localhost:7001/api/Images/getImages/{{item.user.image}}" alt="author">
                   </div>
                   <div class="d-grid gap-1">
                     <span class="text-n20 font-instrument fw-bold">{{item.user.fullName}}</span>
@@ -129,7 +129,7 @@
                 <div class="single-reply mb-2" *ngFor="let reply of replays" style="border:1px solid gray;border-radius:10px">
                   <div class="d-flex align-items-center gap-2">
                     <div class="commenter icon-100px">
-                      <img class="w-50 ms-10" src="assets/images/author-1.png" alt="author">
+                      <img class="w-50 ms-10" src="https://localhost:7001/api/Images/getImages/{{reply.image}}" alt="author">
                     </div>
                     <span class="text-n20 font-instrument fw-bold">{{reply.fullName}}</span>
                     <span class="text-n10 font-instrument fw-normal">{{reply.createDate | date: 'yyyy/MM/dd hh:mm a'}}</span>
