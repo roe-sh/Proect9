@@ -1,5 +1,11 @@
-<div class="container mt-4">
+<div class="container mt-6">
   <h2 class="text-center mb-4">Users List</h2>
+
+
+  <div class="text-center mb-4">
+    <label for="usersSearch" class="form-label fw-bold">Search users by name or email: </label>
+    <input id="usersSearch" type="text" placeholder="Enter your search" (input)="searchUsers($event)" class="form-control d-inline-block w-50" />
+  </div>
 
 
   <!-- Make the table responsive -->

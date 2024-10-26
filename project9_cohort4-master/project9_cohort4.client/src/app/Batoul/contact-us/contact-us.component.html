@@ -24,8 +24,6 @@
     </div>
   </section>
   <!-- inner hero section end -->
-
-
   <!-- contact location section start -->
   <section class="contact-section pt-120 pb-120">
     <div class="container">
@@ -79,8 +77,6 @@
     </div>
   </section>
   <!-- contact location section end -->
-
-
   <!-- contact form section start -->
   <section class="contact-form-section pb-120" style="background-color: #FFE9D2; padding-top: 2em">
     <div class="container">
@@ -108,8 +104,14 @@
 
                 <div class="d-grid gap-lg-3 gap-2 w-100">
                   <label for="email">Email <span class="text-primary">*</span></label>
-                  <input type="email" id="email" placeholder="Your Email" name="Email" required ngModel
+                  <input type="email" id="email" placeholder="Your Email" name="Email" required ngModel #emailInput="ngModel"
+                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                          class="px-xl-8 px-lg-6 px-md-4 px-3 py-lg-4 py-md-3 py-2 border n20-1-border radius-pill focus-primary w-100">
+
+                  <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">
+                    <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
+                    <small *ngIf="emailInput.errors?.['pattern']">Please enter a valid email address.</small>
+                  </div>
                 </div>
 
               </div>
@@ -134,11 +136,12 @@
               </div>
 
               <div class="mt-4">
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
               </div>
 
 
             </form>
+
 
 
           </div>

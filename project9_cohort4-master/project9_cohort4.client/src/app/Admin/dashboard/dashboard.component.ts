@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BUrlServicesService } from '../../Batoul/burl-services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,5 +15,20 @@ export class DashboardComponent {
     event.preventDefault();
     this.isDropdownOpen = !this.isDropdownOpen;
   }
+
+  ngOnInit() { }
+
+  constructor(private _ser: BUrlServicesService, private _route: Router) { }
+
+  logout() {
+    this._ser.logout();
+
+    this._route.navigate(["/"])
+
+  }
+
+
+
+
 
 }
