@@ -83,6 +83,7 @@
           "options": {
             "buildTarget": "angularlecturenew.client:build"
           }
+
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",

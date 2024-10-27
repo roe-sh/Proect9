@@ -10,13 +10,17 @@ import { Router } from '@angular/router';
 export class NavBarComponent {
 
   userId: any
+  userIdLS: any
 
   ngOnInit() {
 
     this._ser.userIdObs.subscribe((userId) => {
       this.userId = userId
     })
+    this.userIdLS = localStorage.getItem("userId")
+
     console.log(this.userId)
+    console.log(this.userIdLS)
 
   }
 

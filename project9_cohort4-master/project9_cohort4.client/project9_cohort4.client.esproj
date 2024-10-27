@@ -8,13 +8,10 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\project9_cohort4.client\browser\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\app\Adoptioh\" />
     <Folder Include="src\app\batool\services\" />
-    <Folder Include="src\app\Admin\" />
     <Folder Include="src\app\Batoul\" />
     <Folder Include="src\app\mustafa\" />
     <Folder Include="src\app\Urlmustafa\" />
     <Folder Include="src\app\User_Interface\" />
-    <Folder Include="src\Admin\" />
   </ItemGroup>
 </Project>

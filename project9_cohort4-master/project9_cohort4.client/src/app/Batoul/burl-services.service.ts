@@ -8,7 +8,6 @@ import { tap } from 'rxjs/operators';
 })
 export class BUrlServicesService {
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.checkLoggedIn());
-
   userId: BehaviorSubject<any> = new BehaviorSubject<any>('');
   isAdmin: BehaviorSubject<any> = new BehaviorSubject<any>('false');
 
@@ -20,22 +19,18 @@ export class BUrlServicesService {
 
   constructor(private http: HttpClient) { }
 
-  // Check if the user is logged in
   private checkLoggedIn(): boolean {
     return !!localStorage.getItem('authToken');
   }
 
-  // Public method to check login status
   public isLoggedIn(): boolean {
-    return this.isLoggedInSubject.value; // Get the current login status
+    return this.isLoggedInSubject.value;
   }
 
-  // Register a new user
   register(data: any): Observable<any> {
     return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/register`, data);
   }
 
-  // Log in a user
   login(data: any): Observable<any> {
     return this.http.post<any>(`${this.BaseUrl}LoginAndRegister/login`, data).pipe(
       tap(response => {
@@ -48,71 +43,88 @@ export class BUrlServicesService {
     );
   }
 
-  // Check if a user is an admin
   checkAdmin(userId: any): Observable<any> {
     return this.http.get<any>(`${this.BaseUrl}LoginAndRegister/isAdmin/${userId}`);
   }
 
-  // Log out the user
   logout(): void {
     this.userId.next('');
     this.isAdmin.next('false');
     this.isLoggedInSubject.next(false);
     localStorage.clear();
+    window.location.reload();
   }
 
-  // Get all users
+  getUserDetails(): Observable<any> {
+    return this.http.get(`${this.BaseUrl}details`);
+  }
+
   getAllUsers(): Observable<any> {
     return this.http.get<any>(`${this.BaseUrl}Profile/getAllUsers`);
   }
 
-  // Get user information by ID
   getUserInfo(userId: number): Observable<any> {
     return this.http.get<any>(`${this.BaseUrl}Profile/getUserById/${userId}`);
   }
 
-  // Edit user information by ID
   editUserInfo(userId: number, data: any): Observable<any> {
     return this.http.put<any>(`${this.BaseUrl}Profile/editProfileInfo/${userId}`, data);
   }
 
-  // Edit user password by ID
   editPassword(userId: number, data: any): Observable<any> {
     return this.http.post<any>(`${this.BaseUrl}Profile/editPassword/${userId}`, data);
+  }
+
+
+  searchUser(text: string): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}AdminUsers/searchUser/${text}`)
   }
 
 
 
   //////////////////////////////////////// contacts
   sendMessage(data: any): Observable<any> {
-    return this.http.post<any>(`${ this.BaseUrl }Contacts / sendContactMessage`, data)
+    return this.http.post<any>(`${this.BaseUrl}Contacts/sendContactMessage`, data);
   }
 
   replyToMessage(adminId: any, contactId: any, data: any): Observable<any> {
-    return this.http.post<any>(`${this.BaseUrl}Contacts/replyToContacts/${adminId}/${contactId}`, data)
+    return this.http.post<any>(`${this.BaseUrl}Contacts/replyToContacts/${adminId}/${contactId}`, data);
   }
 
   getAllMessages(): Observable<any> {
-    return this.http.get<any>(`${this.BaseUrl}Contacts/getAllContactMessages`)
+    return this.http.get<any>(`${this.BaseUrl}Contacts/getAllContactMessages`);
   }
 
   getMessageDetails(contactId: any): Observable<any> {
-    return this.http.get<any>(`${this.BaseUrl}Contacts/getContactMessageById/${contactId}`)
+    return this.http.get<any>(`${this.BaseUrl}Contacts/getContactMessageById/${contactId}`);
   }
+
+
+  searchContacts(text: string): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}Contacts/searchContacts/${text}`)
+  }
+  
+  searchContactsByAdminReply(text: string): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}searchContactsByAdminReply/${text}`)
+  }
+
 
 
 
 
   //////////////////////////////////// admin users
-  assignAdmin(userId: any): Observable<any> {
-    return this.http.put<any>(`${this.BaseUrl}AdminUsers/assignUserAsAdmin/${userId}`, {})
+  //assignAdmin(userId: any): Observable<any> {
+  //  return this.http.put<any>(`${this.BaseUrl}AdminUsers/assignUserAsAdmin/${userId}`, {})
+  //}
+
+
+
+
+  /////////////////////////////////// for the home page
+
+  Latest3Posts(): Observable<any> {
+    return this.http.get<any>(`${this.BaseUrl}HomePage/getLatest3PostsForHP`)
   }
-
-
-
-
-
-
 
 
 
