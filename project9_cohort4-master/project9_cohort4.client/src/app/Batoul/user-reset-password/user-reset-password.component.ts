@@ -14,9 +14,11 @@ export class UserResetPasswordComponent {
 
   ngOnInit() {
 
-    this._ser.userIdObs.subscribe((userId) => {
-      this.userId = userId
-    })
+    //this._ser.userIdObs.subscribe((userId) => {
+    //  this.userId = userId
+    //})
+
+    this.userId = localStorage.getItem("userId")
 
   }
 
