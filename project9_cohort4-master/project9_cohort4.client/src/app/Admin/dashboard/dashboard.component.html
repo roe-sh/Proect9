@@ -7,90 +7,93 @@
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
-          <br>
-
-          <li>
-            <a routerLink="/dashboard/allusers" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Site Users</span>
+          <!-- Dropdown for User Management -->
+        <!--  <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle px-0 align-middle" href="#" id="dropdownUsers" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">User Management</span>
             </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownUsers">
+              <li><a class="dropdown-item" routerLink="/dashboard/allusers">Site Users</a></li>
+            </ul>
           </li>
+-->
 
-          <li>
-            <a routerLink="/dashboard/AdminAdoption" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Admin Adoption</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/dashboard/AddAdminAdoption" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Add Admin Adoption</span>
-            </a>
-          </li>
-
-          <li>
-            <a routerLink="/dashboard/allrequests" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Adoption Requests</span>
+          <li class="mb-2">
+            <a routerLink="/dashboard/allusers" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">User</span>
             </a>
           </li>
 
-          <li>
-            <a routerLink="/dashboard/AdminAdoption" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Admin Adoption</span>
+          <!-- Dropdown for Adoption Management -->
+          <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle px-0 align-middle" href="#" id="dropdownAdoption" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Adoption </span>
             </a>
-          </li>
-          <li>
-            <a routerLink="/dashboard/sheltersadmin" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Nshelters</span>
-            </a>
-          </li>
-
-          <li>
-            <a routerLink="/dashboard/allpostadmin" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Posts</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/dashboard/notacceptpostadmin" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Not Accepted Posts</span>
-            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownAdoption">
+              <li><a class="dropdown-item" routerLink="/dashboard/AdminAdoption">Admin Adoption</a></li>
+              <li><a class="dropdown-item" routerLink="/dashboard/AddAdminAdoption">Add Admin Adoption</a></li>
+              <li><a class="dropdown-item" routerLink="/dashboard/allrequests">Adoption Requests</a></li>
+            </ul>
           </li>
 
-          <li>
-            <a routerLink="/dashboard/allcontacts" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+          <!-- Dropdown for Category Management -->
+          <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle px-0 align-middle" href="#" id="dropdownCategory" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Category </span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownCategory">
+              <li><a class="dropdown-item" routerLink="/dashboard/AllCategory">All Categories</a></li>
+              <li><a class="dropdown-item" routerLink="/dashboard/AddCategory">Add Category</a></li>
+            </ul>
+          </li>
+
+          <!-- Dropdown for Shelter Management -->
+          <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle px-0 align-middle" href="#" id="dropdownShelters" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Shelter </span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownShelters">
+              <li><a class="dropdown-item" routerLink="/dashboard/AllShelters">All Shelters</a></li>
+              <li><a class="dropdown-item" routerLink="/dashboard/AddShelters">Add Shelters</a></li>
+            </ul>
+          </li>
+
+          <!-- Dropdown for Post Management -->
+          <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle px-0 align-middle" href="#" id="dropdownPosts" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Post </span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownPosts">
+              <li><a class="dropdown-item" routerLink="/dashboard/allpostadmin">Posts</a></li>
+              <li><a class="dropdown-item" routerLink="/dashboard/notacceptpostadmin">Not Accepted Posts</a></li>
+            </ul>
+          </li>
+
+          <!-- Contacts Link -->
+          <li class="mb-2">
+            <a routerLink="/dashboard/allcontacts" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Contacts</span>
             </a>
           </li>
 
+          <!-- Logout Link -->
           <li>
-            <a data-bs-toggle="collapse" class="nav-link px-0 align-middle" (click)="logout()">
+            <a class="nav-link px-0 align-middle" (click)="logout()">
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Logout</span>
             </a>
           </li>
 
-
-
-
-
-
-          <!-- example on drop down -->
-          <!--<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle px-0 align-middle" href="#" id="dropdownA" role="button" (click)="toggleDropdown($event)" aria-expanded="false">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">A</span>
-            </a>
-            <ul class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }" aria-labelledby="dropdownA">
-              <li><a class="dropdown-item" routerLink="/dashboard/item1">1</a></li>
-              <li><a class="dropdown-item" routerLink="/dashboard/item2">2</a></li>
-              <li><a class="dropdown-item" routerLink="/dashboard/item3">3</a></li>
-            </ul>
-          </li>-->
-
         </ul>
         <hr>
-
       </div>
     </div>
+
     <div class="col py-3">
-
-
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -7,7 +7,6 @@
 
     <!-- Optional heading for the section -->
     <h2 class="text-center mb-4">All Category</h2>
-    <button class="btn btn-success btn-sm" [routerLink]="['/adminDashBoard/AddCategory']">Add new Category</button>
 
     <!-- Styled Bootstrap table -->
     <div class="table-responsive mx-auto" style="max-width: 900px;">
@@ -29,11 +28,11 @@
             <td>{{ item.name }}</td>
             <td scope="row">{{ item.description }}</td>
 
-            <td><img class="img-fluid" src="https://localhost:7001/api/Categories/getImages/{{item.image}}" alt=""></td>
+            <img class="img-fluid" src="https://localhost:7001/api/Categories/getImages/{{item.image}}" alt="" style="max-width: 100px; max-height: 100px;">
 
 
 
-          
+
 
 
             <td>

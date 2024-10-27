@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../Urlmustafa/url.service';
-import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-posts',
