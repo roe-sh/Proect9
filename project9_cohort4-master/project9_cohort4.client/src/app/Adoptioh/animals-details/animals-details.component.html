@@ -84,7 +84,7 @@
               <ul class="d-grid gap-lg-4 gap-2">
                 <li class="d-flex align-items-center gap-1">
                   <span class="text-base fw-medium font-instrument text-n20">Shelter: </span>
-                  <span class="text-base fw-normal font-instrument text-n10">{{ animal.shelterName }}</span>
+                  <span class="text-base fw-normal font-instrument text-n10">Happy Tails Shelter</span>
                 </li>
                 <li class="d-flex align-items-center gap-1">
                   <span class="text-base fw-medium font-instrument text-n20">Species: </span>
@@ -95,8 +95,8 @@
                   <span class="text-base fw-normal font-instrument text-n10">{{ animal.breed }}</span>
                 </li>
                 <li class="d-flex align-items-center gap-1">
-                  <span class="text-base fw-medium font-instrument text-n20">Animal ID: </span>
-                  <span class="text-base fw-normal font-instrument text-n10">{{ animal.id }}</span>
+                  <span class="text-base fw-medium font-instrument text-n20">Animal ID:  </span>
+                  <span class="text-base fw-normal font-instrument text-n10">20{{ animal.id }}</span>
                 </li>
               </ul>
             </div>
@@ -146,14 +146,15 @@
             <div class="container">
                 <div class="row g-6 align-items-end justify-content-between mb-lg-15 mb-md-10 mb-8">
                     <div class="col-lg-6">
-                        <h2 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal">
-                            Related Products
-                        </h2>
+                      <h2 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal">
+                        Related Animals
+                      </h2>
                     </div>
                     <div class="col-auto">
-                        <a href="shop.html" class="btn-primary text-xl">
-                            More Animals
-                        </a>
+                      <a [routerLink]="['/animals']" class="btn-primary text-xl">
+                        More Animals
+                      </a>
+
                     </div>
                 </div>
                 <!-- product list start -->
