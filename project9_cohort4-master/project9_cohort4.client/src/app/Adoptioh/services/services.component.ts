@@ -7,7 +7,7 @@ export interface Service {
   serviceId: string;
   serviceName: string;
   description: string;
-  imagePath?: string; // Add imagePath as an optional property
+  image: string; // Make sure to include this property
 }
 
 

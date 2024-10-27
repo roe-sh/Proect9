@@ -229,7 +229,7 @@ namespace project9_cohort4.Server.Controllers
             var randomAnimals = _context.Animals
                 .Where(a => a.Species == animal.Species && a.AnimalId != id)
                 .OrderBy(r => Guid.NewGuid())
-                .Take(4)
+                .Take(3)
                 .ToList();
 
             return Ok(randomAnimals);
