@@ -334,7 +334,7 @@
         <div class="col-lg-4 col-md-6 col-xs-10" *ngFor="let post of leatestArray">
           <div class="blog-card" routerLink="/postcomments/{{post.postId}}">
             <div class="blog-img scale-animation position-relative radius-20 overflow-hidden mb-lg-7 mb-lg-5 mb-3">
-              <img class="w-100" src="https://localhost:7001{{post.storyPhoto}}" alt="blog image">
+              <img class="w-100" src="https://localhost:7001{{post.storyPhoto}}" alt="blog image" width="100%" height="300">
               <div class="position-absolute end-0 bottom-0 mb-lg-6 mb-4 me-lg-6 me-4">
                 <a routerLink="/postcomments/{{post.postId}}" class="btn-primary n0-border text-n0 font-instrument">{{post.storyTitle}}</a>
               </div>

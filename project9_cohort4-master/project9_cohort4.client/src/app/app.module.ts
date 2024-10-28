@@ -15,7 +15,6 @@ import { UpdateInfoComponent } from './batool/update-info/update-info.component'
 import { AnimalsComponent } from './Adoptioh/animals/animals.component';
 import { AnimalsDetailsComponent } from './Adoptioh/animals-details/animals-details.component';
 import { AnimalFormComponent } from './Adoptioh/animal-form/animal-form.component';
-
 import { FooterComponent } from './batool/footer/footer.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { AdminAdoptionComponent } from './Admin/admin-adoption/admin-adoption.component';
@@ -123,8 +122,7 @@ import { AllAdoptionRequestsComponent } from './Admin/all-adoption-requests/all-
       { path: 'team', component: TeamComponent },
       { path: 'services', component: ServicesComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'animals', component: AnimalsComponent },
-      { path: 'services', component: ServicesComponent }, 
+      { path: 'animals', component: AnimalsComponent }, 
       { path: 'service-details/:id', component: ServiceDetailsComponent }, 
      
       { path: 'addpost', component: AddpostComponent },

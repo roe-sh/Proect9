@@ -1,5 +1,5 @@
 <section class="shop-section pt-120 pb-120">
-  <div class="container">
+  <div style="color:black" class="container">
     <div class="row g-6 justify-content-center">
       <div class="col-lg-8">
         <h2 class="text-animation-word text-h1 font-otomanopee text-n20 fw-normal text-center">
@@ -28,10 +28,11 @@
             <input type="text" class="form-control" id="medicalStatus" [(ngModel)]="adoptionDetails.userMedicalStatus" name="userMedicalStatus" required>
           </div>
 
+
           <!-- Housing Type -->
           <div class="form-group mb-4">
             <label for="housingType">Housing Type</label>
-            <select class="form-control" id="housingType" [(ngModel)]="adoptionDetails.housingType" name="housingType">
+            <select  class="form-control" style="color:black" id="housingType" [(ngModel)]="adoptionDetails.userLivingStatus" name="userLivingStatus">
               <option value="Apartment">Apartment</option>
               <option value="House">House</option>
               <option value="Other">Other</option>
@@ -41,7 +42,7 @@
           <!-- Financial Status -->
           <div class="form-group mb-4">
             <label for="financialStatus">Financial Status</label>
-            <input type="text" class="form-control" id="financialStatus" [(ngModel)]="adoptionDetails.userFinancialStatus" name="userFinancialStatus" required>
+            <input type="text" class="form-control" id="financialStatus" [(ngModel)]="adoptionDetails.UserFinaincalStatus" name="UserFinaincalStatus" required>
           </div>
 
           <!-- Flat Type -->
@@ -51,10 +52,10 @@
           </div>
 
           <!-- Living Status -->
-          <div class="form-group mb-4">
+          <!--<div class="form-group mb-4">
             <label for="livingStatus">Living Status</label>
             <input type="text" class="form-control" id="livingStatus" [(ngModel)]="adoptionDetails.userLivingStatus" name="userLivingStatus" required>
-          </div>
+          </div>-->
 
           <!-- Additional Details -->
           <div class="form-group mb-4">
@@ -71,3 +72,11 @@
     </div> <!-- End of row -->
   </div> <!-- End of container -->
 </section>
+<style>
+  body{
+    color:black;
+  }
+  .form-control{
+    color:black;
+  }
+</style>

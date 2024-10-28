@@ -16,7 +16,7 @@ export class AnimalFormComponent implements OnInit {
     AnimalId: null as number | null,
     userMedicalStatus: '',
     housingType: 'Apartment',
-    userFinancialStatus: '',
+    UserFinaincalStatus: '',
     userFlatType: '',
     userLivingStatus: '',
     userMoreDetails: '',
@@ -40,8 +40,11 @@ export class AnimalFormComponent implements OnInit {
 
   submitAdoptionForm(form: NgForm): void {
     if (form.valid) {
-     
+      debugger
+
       this.adoptionDetails.AnimalId = Number(this._active.snapshot.paramMap.get('animalId'))
+      this.adoptionDetails.userId = Number(localStorage.getItem("userId"))
+      console.log(this.adoptionDetails, "adoptionDetails")
       this.adoptionService.submitAdoptionRequest(this.adoptionDetails).subscribe(
         response => {
           console.log('Adoption request submitted successfully:', response);

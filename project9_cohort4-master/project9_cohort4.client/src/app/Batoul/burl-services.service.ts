@@ -52,6 +52,7 @@ export class BUrlServicesService {
     this.isAdmin.next('false');
     this.isLoggedInSubject.next(false);
     localStorage.clear();
+    window.location.reload();
   }
 
   getUserDetails(): Observable<any> {

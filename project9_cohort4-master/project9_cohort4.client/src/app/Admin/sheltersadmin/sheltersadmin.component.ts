@@ -85,19 +85,22 @@ export class SheltersadminComponent implements OnInit {
       }
     });
   }
-
   deleteShelter(shelterId: number): void {
     this.shelterService.deleteShelter(shelterId).subscribe(
       response => {
+        // Refresh the shelters list from the server
+        this.fetchShelters();
+
+        // Show a success alert using SweetAlert
         Swal.fire({
           title: 'Deleted!',
           text: 'Shelter has been deleted.',
           icon: 'success',
           confirmButtonText: 'Okay'
         });
-        this.fetchShelters(); // Refresh the shelters list
       },
       error => {
+        // Handle errors by logging and showing an alert to the user
         console.error('Error deleting shelter:', error);
         Swal.fire({
           title: 'Error!',
@@ -108,4 +111,5 @@ export class SheltersadminComponent implements OnInit {
       }
     );
   }
+
 }

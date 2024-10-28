@@ -249,7 +249,7 @@ namespace project9_cohort4.Server.Controllers
                 _emailService.SendRejection(rejectedUserName, rejectedUserEmail, animalName);
             }
 
-            return Ok("Request accepted and emails sent");
+            return Ok();
         }
 
 

@@ -92,6 +92,31 @@ namespace project9_cohort4.Server.Controllers
             return CreatedAtAction(nameof(GetService), new { id = service.ServiceId }, service);
         }
 
+        // Add this inside ServicesController
+        [HttpPost("submit-form")]
+        public IActionResult SubmitServiceForm(ServiceFormDto serviceFormDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Map ServiceFormDto to the Service entity
+            var service = new Service
+            {
+                ServiceName = serviceFormDto.ServiceName,
+                Description = serviceFormDto.Description,
+                SubDescription = serviceFormDto.SubDescription,
+                Image = serviceFormDto.Image,
+                Price = serviceFormDto.Price
+            };
+
+            _context.Services.Add(service);
+            _context.SaveChanges();
+
+            // Optionally, return the created service and/or an acknowledgment
+            return CreatedAtAction(nameof(GetService), new { id = service.ServiceId }, service);
+        }
 
         // DELETE: api/Services/5
         [HttpDelete("{id}")]

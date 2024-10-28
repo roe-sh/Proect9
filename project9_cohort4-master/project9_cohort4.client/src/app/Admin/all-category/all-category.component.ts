@@ -26,7 +26,6 @@ export class AllCategoryComponent {
     })
 
   }
-
   deleteCategory(id: number): void {
     Swal.fire({
       title: 'Are you sure?',
@@ -41,8 +40,13 @@ export class AllCategoryComponent {
         this._ser.deleteCategory(id).subscribe(
           () => {
             console.log('Category deleted');
+            // Update the category list by filtering out the deleted item
             this.Array = this.Array.filter((item: any) => item.id !== id);
 
+            // Refresh the category list after deletion
+            this.GetCategoryAdmin();
+
+            // Show success message
             Swal.fire(
               'Deleted!',
               'The category has been deleted.',
@@ -63,4 +67,5 @@ export class AllCategoryComponent {
       }
     });
   }
+
 }
