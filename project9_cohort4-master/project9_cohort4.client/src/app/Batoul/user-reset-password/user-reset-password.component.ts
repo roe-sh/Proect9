@@ -11,14 +11,14 @@ import Swal from 'sweetalert2';
 export class UserResetPasswordComponent {
 
   userId: any
+  userIdLS: any
 
   ngOnInit() {
 
-    //this._ser.userIdObs.subscribe((userId) => {
-    //  this.userId = userId
-    //})
-
-    this.userId = localStorage.getItem("userId")
+    this._ser.userIdObs.subscribe((userId) => {
+      this.userId = userId
+    })
+    this.userIdLS = localStorage.getItem("userId")
 
   }
 
